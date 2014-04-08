@@ -8,6 +8,8 @@
 
 #import "KKRAppDelegate.h"
 
+#import "KKRTimelineViewController.h"
+
 @implementation KKRAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -18,8 +20,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
+
+    self.window.rootViewController = [[KKRTimelineViewController alloc] init];
+
     return YES;
 }
 
