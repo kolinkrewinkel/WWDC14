@@ -1,15 +1,13 @@
 //
-//  KKRTimelineFetcher.h
+//  KKRManagedObjectContextStack.h
 //  Kolin Krewinkel
 //
 //  Created by Kolin Krewinkel on 4/8/14.
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-@interface KKRTimelineFetcher : NSObject
+#import <Foundation/Foundation.h>
 
-#pragma mark - Singleton
-
-+ (instancetype)sharedFetcher;
+@interface KKRManagedObjectContextStack : NSObject
 
 @end

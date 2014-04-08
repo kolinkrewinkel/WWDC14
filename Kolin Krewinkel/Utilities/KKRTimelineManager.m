@@ -6,13 +6,23 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-#import "KKRTimelineFetcher.h"
+#import "KKRTimelineManager.h"
 
-@implementation KKRTimelineFetcher
+@interface KKRTimelineManager ()
+
+#pragma mark - Core Data
+
+#pragma mark - Internal Networking
+
+
+
+@end
+
+@implementation KKRTimelineManager
 
 #pragma mark - Singleton
 
-+ (instancetype)sharedFetcher
++ (instancetype)sharedManager
 {
     static id sharedFetcher;
     static dispatch_once_t onceToken;
@@ -34,5 +44,7 @@
 
     return self;
 }
+
+#pragma mark - Fetching
 
 @end
