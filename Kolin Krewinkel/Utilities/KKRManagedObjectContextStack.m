@@ -21,6 +21,20 @@
 
 @implementation KKRManagedObjectContextStack
 
+#pragma mark - Singleton
+
++ (instancetype)defaultStack
+{
+    static dispatch_once_t onceToken;
+    static id defaultStack;
+
+    dispatch_once(&onceToken, ^{
+        defaultStack = [[[self class] alloc] init];
+    });
+
+    return defaultStack;
+}
+
 #pragma mark - Core Data Stack
 
 - (NSManagedObjectContext *)persistentManagedObjectContext
@@ -30,6 +44,7 @@
         return _persistentManagedObjectContext;
     }
 
+    // Parent of both mutation and interface MOCs.
     _persistentManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     _persistentManagedObjectContext.persistentStoreCoordinator = [self persistentStoreCoordinator];
 
@@ -43,6 +58,7 @@
         return _mutationManagedObjectContext;
     }
 
+    // For any changes; fetches will not block.
     _mutationManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     _mutationManagedObjectContext.parentContext = [self persistentManagedObjectContext];
 
@@ -56,6 +72,7 @@
         return _interfaceManagedObjectContext;
     }
 
+    // One of two original children from the persistentMOC. For use with anything UI/main thread.
     _interfaceManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     _interfaceManagedObjectContext.parentContext = [self persistentManagedObjectContext];
 
@@ -75,8 +92,6 @@
     return _managedObjectModel;
 }
 
-// Returns the persistent store coordinator for the application.
-// If the coordinator doesn't already exist, it is created and the application's store added to it.
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     if (_persistentStoreCoordinator)
@@ -113,12 +128,42 @@
     }
 }
 
-#pragma mark - Application's Documents directory
-
-// Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - External Usage
+
+- (void)performBlock:(KKRManagedObjectContextStackChangeReturningSaveBlock)block
+{
+    __weak typeof(self) weakSelf = self;
+
+    [self.mutationManagedObjectContext performBlock:^{
+        if (block(weakSelf.mutationManagedObjectContext, weakSelf.interfaceManagedObjectContext, weakSelf.persistentManagedObjectContext))
+        {
+            __block NSError *error = nil;
+            [self.mutationManagedObjectContext save:&error];
+
+            if (error)
+            {
+                NSLog(@"%@", error);
+
+                return;
+            }
+
+            [self.persistentManagedObjectContext performBlock:^{
+                [self.persistentManagedObjectContext save:&error];
+
+                if (error)
+                {
+                    NSLog(@"%@", error);
+
+                    return;
+                }
+            }];
+        }
+    }];
 }
 
 @end

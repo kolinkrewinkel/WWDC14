@@ -6,8 +6,16 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+typedef BOOL(^KKRManagedObjectContextStackChangeReturningSaveBlock)(NSManagedObjectContext *mutationContext, NSManagedObjectContext *interfaceContext, NSManagedObjectContext *persistenceContext);
 
 @interface KKRManagedObjectContextStack : NSObject
+
+#pragma mark - Singleton
+
++ (instancetype)defaultStack;
+
+#pragma mark - The One and Only Way.
+
+- (void)performBlock:(KKRManagedObjectContextStackChangeReturningSaveBlock)block;
 
 @end
