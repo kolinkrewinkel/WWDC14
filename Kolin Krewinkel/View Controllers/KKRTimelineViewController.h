@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-@interface KKRTimelineViewController : UIViewController
+#import "KKRScrollViewParallaxer.h"
+
+@interface KKRTimelineViewController : UIViewController <KKRScrollViewParallaxerDataSource>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
