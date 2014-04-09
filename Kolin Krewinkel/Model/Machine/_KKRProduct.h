@@ -7,8 +7,8 @@
 extern const struct KKRProductAttributes {
 	__unsafe_unretained NSString *subtitle;
 	__unsafe_unretained NSString *textDescription;
+	__unsafe_unretained NSString *timestamp;
 	__unsafe_unretained NSString *title;
-	__unsafe_unretained NSString *year;
 } KKRProductAttributes;
 
 extern const struct KKRProductRelationships {
@@ -18,7 +18,7 @@ extern const struct KKRProductRelationships {
 extern const struct KKRProductFetchedProperties {
 } KKRProductFetchedProperties;
 
-@class KKRImage;
+@class KKREvent;
 
 
 
@@ -58,25 +58,21 @@ extern const struct KKRProductFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSDate* timestamp;
+
+
+
+//- (BOOL)validateTimestamp:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSString* title;
 
 
 
 //- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSNumber* year;
-
-
-
-@property int64_t yearValue;
-- (int64_t)yearValue;
-- (void)setYearValue:(int64_t)value_;
-
-//- (BOOL)validateYear:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -96,8 +92,8 @@ extern const struct KKRProductFetchedProperties {
 
 - (void)addImages:(NSOrderedSet*)value_;
 - (void)removeImages:(NSOrderedSet*)value_;
-- (void)addImagesObject:(KKRImage*)value_;
-- (void)removeImagesObject:(KKRImage*)value_;
+- (void)addImagesObject:(KKREvent*)value_;
+- (void)removeImagesObject:(KKREvent*)value_;
 
 @end
 
@@ -116,17 +112,14 @@ extern const struct KKRProductFetchedProperties {
 
 
 
+- (NSDate*)primitiveTimestamp;
+- (void)setPrimitiveTimestamp:(NSDate*)value;
+
+
+
+
 - (NSString*)primitiveTitle;
 - (void)setPrimitiveTitle:(NSString*)value;
-
-
-
-
-- (NSNumber*)primitiveYear;
-- (void)setPrimitiveYear:(NSNumber*)value;
-
-- (int64_t)primitiveYearValue;
-- (void)setPrimitiveYearValue:(int64_t)value_;
 
 
 

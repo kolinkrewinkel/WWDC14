@@ -6,8 +6,8 @@
 const struct KKRProductAttributes KKRProductAttributes = {
 	.subtitle = @"subtitle",
 	.textDescription = @"textDescription",
+	.timestamp = @"timestamp",
 	.title = @"title",
-	.year = @"year",
 };
 
 const struct KKRProductRelationships KKRProductRelationships = {
@@ -24,16 +24,16 @@ const struct KKRProductFetchedProperties KKRProductFetchedProperties = {
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"Product" inManagedObjectContext:moc_];
+	return [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:moc_];
 }
 
 + (NSString*)entityName {
-	return @"Product";
+	return @"Event";
 }
 
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"Product" inManagedObjectContext:moc_];
+	return [NSEntityDescription entityForName:@"Event" inManagedObjectContext:moc_];
 }
 
 - (KKRProductID*)objectID {
@@ -43,11 +43,6 @@ const struct KKRProductFetchedProperties KKRProductFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"yearValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"year"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 
 	return keyPaths;
 }
@@ -69,34 +64,15 @@ const struct KKRProductFetchedProperties KKRProductFetchedProperties = {
 
 
 
+@dynamic timestamp;
+
+
+
+
+
+
 @dynamic title;
 
-
-
-
-
-
-@dynamic year;
-
-
-
-- (int64_t)yearValue {
-	NSNumber *result = [self year];
-	return [result longLongValue];
-}
-
-- (void)setYearValue:(int64_t)value_ {
-	[self setYear:[NSNumber numberWithLongLong:value_]];
-}
-
-- (int64_t)primitiveYearValue {
-	NSNumber *result = [self primitiveYear];
-	return [result longLongValue];
-}
-
-- (void)setPrimitiveYearValue:(int64_t)value_ {
-	[self setPrimitiveYear:[NSNumber numberWithLongLong:value_]];
-}
 
 
 

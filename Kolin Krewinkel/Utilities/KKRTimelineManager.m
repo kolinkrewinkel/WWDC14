@@ -49,13 +49,20 @@
 
 - (void)getTimelineItemsWithCompletionHandler:(KKRTimelineManagerItemsCompletionManager)completionHandler
 {
-    [[KKRManagedObjectContextStack defaultStack] performBlock:^BOOL(NSManagedObjectContext *mutationContext, NSManagedObjectContext *interfaceContext, NSManagedObjectContext *persistenceContext) {
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@""];
+    [[KKRManagedObjectContextStack defaultStack] performBlock:^BOOL(NSManagedObjectContext *mutationContext, NSManagedObjectContext *interfaceContext, NSManagedObjectContext *persistenceContext)
+    {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[KKREvent entityName]];
+        [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES]]];
+
         NSError *error = nil;
+        NSArray *fetchedObjects = [mutationContext executeFetchRequest:fetchRequest error:&error];
+        if (fetchedObjects == nil) {
+            return NO;
+        }
 
-        [mutationContext executeFetchRequest:fetchRequest error:&error];
+        NSLog(@"%@", fetchedObjects);
 
-        return YES;
+        return NO;
     }];
 }
 
