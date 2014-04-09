@@ -84,9 +84,7 @@
         return _persistentStoreCoordinator;
     }
 
-    NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     [self addPersistentStoreToCoordinator:_persistentStoreCoordinator retryCount:0];
 
     return _persistentStoreCoordinator;
