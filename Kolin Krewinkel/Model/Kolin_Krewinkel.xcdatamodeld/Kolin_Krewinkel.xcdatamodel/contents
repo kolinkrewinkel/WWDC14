@@ -12,7 +12,7 @@
         <attribute name="year" attributeType="Integer 64" defaultValueString="2000" indexed="YES" syncable="YES"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Image" inverseName="product" inverseEntity="Image" syncable="YES"/>
     </entity>
-    <entity name="Transitionable" isAbstract="YES" syncable="YES">
+    <entity name="Transitionable" representedClassName="KKRTransitionable" isAbstract="YES" syncable="YES">
         <attribute name="transitionType" attributeType="String" syncable="YES"/>
     </entity>
     <elements>

@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
+#import "KKRProduct.h"
+#import "KKRImage.h"
+
 typedef BOOL(^KKRManagedObjectContextStackChangeReturningSaveBlock)(NSManagedObjectContext *mutationContext, NSManagedObjectContext *interfaceContext, NSManagedObjectContext *persistenceContext);
 
 @interface KKRManagedObjectContextStack : NSObject

@@ -2,7 +2,7 @@
 // Make changes to KKRProduct.h instead.
 
 #import <CoreData/CoreData.h>
-#import "NSManagedObject.h"
+#import "KKRTransitionable.h"
 
 extern const struct KKRProductAttributes {
 	__unsafe_unretained NSString *subtitle;
@@ -28,7 +28,7 @@ extern const struct KKRProductFetchedProperties {
 @interface KKRProductID : NSManagedObjectID {}
 @end
 
-@interface _KKRProduct : NSManagedObject {}
+@interface _KKRProduct : KKRTransitionable {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

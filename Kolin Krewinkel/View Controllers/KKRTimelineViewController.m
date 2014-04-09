@@ -8,6 +8,8 @@
 
 #import "KKRTimelineViewController.h"
 
+#import "KKRTimelineManager.h"
+
 @implementation KKRTimelineViewController
 
 #pragma mark - UIViewController
@@ -16,6 +18,12 @@
 {
     [super viewDidLoad];
 
+    [self setUpInterface];
+//    [KKRTimelineManager sharedManager] fet
+}
+
+- (void)setUpInterface
+{
     self.scrollView = [[UIScrollView alloc] init];
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 5000.f);
     self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;

@@ -2,7 +2,7 @@
 // Make changes to KKRImage.h instead.
 
 #import <CoreData/CoreData.h>
-#import "NSManagedObject.h"
+#import "KKRTransitionable.h"
 
 extern const struct KKRImageAttributes {
 	__unsafe_unretained NSString *cachedPath;
@@ -24,7 +24,7 @@ extern const struct KKRImageFetchedProperties {
 @interface KKRImageID : NSManagedObjectID {}
 @end
 
-@interface _KKRImage : NSManagedObject {}
+@interface _KKRImage : KKRTransitionable {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

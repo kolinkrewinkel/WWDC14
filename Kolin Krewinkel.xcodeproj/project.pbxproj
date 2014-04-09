@@ -29,6 +29,8 @@
 		33F3C61318F4E2CB0086326A /* _KKRProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C60C18F4E2CB0086326A /* _KKRProduct.m */; };
 		33F3C61418F4E2CB0086326A /* KKRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C60F18F4E2CB0086326A /* KKRImage.m */; };
 		33F3C61518F4E2CB0086326A /* KKRProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C61118F4E2CB0086326A /* KKRProduct.m */; };
+		33F3C61818F5B6560086326A /* KKRTransitionable.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C61718F5B6560086326A /* KKRTransitionable.m */; };
+		33F3C61B18F5B65C0086326A /* _KKRTransitionable.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C61A18F5B65C0086326A /* _KKRTransitionable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,10 @@
 		33F3C60F18F4E2CB0086326A /* KKRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRImage.m; sourceTree = "<group>"; };
 		33F3C61018F4E2CB0086326A /* KKRProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRProduct.h; sourceTree = "<group>"; };
 		33F3C61118F4E2CB0086326A /* KKRProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRProduct.m; sourceTree = "<group>"; };
+		33F3C61618F5B6560086326A /* KKRTransitionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRTransitionable.h; sourceTree = "<group>"; };
+		33F3C61718F5B6560086326A /* KKRTransitionable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRTransitionable.m; sourceTree = "<group>"; };
+		33F3C61918F5B65C0086326A /* _KKRTransitionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KKRTransitionable.h; sourceTree = "<group>"; };
+		33F3C61A18F5B65C0086326A /* _KKRTransitionable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KKRTransitionable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +215,8 @@
 		33F3C60818F4E2CB0086326A /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				33F3C61918F5B65C0086326A /* _KKRTransitionable.h */,
+				33F3C61A18F5B65C0086326A /* _KKRTransitionable.m */,
 				33F3C60918F4E2CB0086326A /* _KKRImage.h */,
 				33F3C60A18F4E2CB0086326A /* _KKRImage.m */,
 				33F3C60B18F4E2CB0086326A /* _KKRProduct.h */,
@@ -220,6 +228,8 @@
 		33F3C60D18F4E2CB0086326A /* User */ = {
 			isa = PBXGroup;
 			children = (
+				33F3C61618F5B6560086326A /* KKRTransitionable.h */,
+				33F3C61718F5B6560086326A /* KKRTransitionable.m */,
 				33F3C60E18F4E2CB0086326A /* KKRImage.h */,
 				33F3C60F18F4E2CB0086326A /* KKRImage.m */,
 				33F3C61018F4E2CB0086326A /* KKRProduct.h */,
@@ -344,11 +354,13 @@
 				33F3C61318F4E2CB0086326A /* _KKRProduct.m in Sources */,
 				338543FB18F46D0B005EA22F /* KKRTimelineViewController.m in Sources */,
 				338543D318F46C9B005EA22F /* main.m in Sources */,
+				33F3C61818F5B6560086326A /* KKRTransitionable.m in Sources */,
 				33F3C5F918F4823E0086326A /* KKRTimelineManager.m in Sources */,
 				33F3C61518F4E2CB0086326A /* KKRProduct.m in Sources */,
 				33F3C61218F4E2CB0086326A /* _KKRImage.m in Sources */,
 				33F3C60218F49C3C0086326A /* KKRManagedObjectContextStack.m in Sources */,
 				33F3C60518F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld in Sources */,
+				33F3C61B18F5B65C0086326A /* _KKRTransitionable.m in Sources */,
 				338543D718F46C9B005EA22F /* KKRAppDelegate.m in Sources */,
 				33F3C61418F4E2CB0086326A /* KKRImage.m in Sources */,
 			);
