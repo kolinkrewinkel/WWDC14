@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13D33" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Image" representedClassName="KKRImage" isAbstract="YES" parentEntity="Transitionable" syncable="YES">
+    <entity name="Image" representedClassName="KKRImage" parentEntity="Transitionable" syncable="YES">
         <attribute name="cachedPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Product" inverseName="images" inverseEntity="Product" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="images" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="Product" representedClassName="KKRProduct" parentEntity="Transitionable" syncable="YES">
-        <attribute name="subtitle" syncable="YES"/>
-        <attribute name="textDescription" optional="YES" syncable="YES"/>
+        <attribute name="subtitle" attributeType="String" syncable="YES"/>
+        <attribute name="textDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="year" attributeType="Integer 64" defaultValueString="2000" indexed="YES" syncable="YES"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Image" inverseName="product" inverseEntity="Image" syncable="YES"/>
@@ -16,8 +16,8 @@
         <attribute name="transitionType" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Product" positionX="-8865" positionY="-4114" width="128" height="118"/>
-        <element name="Image" positionX="-8658" positionY="-4183" width="128" height="88"/>
+        <element name="Image" positionX="-8658" positionY="-4183" width="128" height="90"/>
+        <element name="Product" positionX="-8865" positionY="-4114" width="128" height="120"/>
         <element name="Transitionable" positionX="-8849" positionY="-4302" width="128" height="58"/>
     </elements>
 </model>

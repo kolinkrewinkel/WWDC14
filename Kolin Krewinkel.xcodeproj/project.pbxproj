@@ -14,7 +14,6 @@
 		338543D118F46C9B005EA22F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 338543CF18F46C9B005EA22F /* InfoPlist.strings */; };
 		338543D318F46C9B005EA22F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 338543D218F46C9B005EA22F /* main.m */; };
 		338543D718F46C9B005EA22F /* KKRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 338543D618F46C9B005EA22F /* KKRAppDelegate.m */; };
-		338543DA18F46C9B005EA22F /* Kolin_Krewinkel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 338543D818F46C9B005EA22F /* Kolin_Krewinkel.xcdatamodeld */; };
 		338543DC18F46C9B005EA22F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 338543DB18F46C9B005EA22F /* Images.xcassets */; };
 		338543E318F46C9B005EA22F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543E218F46C9B005EA22F /* XCTest.framework */; };
 		338543E418F46C9B005EA22F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C418F46C9B005EA22F /* Foundation.framework */; };
@@ -25,6 +24,7 @@
 		338543FB18F46D0B005EA22F /* KKRTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338543FA18F46D0B005EA22F /* KKRTimelineViewController.m */; };
 		33F3C5F918F4823E0086326A /* KKRTimelineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C5F818F4823E0086326A /* KKRTimelineManager.m */; };
 		33F3C60218F49C3C0086326A /* KKRManagedObjectContextStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C60118F49C3C0086326A /* KKRManagedObjectContextStack.m */; };
+		33F3C60518F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C60318F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,6 @@
 		338543D418F46C9B005EA22F /* Kolin Krewinkel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kolin Krewinkel-Prefix.pch"; sourceTree = "<group>"; };
 		338543D518F46C9B005EA22F /* KKRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKRAppDelegate.h; sourceTree = "<group>"; };
 		338543D618F46C9B005EA22F /* KKRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKRAppDelegate.m; sourceTree = "<group>"; };
-		338543D918F46C9B005EA22F /* Kolin_Krewinkel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kolin_Krewinkel.xcdatamodel; sourceTree = "<group>"; };
 		338543DB18F46C9B005EA22F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		338543E118F46C9B005EA22F /* Kolin KrewinkelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kolin KrewinkelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		338543E218F46C9B005EA22F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -62,6 +61,7 @@
 		33F3C5F818F4823E0086326A /* KKRTimelineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRTimelineManager.m; sourceTree = "<group>"; };
 		33F3C60018F49C3C0086326A /* KKRManagedObjectContextStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRManagedObjectContextStack.h; sourceTree = "<group>"; };
 		33F3C60118F49C3C0086326A /* KKRManagedObjectContextStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRManagedObjectContextStack.m; sourceTree = "<group>"; };
+		33F3C60418F4E18E0086326A /* Kolin_Krewinkel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kolin_Krewinkel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +130,6 @@
 				338543D518F46C9B005EA22F /* KKRAppDelegate.h */,
 				338543D618F46C9B005EA22F /* KKRAppDelegate.m */,
 				338543DB18F46C9B005EA22F /* Images.xcassets */,
-				338543D818F46C9B005EA22F /* Kolin_Krewinkel.xcdatamodeld */,
 				338543CD18F46C9B005EA22F /* Supporting Files */,
 			);
 			path = "Kolin Krewinkel";
@@ -177,6 +176,7 @@
 		33F3C5F518F482140086326A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				33F3C60318F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/mogenerator -m \"$SRCROOT/$TARGET_NAME/Model/$TARGET_NAME.xcdatamodeld\" --template-var arc=true -O \"$SRCROOT/$TARGET_NAME/Model\"";
+			shellScript = "/usr/bin/mogenerator -m \"$SRCROOT/$TARGET_NAME/Model/$MODEL_NAME.xcdatamodeld\" --template-var arc=true -O \"$SRCROOT/$TARGET_NAME/Model\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -307,9 +307,9 @@
 			files = (
 				338543FB18F46D0B005EA22F /* KKRTimelineViewController.m in Sources */,
 				338543D318F46C9B005EA22F /* main.m in Sources */,
-				338543DA18F46C9B005EA22F /* Kolin_Krewinkel.xcdatamodeld in Sources */,
 				33F3C5F918F4823E0086326A /* KKRTimelineManager.m in Sources */,
 				33F3C60218F49C3C0086326A /* KKRManagedObjectContextStack.m in Sources */,
+				33F3C60518F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld in Sources */,
 				338543D718F46C9B005EA22F /* KKRAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +385,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MODEL_NAME = Kolin_Krewinkel;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -418,6 +419,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MODEL_NAME = Kolin_Krewinkel;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -523,12 +525,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		338543D818F46C9B005EA22F /* Kolin_Krewinkel.xcdatamodeld */ = {
+		33F3C60318F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				338543D918F46C9B005EA22F /* Kolin_Krewinkel.xcdatamodel */,
+				33F3C60418F4E18E0086326A /* Kolin_Krewinkel.xcdatamodel */,
 			);
-			currentVersion = 338543D918F46C9B005EA22F /* Kolin_Krewinkel.xcdatamodel */;
+			currentVersion = 33F3C60418F4E18E0086326A /* Kolin_Krewinkel.xcdatamodel */;
 			path = Kolin_Krewinkel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

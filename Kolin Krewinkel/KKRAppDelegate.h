@@ -6,13 +6,8 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface KKRAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+@property (nonatomic, strong) UIWindow *window;
 
 @end

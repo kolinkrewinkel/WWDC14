@@ -8,9 +8,9 @@
 
 #import "KKRTimelineManager.h"
 
-@interface KKRTimelineManager ()
+#import "KKRManagedObjectContextStack.h"
 
-#pragma mark - Core Data
+@interface KKRTimelineManager ()
 
 #pragma mark - Internal Networking
 
@@ -46,5 +46,17 @@
 }
 
 #pragma mark - Fetching
+
+- (void)getTimelineItemsWithCompletionHandler:(KKRTimelineManagerItemsCompletionManager)completionHandler
+{
+    [[KKRManagedObjectContextStack defaultStack] performBlock:^BOOL(NSManagedObjectContext *mutationContext, NSManagedObjectContext *interfaceContext, NSManagedObjectContext *persistenceContext) {
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@""];
+        NSError *error = nil;
+
+        [mutationContext executeFetchRequest:fetchRequest error:&error];
+
+        return YES;
+    }];
+}
 
 @end
