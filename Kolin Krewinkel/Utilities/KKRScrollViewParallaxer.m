@@ -33,6 +33,8 @@
     return parallaxer;
 }
 
+#pragma mark - Iniitialization
+
 - (id)init
 {
     if ((self = [super init]))
@@ -43,15 +45,52 @@
     return self;
 }
 
+#pragma mark - Setters
+
 - (void)setScrollView:(UIScrollView *)scrollView
 {
     _scrollView = scrollView;
 
     self.scrollView.delegate = self;
 
+    [self layoutScrollView];
+
+    UIView *test = [[UIView alloc] initWithFrame:CGRectMake(200.f, 50.f, 100.f, 1000.f)];
+    test.backgroundColor = [UIColor blueColor];
+
+    [self.scrollView addSubview:test];
+}
+
+#pragma mark - Scroll View Management
+
+- (void)layoutScrollView
+{
     for (NSUInteger idx = 0; idx < [self.dataSource numberOfItemsParallaxedInParallaxer:self]; idx++)
     {
-        [self.scrollView addSubview:[self.dataSource viewAtIndex:idx inParallaxer:self]];
+        UIView *view = [self displayedViewAtIndex:idx];
+
+        CGFloat movementFactor = [self.dataSource movementFractionalForViewAtIndex:idx inParallaxer:self];
+        CGRect originalRect = [self.dataSource initialRectForViewAtIndex:idx inParallaxer:self];
+        CGRect modifiedRect = CGRectMake(0.f, originalRect.origin.y + ((1.f - movementFactor) * self.scrollView.contentOffset.y), originalRect.size.width, originalRect.size.height);
+
+        if (CGRectIntersectsRect(CGRectMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y, self.scrollView.frame.size.width, self.scrollView.frame.size.height), modifiedRect))
+        {
+            if (!view)
+            {
+                view = [self.dataSource viewAtIndex:idx inParallaxer:self];
+                [self.visibleViews setObject:view forKey:@(idx)];
+
+                [self.scrollView addSubview:view];
+            }
+
+            view.frame = modifiedRect;
+        }
+        else if (view)
+        {
+            [view removeFromSuperview];
+
+            [self.visibleViews removeObjectForKey:@(idx)];
+        }
     }
 }
 
@@ -59,16 +98,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    for (NSUInteger idx = 0; idx < [self.dataSource numberOfItemsParallaxedInParallaxer:self]; idx++)
-    {
-        CGFloat movementFactor = [self.dataSource movementFractionalForViewAtIndex:idx inParallaxer:self];
-        UIView *view = [self displayedViewAtIndex:idx];
-
-        if (CGRectIntersectsRect(CGRectMake(self.scrollView.contentOffset.x * movementFactor, self.scrollView.contentOffset.y * movementFactor, self.scrollView.frame.size.width, self.scrollView.frame.size.height), [self.dataSource initialRectForViewAtIndex:idx inParallaxer:self]))
-        {
-
-        }
-    }
+    [self layoutScrollView];
 }
 
 - (UIView *)displayedViewAtIndex:(NSUInteger)index

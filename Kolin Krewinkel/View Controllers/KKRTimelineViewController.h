@@ -8,7 +8,7 @@
 
 #import "KKRScrollViewParallaxer.h"
 
-@interface KKRTimelineViewController : UIViewController <KKRScrollViewParallaxerDataSource>
+@interface KKRTimelineViewController : UIViewController <KKRScrollViewParallaxerDataSource, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
