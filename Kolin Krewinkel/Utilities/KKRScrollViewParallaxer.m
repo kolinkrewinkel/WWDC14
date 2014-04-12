@@ -60,7 +60,7 @@
 
 - (void)layoutScrollView
 {
-    for (NSUInteger idx = 0; idx < [self.dataSource numberOfItemsParallaxedInParallaxer:self]; idx++)
+    for (NSInteger idx = [self.dataSource numberOfItemsParallaxedInParallaxer:self] - 1; idx >= 0; idx--)
     {
         UIView *view = [self displayedViewAtIndex:idx];
 

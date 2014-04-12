@@ -106,7 +106,7 @@
     }
     else if (index == 1)
     {
-        return CGRectMake(self.view.bounds.size.width * .5f, 0.f, self.view.bounds.size.width, self.view.bounds.size.height);
+        return CGRectMake(self.view.bounds.size.width * .6f, 0.f, self.view.bounds.size.width, self.view.bounds.size.height);
     }
 
     return CGRectZero;
