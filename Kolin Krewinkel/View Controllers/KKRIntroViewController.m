@@ -21,6 +21,10 @@
     [self.view addSubview:backgroundView];
     [self.view kkr_addContraintsToFillSuperviewToView:backgroundView];
 
+    UIView *overlayView = [[UIView alloc] init];
+    overlayView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+    [self.view addSubview:overlayView];
+    [self.view kkr_addContraintsToFillSuperviewToView:overlayView];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
