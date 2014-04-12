@@ -75,13 +75,9 @@
     }
     else if (index < 34)
     {
-        FXBlurView *view = [[FXBlurView alloc] initWithFrame:CGRectZero];
-        view.underlyingView = self.view.subviews[0];
-        view.blurRadius = 10.f;
-        view.dynamic = NO;
-        view.tintColor = [UIColor clearColor];
-//        CGFloat alpha = (CGFloat)((index - 17) + 1)/17;
-//        view.alpha = 0.4f;
+        UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+        CGFloat alpha = (CGFloat)((index - 17) + 1)/17;
+        view.alpha = 0.4f;
 
         return view;
     }
