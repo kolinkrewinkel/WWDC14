@@ -8,18 +8,35 @@
 
 #import "KKRAppDelegate.h"
 
+#import "KKRIntroPanelViewController.h"
+#import "KKRIntroViewController.h"
 #import "KKRTimelineViewController.h"
 
 @implementation KKRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor blackColor];
-    [self.window makeKeyAndVisible];
+    self.window = ({
+        UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.backgroundColor = [UIColor blackColor];
 
-    self.window.rootViewController = [[KKRTimelineViewController alloc] init];
+        window;
+    });
+
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+    {
+        KKRIntroPanelViewController *introPanel = ({
+            KKRIntroPanelViewController *introPanel = [[KKRIntroPanelViewController alloc] init];
+            introPanel.contentViewController = [[KKRTimelineViewController alloc] init];
+            introPanel.introViewController = [[KKRIntroViewController alloc] init];
+
+            introPanel;
+        });
+
+        self.window.rootViewController = introPanel;
+    }
+
+    [self.window makeKeyAndVisible];
 
     return YES;
 }
