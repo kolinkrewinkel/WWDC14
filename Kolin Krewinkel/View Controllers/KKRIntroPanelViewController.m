@@ -29,6 +29,8 @@
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
         scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 2.f, 0.f);
         scrollView.pagingEnabled = YES;
+        scrollView.showsHorizontalScrollIndicator = NO;
+        scrollView.showsVerticalScrollIndicator = NO;
 
         [self.view addSubview:scrollView];
         [self.view kkr_addContraintsToFillSuperviewToView:scrollView];
@@ -48,6 +50,19 @@
 
         [self addChildViewController:self.contentViewController];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+//    [UIView animateWithDuration:0.35 delay:0.1 usingSpringWithDamping:0.4f initialSpringVelocity:1.f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//        self.scrollView.contentOffset = CGPointMake(self.scrollView.contentSize.width * 0.1f, 0.f);
+//    } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.15 delay:0.05 usingSpringWithDamping:0.6f initialSpringVelocity:0.f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//            self.scrollView.contentOffset = CGPointZero;
+//        } completion:nil];
+//    }];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -88,6 +103,11 @@
 {
     if (index == 0)
     {
+        if (parallaxer.scrollView.contentOffset.x <= 0.f)
+        {
+            return 0.1f;
+        }
+
         return 0.9f;
     }
     else if (index == 1)
@@ -106,7 +126,7 @@
     }
     else if (index == 1)
     {
-        return CGRectMake(self.view.bounds.size.width * .6f, 0.f, self.view.bounds.size.width, self.view.bounds.size.height);
+        return CGRectMake(self.view.bounds.size.width * .6f, 0.f, self.view.bounds.size.width * .9f, self.view.bounds.size.height);
     }
 
     return CGRectZero;

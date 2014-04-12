@@ -280,7 +280,6 @@
 			buildConfigurationList = 338543F318F46C9B005EA22F /* Build configuration list for PBXNativeTarget "Kolin Krewinkel" */;
 			buildPhases = (
 				8EE97C734D764A4C85C9F5DA /* Check Pods Manifest.lock */,
-				33F3C5FF18F4860B0086326A /* ShellScript */,
 				338543BD18F46C9B005EA22F /* Sources */,
 				338543BE18F46C9B005EA22F /* Frameworks */,
 				338543BF18F46C9B005EA22F /* Resources */,
@@ -381,19 +380,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		33F3C5FF18F4860B0086326A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/bin/mogenerator -m \"$SRCROOT/$TARGET_NAME/Model/$MODEL_NAME.xcdatamodeld\" --template-var arc=true -M \"$SRCROOT/$TARGET_NAME/Model/Machine\" -H \"$SRCROOT/$TARGET_NAME/Model/User\"";
 		};
 		8EE97C734D764A4C85C9F5DA /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
