@@ -94,6 +94,19 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self layoutScrollView];
+
+    if ([self.originalDelegate respondsToSelector:@selector(scrollViewDidScroll:)])
+    {
+        [self.originalDelegate scrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if ([self.originalDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)])
+    {
+        [self.originalDelegate scrollViewDidEndDecelerating:scrollView];
+    }
 }
 
 - (UIView *)displayedViewAtIndex:(NSUInteger)index

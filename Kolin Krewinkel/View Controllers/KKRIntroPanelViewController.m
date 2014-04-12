@@ -31,7 +31,8 @@
         scrollView.pagingEnabled = YES;
         scrollView.showsHorizontalScrollIndicator = NO;
         scrollView.showsVerticalScrollIndicator = NO;
-
+        scrollView.directionalLockEnabled = YES;
+        
         [self.view addSubview:scrollView];
         [self.view kkr_addContraintsToFillSuperviewToView:scrollView];
 
@@ -47,7 +48,6 @@
     if (self.introViewController && self.contentViewController)
     {
         [self addChildViewController:self.introViewController];
-
         [self addChildViewController:self.contentViewController];
     }
 }
@@ -76,6 +76,16 @@
     CGFloat percentage = (self.scrollView.contentOffset.x/(oldWidth/2));
     NSLog(@"%f", percentage);
     self.scrollView.contentOffset = CGPointMake(newWidth * percentage, 0.f);
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x > 0)
+    {
+
+    }
 }
 
 #pragma mark - KKRScrollViewParallaxerDataSource
