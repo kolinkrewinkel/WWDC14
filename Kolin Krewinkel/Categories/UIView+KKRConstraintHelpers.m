@@ -8,6 +8,13 @@
 
 #import "UIView+KKRConstraintHelpers.h"
 
+#import <objc/runtime.h>
+
+static char *KKRConstraintTopIdentifier = "KKRConstraintTopIdentifier";
+static char *KKRConstraintRightIdentifier = "KKRConstraintRightIdentifier";
+static char *KKRConstraintBottomIdentifier = "KKRConstraintBottomIdentifier";
+static char *KKRConstraintLeftIdentifier = "KKRConstraintLeftIdentifier";
+
 @implementation UIView (KKRConstraintHelpers)
 
 - (void)kkr_addContraintsToFillSuperviewToView:(UIView *)view
@@ -27,5 +34,46 @@
     })];
 }
 
+- (void)kkr_setTopConstraint:(NSLayoutConstraint *)constraint
+{
+    objc_setAssociatedObject(self, KKRConstraintTopIdentifier, constraint, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (NSLayoutConstraint *)kkr_topConstraint
+{
+    return objc_getAssociatedObject(self, KKRConstraintTopIdentifier);
+}
+
+- (void)kkr_setRightConstraint:(NSLayoutConstraint *)constraint
+{
+    objc_setAssociatedObject(self, KKRConstraintRightIdentifier, constraint, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (NSLayoutConstraint *)kkr_rightConstraint
+{
+    return objc_getAssociatedObject(self, KKRConstraintRightIdentifier);
+
+}
+
+- (void)kkr_setBottomConstraint:(NSLayoutConstraint *)constraint
+{
+    objc_setAssociatedObject(self, KKRConstraintBottomIdentifier, constraint, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (NSLayoutConstraint *)kkr_bottomConstraint
+{
+    return objc_getAssociatedObject(self, KKRConstraintBottomIdentifier);
+
+}
+
+- (void)kkr_setLeftConstraint:(NSLayoutConstraint *)constraint
+{
+    objc_setAssociatedObject(self, KKRConstraintLeftIdentifier, constraint, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (NSLayoutConstraint *)kkr_leftConstraint
+{
+    return objc_getAssociatedObject(self, KKRConstraintLeftIdentifier);
+}
 
 @end

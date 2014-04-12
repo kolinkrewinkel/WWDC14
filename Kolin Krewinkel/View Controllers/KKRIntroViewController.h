@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "KKRIntroInteractiveTransition.h"
 
 @interface KKRIntroViewController : UIViewController
+
+@property (nonatomic, strong) KKRIntroInteractiveTransition *transition;
 
 @end

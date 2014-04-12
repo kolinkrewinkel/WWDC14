@@ -9,11 +9,14 @@
 #import "KKRIntroPanelViewController.h"
 
 #import "KKRScrollViewParallaxer.h"
+#import "KKRIntroViewController.h"
 
 @interface KKRIntroPanelViewController ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) KKRScrollViewParallaxer *parallaxer;
+
+@property (nonatomic) CGFloat dockedPanelWidth;
 
 @end
 
@@ -44,6 +47,8 @@
         
         parallaxer;
     });
+
+    self.dockedPanelWidth = 96.f;
 
     if (self.introViewController && self.contentViewController)
     {
@@ -93,6 +98,19 @@
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat progress = scrollView.contentOffset.x/(scrollView.contentSize.width * .5f);
+    if (progress >= 0.f && progress <= 1.f)
+    {
+        if ([self.introViewController isKindOfClass:[KKRIntroViewController class]])
+        {
+            KKRIntroViewController *introView = (KKRIntroViewController *)self.introViewController;
+            [introView.transition updateInteractiveTransition:progress];
+        }
+    }
+}
+
 #pragma mark - KKRScrollViewParallaxerDataSource
 
 - (NSUInteger)numberOfItemsParallaxedInParallaxer:(KKRScrollViewParallaxer *)parallaxer
@@ -123,7 +141,7 @@
             return 0.1f;
         }
 
-        return 0.9f;
+        return (self.view.bounds.size.width - self.dockedPanelWidth)/self.view.bounds.size.width;
     }
     else if (index == 1)
     {
@@ -141,7 +159,8 @@
     }
     else if (index == 1)
     {
-        return CGRectMake(self.view.bounds.size.width * .6f, 0.f, self.view.bounds.size.width * .9f, self.view.bounds.size.height);
+        NSLog(@"%f", 0.5f + (self.view.bounds.size.width - self.dockedPanelWidth)/self.view.bounds.size.width);
+        return CGRectMake(self.view.bounds.size.width * (0.5f + (1.f - ((self.view.bounds.size.width - self.dockedPanelWidth)/self.view.bounds.size.width))), 0.f, (self.view.bounds.size.width - self.dockedPanelWidth), self.view.bounds.size.height);
     }
 
     return CGRectZero;
