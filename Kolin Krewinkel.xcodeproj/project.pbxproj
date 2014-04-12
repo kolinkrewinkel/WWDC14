@@ -1,599 +1,1540 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		338543C518F46C9B005EA22F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C418F46C9B005EA22F /* Foundation.framework */; };
-		338543C718F46C9B005EA22F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C618F46C9B005EA22F /* CoreGraphics.framework */; };
-		338543C918F46C9B005EA22F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C818F46C9B005EA22F /* UIKit.framework */; };
-		338543CB18F46C9B005EA22F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543CA18F46C9B005EA22F /* CoreData.framework */; };
-		338543D118F46C9B005EA22F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 338543CF18F46C9B005EA22F /* InfoPlist.strings */; };
-		338543D318F46C9B005EA22F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 338543D218F46C9B005EA22F /* main.m */; };
-		338543D718F46C9B005EA22F /* KKRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 338543D618F46C9B005EA22F /* KKRAppDelegate.m */; };
-		338543DC18F46C9B005EA22F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 338543DB18F46C9B005EA22F /* Images.xcassets */; };
-		338543E318F46C9B005EA22F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543E218F46C9B005EA22F /* XCTest.framework */; };
-		338543E418F46C9B005EA22F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C418F46C9B005EA22F /* Foundation.framework */; };
-		338543E518F46C9B005EA22F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C818F46C9B005EA22F /* UIKit.framework */; };
-		338543E618F46C9B005EA22F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543CA18F46C9B005EA22F /* CoreData.framework */; };
-		338543EE18F46C9B005EA22F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 338543EC18F46C9B005EA22F /* InfoPlist.strings */; };
-		338543F018F46C9B005EA22F /* Kolin_KrewinkelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 338543EF18F46C9B005EA22F /* Kolin_KrewinkelTests.m */; };
-		338543FB18F46D0B005EA22F /* KKRTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338543FA18F46D0B005EA22F /* KKRTimelineViewController.m */; };
-		33F3C5F918F4823E0086326A /* KKRTimelineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C5F818F4823E0086326A /* KKRTimelineManager.m */; };
-		33F3C60218F49C3C0086326A /* KKRManagedObjectContextStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C60118F49C3C0086326A /* KKRManagedObjectContextStack.m */; };
-		33F3C60518F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C60318F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld */; };
-		33F3C61218F4E2CB0086326A /* _KKRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C60A18F4E2CB0086326A /* _KKRImage.m */; };
-		33F3C61418F4E2CB0086326A /* KKRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C60F18F4E2CB0086326A /* KKRImage.m */; };
-		33F3C61818F5B6560086326A /* KKRTransitionable.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C61718F5B6560086326A /* KKRTransitionable.m */; };
-		33F3C61B18F5B65C0086326A /* _KKRTransitionable.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C61A18F5B65C0086326A /* _KKRTransitionable.m */; };
-		33F3C61E18F5B71D0086326A /* KKREvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C61D18F5B71D0086326A /* KKREvent.m */; };
-		33F3C62118F5B7210086326A /* _KKREvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C62018F5B7210086326A /* _KKREvent.m */; };
-		33F3C62418F5BA8B0086326A /* KKRScrollViewParallaxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C62318F5BA8B0086326A /* KKRScrollViewParallaxer.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		338543E718F46C9B005EA22F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 338543B918F46C9B005EA22F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 338543C018F46C9B005EA22F;
-			remoteInfo = "Kolin Krewinkel";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		338543C118F46C9B005EA22F /* Kolin Krewinkel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kolin Krewinkel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		338543C418F46C9B005EA22F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		338543C618F46C9B005EA22F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		338543C818F46C9B005EA22F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		338543CA18F46C9B005EA22F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		338543CE18F46C9B005EA22F /* Kolin Krewinkel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kolin Krewinkel-Info.plist"; sourceTree = "<group>"; };
-		338543D018F46C9B005EA22F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		338543D218F46C9B005EA22F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		338543D418F46C9B005EA22F /* Kolin Krewinkel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kolin Krewinkel-Prefix.pch"; sourceTree = "<group>"; };
-		338543D518F46C9B005EA22F /* KKRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKRAppDelegate.h; sourceTree = "<group>"; };
-		338543D618F46C9B005EA22F /* KKRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKRAppDelegate.m; sourceTree = "<group>"; };
-		338543DB18F46C9B005EA22F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		338543E118F46C9B005EA22F /* Kolin KrewinkelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kolin KrewinkelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		338543E218F46C9B005EA22F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		338543EB18F46C9B005EA22F /* Kolin KrewinkelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kolin KrewinkelTests-Info.plist"; sourceTree = "<group>"; };
-		338543ED18F46C9B005EA22F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		338543EF18F46C9B005EA22F /* Kolin_KrewinkelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kolin_KrewinkelTests.m; sourceTree = "<group>"; };
-		338543F918F46D0B005EA22F /* KKRTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKRTimelineViewController.h; path = "View Controllers/KKRTimelineViewController.h"; sourceTree = "<group>"; };
-		338543FA18F46D0B005EA22F /* KKRTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKRTimelineViewController.m; path = "View Controllers/KKRTimelineViewController.m"; sourceTree = "<group>"; };
-		33F3C5F718F4823E0086326A /* KKRTimelineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRTimelineManager.h; sourceTree = "<group>"; };
-		33F3C5F818F4823E0086326A /* KKRTimelineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRTimelineManager.m; sourceTree = "<group>"; };
-		33F3C60018F49C3C0086326A /* KKRManagedObjectContextStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRManagedObjectContextStack.h; sourceTree = "<group>"; };
-		33F3C60118F49C3C0086326A /* KKRManagedObjectContextStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRManagedObjectContextStack.m; sourceTree = "<group>"; };
-		33F3C60418F4E18E0086326A /* Kolin_Krewinkel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kolin_Krewinkel.xcdatamodel; sourceTree = "<group>"; };
-		33F3C60918F4E2CB0086326A /* _KKRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KKRImage.h; sourceTree = "<group>"; };
-		33F3C60A18F4E2CB0086326A /* _KKRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KKRImage.m; sourceTree = "<group>"; };
-		33F3C60E18F4E2CB0086326A /* KKRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRImage.h; sourceTree = "<group>"; };
-		33F3C60F18F4E2CB0086326A /* KKRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRImage.m; sourceTree = "<group>"; };
-		33F3C61618F5B6560086326A /* KKRTransitionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRTransitionable.h; sourceTree = "<group>"; };
-		33F3C61718F5B6560086326A /* KKRTransitionable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRTransitionable.m; sourceTree = "<group>"; };
-		33F3C61918F5B65C0086326A /* _KKRTransitionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KKRTransitionable.h; sourceTree = "<group>"; };
-		33F3C61A18F5B65C0086326A /* _KKRTransitionable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KKRTransitionable.m; sourceTree = "<group>"; };
-		33F3C61C18F5B71D0086326A /* KKREvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKREvent.h; sourceTree = "<group>"; };
-		33F3C61D18F5B71D0086326A /* KKREvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKREvent.m; sourceTree = "<group>"; };
-		33F3C61F18F5B7210086326A /* _KKREvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KKREvent.h; sourceTree = "<group>"; };
-		33F3C62018F5B7210086326A /* _KKREvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KKREvent.m; sourceTree = "<group>"; };
-		33F3C62218F5BA8B0086326A /* KKRScrollViewParallaxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRScrollViewParallaxer.h; sourceTree = "<group>"; };
-		33F3C62318F5BA8B0086326A /* KKRScrollViewParallaxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRScrollViewParallaxer.m; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		338543BE18F46C9B005EA22F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				338543C718F46C9B005EA22F /* CoreGraphics.framework in Frameworks */,
-				338543CB18F46C9B005EA22F /* CoreData.framework in Frameworks */,
-				338543C918F46C9B005EA22F /* UIKit.framework in Frameworks */,
-				338543C518F46C9B005EA22F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		338543DE18F46C9B005EA22F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				338543E318F46C9B005EA22F /* XCTest.framework in Frameworks */,
-				338543E618F46C9B005EA22F /* CoreData.framework in Frameworks */,
-				338543E518F46C9B005EA22F /* UIKit.framework in Frameworks */,
-				338543E418F46C9B005EA22F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		338543B818F46C9B005EA22F = {
-			isa = PBXGroup;
-			children = (
-				338543CC18F46C9B005EA22F /* Kolin Krewinkel */,
-				338543E918F46C9B005EA22F /* Kolin KrewinkelTests */,
-				338543C318F46C9B005EA22F /* Frameworks */,
-				338543C218F46C9B005EA22F /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		338543C218F46C9B005EA22F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				338543C118F46C9B005EA22F /* Kolin Krewinkel.app */,
-				338543E118F46C9B005EA22F /* Kolin KrewinkelTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		338543C318F46C9B005EA22F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				338543C418F46C9B005EA22F /* Foundation.framework */,
-				338543C618F46C9B005EA22F /* CoreGraphics.framework */,
-				338543C818F46C9B005EA22F /* UIKit.framework */,
-				338543CA18F46C9B005EA22F /* CoreData.framework */,
-				338543E218F46C9B005EA22F /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		338543CC18F46C9B005EA22F /* Kolin Krewinkel */ = {
-			isa = PBXGroup;
-			children = (
-				33F3C5F518F482140086326A /* Model */,
-				33F3C5F618F482140086326A /* Utilities */,
-				338543FC18F46D0F005EA22F /* View Controllers */,
-				338543D518F46C9B005EA22F /* KKRAppDelegate.h */,
-				338543D618F46C9B005EA22F /* KKRAppDelegate.m */,
-				338543DB18F46C9B005EA22F /* Images.xcassets */,
-				338543CD18F46C9B005EA22F /* Supporting Files */,
-			);
-			path = "Kolin Krewinkel";
-			sourceTree = "<group>";
-		};
-		338543CD18F46C9B005EA22F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				338543CE18F46C9B005EA22F /* Kolin Krewinkel-Info.plist */,
-				338543CF18F46C9B005EA22F /* InfoPlist.strings */,
-				338543D218F46C9B005EA22F /* main.m */,
-				338543D418F46C9B005EA22F /* Kolin Krewinkel-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		338543E918F46C9B005EA22F /* Kolin KrewinkelTests */ = {
-			isa = PBXGroup;
-			children = (
-				338543EF18F46C9B005EA22F /* Kolin_KrewinkelTests.m */,
-				338543EA18F46C9B005EA22F /* Supporting Files */,
-			);
-			path = "Kolin KrewinkelTests";
-			sourceTree = "<group>";
-		};
-		338543EA18F46C9B005EA22F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				338543EB18F46C9B005EA22F /* Kolin KrewinkelTests-Info.plist */,
-				338543EC18F46C9B005EA22F /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		338543FC18F46D0F005EA22F /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				338543F918F46D0B005EA22F /* KKRTimelineViewController.h */,
-				338543FA18F46D0B005EA22F /* KKRTimelineViewController.m */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		33F3C5F518F482140086326A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				33F3C60318F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld */,
-				33F3C60818F4E2CB0086326A /* Machine */,
-				33F3C60D18F4E2CB0086326A /* User */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		33F3C5F618F482140086326A /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				33F3C5F718F4823E0086326A /* KKRTimelineManager.h */,
-				33F3C5F818F4823E0086326A /* KKRTimelineManager.m */,
-				33F3C62218F5BA8B0086326A /* KKRScrollViewParallaxer.h */,
-				33F3C62318F5BA8B0086326A /* KKRScrollViewParallaxer.m */,
-				33F3C60018F49C3C0086326A /* KKRManagedObjectContextStack.h */,
-				33F3C60118F49C3C0086326A /* KKRManagedObjectContextStack.m */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		33F3C60818F4E2CB0086326A /* Machine */ = {
-			isa = PBXGroup;
-			children = (
-				33F3C61F18F5B7210086326A /* _KKREvent.h */,
-				33F3C62018F5B7210086326A /* _KKREvent.m */,
-				33F3C61918F5B65C0086326A /* _KKRTransitionable.h */,
-				33F3C61A18F5B65C0086326A /* _KKRTransitionable.m */,
-				33F3C60918F4E2CB0086326A /* _KKRImage.h */,
-				33F3C60A18F4E2CB0086326A /* _KKRImage.m */,
-			);
-			path = Machine;
-			sourceTree = "<group>";
-		};
-		33F3C60D18F4E2CB0086326A /* User */ = {
-			isa = PBXGroup;
-			children = (
-				33F3C61C18F5B71D0086326A /* KKREvent.h */,
-				33F3C61D18F5B71D0086326A /* KKREvent.m */,
-				33F3C61618F5B6560086326A /* KKRTransitionable.h */,
-				33F3C61718F5B6560086326A /* KKRTransitionable.m */,
-				33F3C60E18F4E2CB0086326A /* KKRImage.h */,
-				33F3C60F18F4E2CB0086326A /* KKRImage.m */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		338543C018F46C9B005EA22F /* Kolin Krewinkel */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 338543F318F46C9B005EA22F /* Build configuration list for PBXNativeTarget "Kolin Krewinkel" */;
-			buildPhases = (
-				33F3C5FF18F4860B0086326A /* ShellScript */,
-				338543BD18F46C9B005EA22F /* Sources */,
-				338543BE18F46C9B005EA22F /* Frameworks */,
-				338543BF18F46C9B005EA22F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Kolin Krewinkel";
-			productName = "Kolin Krewinkel";
-			productReference = 338543C118F46C9B005EA22F /* Kolin Krewinkel.app */;
-			productType = "com.apple.product-type.application";
-		};
-		338543E018F46C9B005EA22F /* Kolin KrewinkelTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 338543F618F46C9B005EA22F /* Build configuration list for PBXNativeTarget "Kolin KrewinkelTests" */;
-			buildPhases = (
-				338543DD18F46C9B005EA22F /* Sources */,
-				338543DE18F46C9B005EA22F /* Frameworks */,
-				338543DF18F46C9B005EA22F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				338543E818F46C9B005EA22F /* PBXTargetDependency */,
-			);
-			name = "Kolin KrewinkelTests";
-			productName = "Kolin KrewinkelTests";
-			productReference = 338543E118F46C9B005EA22F /* Kolin KrewinkelTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		338543B918F46C9B005EA22F /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				CLASSPREFIX = KKR;
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Kolin Krewinkel";
-				TargetAttributes = {
-					338543E018F46C9B005EA22F = {
-						TestTargetID = 338543C018F46C9B005EA22F;
-					};
-				};
-			};
-			buildConfigurationList = 338543BC18F46C9B005EA22F /* Build configuration list for PBXProject "Kolin Krewinkel" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 338543B818F46C9B005EA22F;
-			productRefGroup = 338543C218F46C9B005EA22F /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				338543C018F46C9B005EA22F /* Kolin Krewinkel */,
-				338543E018F46C9B005EA22F /* Kolin KrewinkelTests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		338543BF18F46C9B005EA22F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				338543D118F46C9B005EA22F /* InfoPlist.strings in Resources */,
-				338543DC18F46C9B005EA22F /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		338543DF18F46C9B005EA22F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				338543EE18F46C9B005EA22F /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		33F3C5FF18F4860B0086326A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/bin/mogenerator -m \"$SRCROOT/$TARGET_NAME/Model/$MODEL_NAME.xcdatamodeld\" --template-var arc=true -M \"$SRCROOT/$TARGET_NAME/Model/Machine\" -H \"$SRCROOT/$TARGET_NAME/Model/User\"";
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		338543BD18F46C9B005EA22F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				338543FB18F46D0B005EA22F /* KKRTimelineViewController.m in Sources */,
-				338543D318F46C9B005EA22F /* main.m in Sources */,
-				33F3C61818F5B6560086326A /* KKRTransitionable.m in Sources */,
-				33F3C62118F5B7210086326A /* _KKREvent.m in Sources */,
-				33F3C5F918F4823E0086326A /* KKRTimelineManager.m in Sources */,
-				33F3C61218F4E2CB0086326A /* _KKRImage.m in Sources */,
-				33F3C61E18F5B71D0086326A /* KKREvent.m in Sources */,
-				33F3C60218F49C3C0086326A /* KKRManagedObjectContextStack.m in Sources */,
-				33F3C60518F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld in Sources */,
-				33F3C61B18F5B65C0086326A /* _KKRTransitionable.m in Sources */,
-				33F3C62418F5BA8B0086326A /* KKRScrollViewParallaxer.m in Sources */,
-				338543D718F46C9B005EA22F /* KKRAppDelegate.m in Sources */,
-				33F3C61418F4E2CB0086326A /* KKRImage.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		338543DD18F46C9B005EA22F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				338543F018F46C9B005EA22F /* Kolin_KrewinkelTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		338543E818F46C9B005EA22F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 338543C018F46C9B005EA22F /* Kolin Krewinkel */;
-			targetProxy = 338543E718F46C9B005EA22F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		338543CF18F46C9B005EA22F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				338543D018F46C9B005EA22F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		338543EC18F46C9B005EA22F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				338543ED18F46C9B005EA22F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		338543F118F46C9B005EA22F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				MODEL_NAME = Kolin_Krewinkel;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		338543F218F46C9B005EA22F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				MODEL_NAME = Kolin_Krewinkel;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		338543F418F46C9B005EA22F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Kolin Krewinkel/Kolin Krewinkel-Prefix.pch";
-				INFOPLIST_FILE = "Kolin Krewinkel/Kolin Krewinkel-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		338543F518F46C9B005EA22F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Kolin Krewinkel/Kolin Krewinkel-Prefix.pch";
-				INFOPLIST_FILE = "Kolin Krewinkel/Kolin Krewinkel-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		338543F718F46C9B005EA22F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kolin Krewinkel.app/Kolin Krewinkel";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Kolin Krewinkel/Kolin Krewinkel-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Kolin KrewinkelTests/Kolin KrewinkelTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		338543F818F46C9B005EA22F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kolin Krewinkel.app/Kolin Krewinkel";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Kolin Krewinkel/Kolin Krewinkel-Prefix.pch";
-				INFOPLIST_FILE = "Kolin KrewinkelTests/Kolin KrewinkelTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		338543BC18F46C9B005EA22F /* Build configuration list for PBXProject "Kolin Krewinkel" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				338543F118F46C9B005EA22F /* Debug */,
-				338543F218F46C9B005EA22F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		338543F318F46C9B005EA22F /* Build configuration list for PBXNativeTarget "Kolin Krewinkel" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				338543F418F46C9B005EA22F /* Debug */,
-				338543F518F46C9B005EA22F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		338543F618F46C9B005EA22F /* Build configuration list for PBXNativeTarget "Kolin KrewinkelTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				338543F718F46C9B005EA22F /* Debug */,
-				338543F818F46C9B005EA22F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		33F3C60318F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				33F3C60418F4E18E0086326A /* Kolin_Krewinkel.xcdatamodel */,
-			);
-			currentVersion = 33F3C60418F4E18E0086326A /* Kolin_Krewinkel.xcdatamodel */;
-			path = Kolin_Krewinkel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
-	};
-	rootObject = 338543B918F46C9B005EA22F /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>211F7A9B4D0849E084D2ADB1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>338543B818F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543CC18F46C9B005EA22F</string>
+				<string>338543E918F46C9B005EA22F</string>
+				<string>338543C318F46C9B005EA22F</string>
+				<string>338543C218F46C9B005EA22F</string>
+				<string>B1783F5F297B4B2B83A0AC75</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543B918F46C9B005EA22F</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>CLASSPREFIX</key>
+				<string>KKR</string>
+				<key>LastUpgradeCheck</key>
+				<string>0510</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Kolin Krewinkel</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>338543E018F46C9B005EA22F</key>
+					<dict>
+						<key>TestTargetID</key>
+						<string>338543C018F46C9B005EA22F</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>338543BC18F46C9B005EA22F</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>338543B818F46C9B005EA22F</string>
+			<key>productRefGroup</key>
+			<string>338543C218F46C9B005EA22F</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>338543C018F46C9B005EA22F</string>
+				<string>338543E018F46C9B005EA22F</string>
+			</array>
+		</dict>
+		<key>338543BC18F46C9B005EA22F</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>338543F118F46C9B005EA22F</string>
+				<string>338543F218F46C9B005EA22F</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>338543BD18F46C9B005EA22F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>338543FB18F46D0B005EA22F</string>
+				<string>338543D318F46C9B005EA22F</string>
+				<string>33F3C61818F5B6560086326A</string>
+				<string>33F3C62118F5B7210086326A</string>
+				<string>33F3C5F918F4823E0086326A</string>
+				<string>33F3C61218F4E2CB0086326A</string>
+				<string>33F3C61E18F5B71D0086326A</string>
+				<string>33F3C60218F49C3C0086326A</string>
+				<string>33F3C60518F4E18E0086326A</string>
+				<string>33F3C61B18F5B65C0086326A</string>
+				<string>33F3C62418F5BA8B0086326A</string>
+				<string>338543D718F46C9B005EA22F</string>
+				<string>33F3C61418F4E2CB0086326A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>338543BE18F46C9B005EA22F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>338543C718F46C9B005EA22F</string>
+				<string>338543CB18F46C9B005EA22F</string>
+				<string>338543C918F46C9B005EA22F</string>
+				<string>338543C518F46C9B005EA22F</string>
+				<string>E9F6C56368DB406ABCE13EEA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>338543BF18F46C9B005EA22F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>338543D118F46C9B005EA22F</string>
+				<string>338543DC18F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>338543C018F46C9B005EA22F</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>338543F318F46C9B005EA22F</string>
+			<key>buildPhases</key>
+			<array>
+				<string>8EE97C734D764A4C85C9F5DA</string>
+				<string>33F3C5FF18F4860B0086326A</string>
+				<string>338543BD18F46C9B005EA22F</string>
+				<string>338543BE18F46C9B005EA22F</string>
+				<string>338543BF18F46C9B005EA22F</string>
+				<string>211F7A9B4D0849E084D2ADB1</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Kolin Krewinkel</string>
+			<key>productName</key>
+			<string>Kolin Krewinkel</string>
+			<key>productReference</key>
+			<string>338543C118F46C9B005EA22F</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>338543C118F46C9B005EA22F</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Kolin Krewinkel.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>338543C218F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543C118F46C9B005EA22F</string>
+				<string>338543E118F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543C318F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543C418F46C9B005EA22F</string>
+				<string>338543C618F46C9B005EA22F</string>
+				<string>338543C818F46C9B005EA22F</string>
+				<string>338543CA18F46C9B005EA22F</string>
+				<string>338543E218F46C9B005EA22F</string>
+				<string>7700867476B64958A6C3720E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543C418F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>338543C518F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543C418F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543C618F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>338543C718F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543C618F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543C818F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>338543C918F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543C818F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543CA18F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreData.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreData.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>338543CB18F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543CA18F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543CC18F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>33F3C5F518F482140086326A</string>
+				<string>33F3C5F618F482140086326A</string>
+				<string>338543FC18F46D0F005EA22F</string>
+				<string>338543D518F46C9B005EA22F</string>
+				<string>338543D618F46C9B005EA22F</string>
+				<string>338543DB18F46C9B005EA22F</string>
+				<string>338543CD18F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Kolin Krewinkel</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543CD18F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543CE18F46C9B005EA22F</string>
+				<string>338543CF18F46C9B005EA22F</string>
+				<string>338543D218F46C9B005EA22F</string>
+				<string>338543D418F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543CE18F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Kolin Krewinkel-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543CF18F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543D018F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543D018F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543D118F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543CF18F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543D218F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543D318F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543D218F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543D418F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Kolin Krewinkel-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543D518F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKRAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543D618F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKRAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543D718F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543D618F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543DB18F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543DC18F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543DB18F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543DD18F46C9B005EA22F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>338543F018F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>338543DE18F46C9B005EA22F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>338543E318F46C9B005EA22F</string>
+				<string>338543E618F46C9B005EA22F</string>
+				<string>338543E518F46C9B005EA22F</string>
+				<string>338543E418F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>338543DF18F46C9B005EA22F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>338543EE18F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>338543E018F46C9B005EA22F</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>338543F618F46C9B005EA22F</string>
+			<key>buildPhases</key>
+			<array>
+				<string>338543DD18F46C9B005EA22F</string>
+				<string>338543DE18F46C9B005EA22F</string>
+				<string>338543DF18F46C9B005EA22F</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>338543E818F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Kolin KrewinkelTests</string>
+			<key>productName</key>
+			<string>Kolin KrewinkelTests</string>
+			<key>productReference</key>
+			<string>338543E118F46C9B005EA22F</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>338543E118F46C9B005EA22F</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Kolin KrewinkelTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>338543E218F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>XCTest.framework</string>
+			<key>path</key>
+			<string>Library/Frameworks/XCTest.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>338543E318F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543E218F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543E418F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543C418F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543E518F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543C818F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543E618F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543CA18F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543E718F46C9B005EA22F</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>338543B918F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>338543C018F46C9B005EA22F</string>
+			<key>remoteInfo</key>
+			<string>Kolin Krewinkel</string>
+		</dict>
+		<key>338543E818F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>338543C018F46C9B005EA22F</string>
+			<key>targetProxy</key>
+			<string>338543E718F46C9B005EA22F</string>
+		</dict>
+		<key>338543E918F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543EF18F46C9B005EA22F</string>
+				<string>338543EA18F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Kolin KrewinkelTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543EA18F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543EB18F46C9B005EA22F</string>
+				<string>338543EC18F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543EB18F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Kolin KrewinkelTests-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543EC18F46C9B005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543ED18F46C9B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543ED18F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543EE18F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543EC18F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543EF18F46C9B005EA22F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Kolin_KrewinkelTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543F018F46C9B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543EF18F46C9B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543F118F46C9B005EA22F</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.1</string>
+				<key>MODEL_NAME</key>
+				<string>Kolin_Krewinkel</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>338543F218F46C9B005EA22F</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.1</string>
+				<key>MODEL_NAME</key>
+				<string>Kolin_Krewinkel</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>338543F318F46C9B005EA22F</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>338543F418F46C9B005EA22F</string>
+				<string>338543F518F46C9B005EA22F</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>338543F418F46C9B005EA22F</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B1783F5F297B4B2B83A0AC75</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Kolin Krewinkel/Kolin Krewinkel-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Kolin Krewinkel/Kolin Krewinkel-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>338543F518F46C9B005EA22F</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B1783F5F297B4B2B83A0AC75</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Kolin Krewinkel/Kolin Krewinkel-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Kolin Krewinkel/Kolin Krewinkel-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>338543F618F46C9B005EA22F</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>338543F718F46C9B005EA22F</string>
+				<string>338543F818F46C9B005EA22F</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>338543F718F46C9B005EA22F</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/Kolin Krewinkel.app/Kolin Krewinkel</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Kolin Krewinkel/Kolin Krewinkel-Prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>Kolin KrewinkelTests/Kolin KrewinkelTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>338543F818F46C9B005EA22F</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/Kolin Krewinkel.app/Kolin Krewinkel</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Kolin Krewinkel/Kolin Krewinkel-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Kolin KrewinkelTests/Kolin KrewinkelTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>338543F918F46D0B005EA22F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>KKRTimelineViewController.h</string>
+			<key>path</key>
+			<string>View Controllers/KKRTimelineViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543FA18F46D0B005EA22F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>KKRTimelineViewController.m</string>
+			<key>path</key>
+			<string>View Controllers/KKRTimelineViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>338543FB18F46D0B005EA22F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>338543FA18F46D0B005EA22F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>338543FC18F46D0F005EA22F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>338543F918F46D0B005EA22F</string>
+				<string>338543FA18F46D0B005EA22F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>View Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C5F518F482140086326A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>33F3C60318F4E18E0086326A</string>
+				<string>33F3C60818F4E2CB0086326A</string>
+				<string>33F3C60D18F4E2CB0086326A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Model</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C5F618F482140086326A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>33F3C5F718F4823E0086326A</string>
+				<string>33F3C5F818F4823E0086326A</string>
+				<string>33F3C62218F5BA8B0086326A</string>
+				<string>33F3C62318F5BA8B0086326A</string>
+				<string>33F3C60018F49C3C0086326A</string>
+				<string>33F3C60118F49C3C0086326A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Utilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C5F718F4823E0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKRTimelineManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C5F818F4823E0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKRTimelineManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C5F918F4823E0086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C5F818F4823E0086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C5FF18F4860B0086326A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>/usr/bin/mogenerator -m "$SRCROOT/$TARGET_NAME/Model/$MODEL_NAME.xcdatamodeld" --template-var arc=true -M "$SRCROOT/$TARGET_NAME/Model/Machine" -H "$SRCROOT/$TARGET_NAME/Model/User"</string>
+		</dict>
+		<key>33F3C60018F49C3C0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKRManagedObjectContextStack.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C60118F49C3C0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKRManagedObjectContextStack.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C60218F49C3C0086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C60118F49C3C0086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C60318F4E18E0086326A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>33F3C60418F4E18E0086326A</string>
+			</array>
+			<key>currentVersion</key>
+			<string>33F3C60418F4E18E0086326A</string>
+			<key>isa</key>
+			<string>XCVersionGroup</string>
+			<key>path</key>
+			<string>Kolin_Krewinkel.xcdatamodeld</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+			<key>versionGroupType</key>
+			<string>wrapper.xcdatamodel</string>
+		</dict>
+		<key>33F3C60418F4E18E0086326A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.xcdatamodel</string>
+			<key>path</key>
+			<string>Kolin_Krewinkel.xcdatamodel</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C60518F4E18E0086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C60318F4E18E0086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C60818F4E2CB0086326A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>33F3C61F18F5B7210086326A</string>
+				<string>33F3C62018F5B7210086326A</string>
+				<string>33F3C61918F5B65C0086326A</string>
+				<string>33F3C61A18F5B65C0086326A</string>
+				<string>33F3C60918F4E2CB0086326A</string>
+				<string>33F3C60A18F4E2CB0086326A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Machine</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C60918F4E2CB0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>_KKRImage.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C60A18F4E2CB0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>_KKRImage.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C60D18F4E2CB0086326A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>33F3C61C18F5B71D0086326A</string>
+				<string>33F3C61D18F5B71D0086326A</string>
+				<string>33F3C61618F5B6560086326A</string>
+				<string>33F3C61718F5B6560086326A</string>
+				<string>33F3C60E18F4E2CB0086326A</string>
+				<string>33F3C60F18F4E2CB0086326A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>User</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C60E18F4E2CB0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKRImage.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C60F18F4E2CB0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKRImage.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C61218F4E2CB0086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C60A18F4E2CB0086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C61418F4E2CB0086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C60F18F4E2CB0086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C61618F5B6560086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKRTransitionable.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C61718F5B6560086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKRTransitionable.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C61818F5B6560086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C61718F5B6560086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C61918F5B65C0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>_KKRTransitionable.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C61A18F5B65C0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>_KKRTransitionable.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C61B18F5B65C0086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C61A18F5B65C0086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C61C18F5B71D0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKREvent.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C61D18F5B71D0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKREvent.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C61E18F5B71D0086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C61D18F5B71D0086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C61F18F5B7210086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>_KKREvent.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C62018F5B7210086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>_KKREvent.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C62118F5B7210086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C62018F5B7210086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>33F3C62218F5BA8B0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKRScrollViewParallaxer.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C62318F5BA8B0086326A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKRScrollViewParallaxer.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33F3C62418F5BA8B0086326A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33F3C62318F5BA8B0086326A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7700867476B64958A6C3720E</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>8EE97C734D764A4C85C9F5DA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>B1783F5F297B4B2B83A0AC75</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Pods.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9F6C56368DB406ABCE13EEA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7700867476B64958A6C3720E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>338543B918F46C9B005EA22F</string>
+</dict>
+</plist>

@@ -54,11 +54,6 @@
     self.scrollView.delegate = self;
 
     [self layoutScrollView];
-
-    UIView *test = [[UIView alloc] initWithFrame:CGRectMake(200.f, 50.f, 100.f, 1000.f)];
-    test.backgroundColor = [UIColor blueColor];
-
-    [self.scrollView addSubview:test];
 }
 
 #pragma mark - Scroll View Management
