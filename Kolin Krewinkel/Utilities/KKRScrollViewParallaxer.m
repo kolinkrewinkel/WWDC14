@@ -66,7 +66,7 @@
 
         CGFloat movementFactor = [self.dataSource movementFractionalForViewAtIndex:idx inParallaxer:self];
         CGRect originalRect = [self.dataSource initialRectForViewAtIndex:idx inParallaxer:self];
-        CGRect modifiedRect = CGRectMake(0.f, originalRect.origin.y + ((1.f - movementFactor) * self.scrollView.contentOffset.y), originalRect.size.width, originalRect.size.height);
+        CGRect modifiedRect = CGRectMake(originalRect.origin.x + ((1.f - movementFactor) * self.scrollView.contentOffset.x), originalRect.origin.y + ((1.f - movementFactor) * self.scrollView.contentOffset.y), originalRect.size.width, originalRect.size.height);
 
         if (CGRectIntersectsRect(CGRectMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y, self.scrollView.frame.size.width, self.scrollView.frame.size.height), modifiedRect))
         {
