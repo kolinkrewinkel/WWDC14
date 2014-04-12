@@ -10,4 +10,22 @@
 
 @implementation KKRIntroViewController
 
+- (void)viewDidLoad
+{
+    [self setNeedsStatusBarAppearanceUpdate];
+
+    [super viewDidLoad];
+
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"self-1.png"]];
+    backgroundView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:backgroundView];
+    [self.view kkr_addContraintsToFillSuperviewToView:backgroundView];
+
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 @end

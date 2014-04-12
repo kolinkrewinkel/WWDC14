@@ -19,16 +19,20 @@
 
 @implementation KKRIntroPanelViewController
 
+#pragma mark - UIViewController
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     self.scrollView = ({
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-        scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f, self.view.bounds.size.height);
+        scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 2.f, 0.f);
         scrollView.backgroundColor = [UIColor greenColor];
         scrollView.pagingEnabled = YES;
-       [self.view addSubview:scrollView];
+
+        [self.view addSubview:scrollView];
+        [self.view kkr_addContraintsToFillSuperviewToView:scrollView];
 
         scrollView;
     });
@@ -72,7 +76,7 @@
 {
     if (index == 0)
     {
-        return 0.5f;
+        return 0.9f;
     }
     else if (index == 1)
     {

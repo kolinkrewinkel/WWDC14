@@ -34,8 +34,6 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height * 2.f * (17)));
     self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;

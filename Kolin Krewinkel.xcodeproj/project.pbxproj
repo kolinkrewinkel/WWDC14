@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3367CBD518F9B7C400F6E6C5 /* KKRIntroPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CBD418F9B7C400F6E6C5 /* KKRIntroPanelViewController.m */; };
 		3367CBD818F9BBE600F6E6C5 /* KKRIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CBD718F9BBE600F6E6C5 /* KKRIntroViewController.m */; };
+		3367CBDB18F9BFF800F6E6C5 /* UIView+KKRConstraintHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CBDA18F9BFF800F6E6C5 /* UIView+KKRConstraintHelpers.m */; };
 		338543C518F46C9B005EA22F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C418F46C9B005EA22F /* Foundation.framework */; };
 		338543C718F46C9B005EA22F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C618F46C9B005EA22F /* CoreGraphics.framework */; };
 		338543C918F46C9B005EA22F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338543C818F46C9B005EA22F /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		3367CBD418F9B7C400F6E6C5 /* KKRIntroPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKRIntroPanelViewController.m; path = "View Controllers/KKRIntroPanelViewController.m"; sourceTree = "<group>"; };
 		3367CBD618F9BBE600F6E6C5 /* KKRIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKRIntroViewController.h; path = "View Controllers/KKRIntroViewController.h"; sourceTree = "<group>"; };
 		3367CBD718F9BBE600F6E6C5 /* KKRIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKRIntroViewController.m; path = "View Controllers/KKRIntroViewController.m"; sourceTree = "<group>"; };
+		3367CBD918F9BFF800F6E6C5 /* UIView+KKRConstraintHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KKRConstraintHelpers.h"; path = "Categories/UIView+KKRConstraintHelpers.h"; sourceTree = "<group>"; };
+		3367CBDA18F9BFF800F6E6C5 /* UIView+KKRConstraintHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+KKRConstraintHelpers.m"; path = "Categories/UIView+KKRConstraintHelpers.m"; sourceTree = "<group>"; };
 		338543C118F46C9B005EA22F /* Kolin Krewinkel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kolin Krewinkel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		338543C418F46C9B005EA22F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		338543C618F46C9B005EA22F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +124,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3367CBDC18F9BFFB00F6E6C5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3367CBD918F9BFF800F6E6C5 /* UIView+KKRConstraintHelpers.h */,
+				3367CBDA18F9BFF800F6E6C5 /* UIView+KKRConstraintHelpers.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		338543B818F46C9B005EA22F = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +169,7 @@
 		338543CC18F46C9B005EA22F /* Kolin Krewinkel */ = {
 			isa = PBXGroup;
 			children = (
+				3367CBDC18F9BFFB00F6E6C5 /* Categories */,
 				33F3C5F518F482140086326A /* Model */,
 				33F3C5F618F482140086326A /* Utilities */,
 				338543FC18F46D0F005EA22F /* View Controllers */,
@@ -416,6 +429,7 @@
 				33F3C60218F49C3C0086326A /* KKRManagedObjectContextStack.m in Sources */,
 				33F3C60518F4E18E0086326A /* Kolin_Krewinkel.xcdatamodeld in Sources */,
 				33F3C61B18F5B65C0086326A /* _KKRTransitionable.m in Sources */,
+				3367CBDB18F9BFF800F6E6C5 /* UIView+KKRConstraintHelpers.m in Sources */,
 				33F3C62418F5BA8B0086326A /* KKRScrollViewParallaxer.m in Sources */,
 				338543D718F46C9B005EA22F /* KKRAppDelegate.m in Sources */,
 				33F3C61418F4E2CB0086326A /* KKRImage.m in Sources */,
