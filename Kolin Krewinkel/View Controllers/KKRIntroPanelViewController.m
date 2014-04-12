@@ -8,9 +8,12 @@
 
 #import "KKRIntroPanelViewController.h"
 
+#import "KKRScrollViewParallaxer.h"
+
 @interface KKRIntroPanelViewController ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) KKRScrollViewParallaxer *parallaxer;
 
 @end
 
@@ -30,11 +33,24 @@
         scrollView;
     });
 
+    self.parallaxer = ({
+        KKRScrollViewParallaxer *parallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
+        
+        parallaxer;
+    });
+
     if (self.introViewController && self.contentViewController)
     {
+        [self addChildViewController:self.introViewController];
+        [self.scrollView addSubview:self.introViewController.view];
 
-
+        [self addChildViewController:self.contentViewController];
+        [self.scrollView addSubview:self.contentViewController.view];
     }
 }
+
+#pragma mark - KKRScrollViewParallaxerDataSource
+
+
 
 @end

@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-@interface KKRIntroPanelViewController : UIViewController
+#import "KKRScrollViewParallaxer.h"
+
+@interface KKRIntroPanelViewController : UIViewController <KKRScrollViewParallaxerDataSource, UIScrollViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIViewController *introViewController;
 @property (nonatomic, strong) IBOutlet UIViewController *contentViewController;
