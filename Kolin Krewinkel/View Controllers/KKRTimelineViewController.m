@@ -58,7 +58,7 @@
 
     self.scrollView.frame = (CGRect){CGPointZero, self.view.bounds.size};
     self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f * 17.f, 0.f);
-    self.yearBackgroundView.frame = CGRectMake(0.f, 0.f, self.scrollView.contentSize.width, 64.f + (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? [UIApplication sharedApplication].statusBarFrame.size.height : [UIApplication sharedApplication].statusBarFrame.size.width));
+    self.yearBackgroundView.frame = CGRectMake(-5.f, 0.f, self.scrollView.contentSize.width + 10.f, 64.f + (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? [UIApplication sharedApplication].statusBarFrame.size.height : [UIApplication sharedApplication].statusBarFrame.size.width));
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

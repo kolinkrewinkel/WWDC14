@@ -58,7 +58,7 @@
     UIView *viewOverlay = [[UIView alloc] init];
     viewOverlay.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.f];
     [self.view addSubview:viewOverlay];
-    [self.view kkr_addContraintsToFillSuperviewToView:viewOverlay padding:0.f];
+    [self.view kkr_addContraintsToFillSuperviewToView:viewOverlay padding:2.f];
 
     NSString *nameText = @"Kolin Krewinkel";
     UIFont *nameFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:48.f];

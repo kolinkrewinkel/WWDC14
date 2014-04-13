@@ -28,12 +28,15 @@
 {
     [super viewDidLoad];
 
+    self.view.backgroundColor = [UIColor whiteColor];
+
     self.scrollView = ({
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
         scrollView.pagingEnabled = YES;
         scrollView.showsHorizontalScrollIndicator = NO;
         scrollView.showsVerticalScrollIndicator = NO;
         scrollView.directionalLockEnabled = YES;
+        scrollView.backgroundColor = [UIColor whiteColor];
 
         [self.view addSubview:scrollView];
         [self.view kkr_addContraintsToFillSuperviewToView:scrollView padding:0.f];
@@ -102,6 +105,10 @@
     }
 
     self.scrollView.frame = CGRectMake(0.f, 0.f, self.view.bounds.size.width, self.view.bounds.size.height);
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateTransition];
+    });
 }
 
 #pragma mark - UIGestureRecognizer
@@ -143,6 +150,15 @@
     if (scrollView.contentOffset.x <= 0.f)
     {
         self.introViewController.view.frame = CGRectMake(scrollView.contentOffset.x, 0.f, fabsf(scrollView.contentOffset.x) + scrollView.bounds.size.width, scrollView.bounds.size.height);
+    }
+    else if ((scrollView.contentOffset.x + scrollView.frame.size.width)/scrollView.contentSize.width >= 1.f)
+    {
+        CGRect contentRect = self.contentViewController.view.frame;
+        CGFloat excessScroll = (scrollView.contentOffset.x + scrollView.frame.size.width) - scrollView.contentSize.width;
+        CGFloat visibleComponentOfIntroPanel = CGRectGetMinX(contentRect);
+        CGFloat viewportRemainder = (scrollView.contentSize.width - visibleComponentOfIntroPanel) + excessScroll;
+
+        self.contentViewController.view.frame = (CGRect){contentRect.origin, CGSizeMake(viewportRemainder, CGRectGetHeight(contentRect))};
     }
 }
 
@@ -201,7 +217,14 @@
     }
     else if (index == 1)
     {
-        return 0.5f;
+        if ((parallaxer.scrollView.contentOffset.x + parallaxer.scrollView.frame.size.width)/parallaxer.scrollView.contentSize.width > 1.f)
+        {
+            return (self.view.bounds.size.width - self.dockedPanelWidth)/self.view.bounds.size.width;
+        }
+        else
+        {
+            return 0.5f;
+        }
     }
 
     return 1.f;
