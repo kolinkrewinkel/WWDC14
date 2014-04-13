@@ -42,21 +42,11 @@
 
     [self.view addSubview:self.scrollView];
 
-    self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
-
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.scrollView.contentSize.width, 64.f)];
     view.backgroundColor = [UIColor whiteColor];
     [self.scrollView addSubview:view];
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        for (int i = 0; i < 34; i++) {
-//            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(150.f, (i * self.view.frame.size.height), 90.f, self.view.frame.size.height)];
-//            CGFloat alpha = (CGFloat)(i + 1)/34;
-//            view.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:alpha];
-//
-//            [self.scrollView addSubview:view];
-        }
-    });
+    self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
 }
 
 #pragma mark - KKRScrollViewParallaxer
@@ -92,7 +82,7 @@
 {
     if (index < 17)
     {
-        return CGRectMake((parallaxer.scrollView.frame.size.width * (index + 1)) - (150.f + 80.f), 16.f, 150.f, 40.f);
+        return CGRectMake((parallaxer.scrollView.frame.size.width * (index + 1)) - (150.f + 30.f), 16.f, 150.f, 40.f);
     }
     else if (index < 34)
     {

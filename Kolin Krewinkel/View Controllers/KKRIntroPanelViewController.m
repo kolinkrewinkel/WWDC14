@@ -35,6 +35,7 @@
         scrollView.showsHorizontalScrollIndicator = NO;
         scrollView.showsVerticalScrollIndicator = NO;
         scrollView.directionalLockEnabled = YES;
+        scrollView.bounces = NO;
         
         [self.view addSubview:scrollView];
         [self.view kkr_addContraintsToFillSuperviewToView:scrollView];
