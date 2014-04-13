@@ -51,10 +51,6 @@
         view;
     });
 
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 300.f, 30.f)];
-    view.backgroundColor = [UIColor redColor];
-    [self.scrollView addSubview:view];
-
     self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
 }
 
