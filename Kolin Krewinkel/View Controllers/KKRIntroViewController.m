@@ -56,21 +56,44 @@
     [self.view addSubview:viewOverlay];
     [self.view kkr_addContraintsToFillSuperviewToView:viewOverlay];
 
-    UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(64.f, self.view.bounds.size.height - (64.f + 130.f), 400.f, 60.f)];
-    name.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:48.f];
-//    name.layer.anchorPoint = CGPointZero;
-    name.text = @"Kolin Krewinkel";
-    name.textColor = [UIColor whiteColor];
-    [self.view addSubview:name];
+    NSString *nameText = @"Kolin Krewinkel";
+    UIFont *nameFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:48.f];
 
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(64.f, self.view.bounds.size.height - (64.f + 36.f), 400.f, 36.f)];
-    title.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24.f];
-    title.text = @"Software Developer";
-    title.textColor = [UIColor whiteColor];
-    [self.view addSubview:title];
+    UILabel *name = ({
+        UILabel *name = [[UILabel alloc] initWithFrame:({
+            CGSize size = [nameText sizeWithAttributes:@{NSFontAttributeName: nameFont}];
+            CGRect rect = CGRectMake(64.f, self.view.bounds.size.height - (64.f + 130.f), size.width, size.height);
 
-    title.translatesAutoresizingMaskIntoConstraints = NO;
-    name.translatesAutoresizingMaskIntoConstraints = NO;
+            rect;
+        })];
+        name.font = nameFont;
+        name.text = nameText;
+        name.textColor = [UIColor whiteColor];
+        name.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:name];
+
+        name;
+    });
+
+    NSString *titleText = @"Software Developer";
+    UIFont *titleFont = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24.f];
+
+    UILabel *title = ({
+        UILabel *title = [[UILabel alloc] initWithFrame:({
+            CGSize size = [titleText sizeWithAttributes:@{NSFontAttributeName: titleFont}];
+            CGRect rect = CGRectMake(64.f, self.view.bounds.size.height - (64.f + 36.f), size.width, size.height);
+
+            rect;
+        })];
+
+        title.font = titleFont;
+        title.text = titleText;
+        title.textColor = [UIColor whiteColor];
+        title.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:title];
+
+        title;
+    });
 
     NSLayoutConstraint *titleLeft = [NSLayoutConstraint constraintWithItem:title attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.f constant:64.f];
     [title kkr_setLeftConstraint:titleLeft];

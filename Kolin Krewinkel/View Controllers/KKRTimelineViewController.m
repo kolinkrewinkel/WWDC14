@@ -38,6 +38,7 @@
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height * 2.f * (17)));
     self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     self.scrollView.pagingEnabled = YES;
+    self.scrollView.backgroundColor = [UIColor blackColor];
 
     [self.view addSubview:self.scrollView];
 
