@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-typedef void(^KKRTimelineManagerItemsCompletionManager)(NSError *error, NSOrderedSet *timelineItems);
+#import "KKRTimelineItem.h"
+
+typedef void(^KKRTimelineManagerItemsCompletionManager)(NSError *error, NSArray *timelineItems);
 
 @interface KKRTimelineManager : NSObject
 

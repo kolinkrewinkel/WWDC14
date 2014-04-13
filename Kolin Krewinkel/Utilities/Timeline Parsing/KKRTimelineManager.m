@@ -8,8 +8,6 @@
 
 #import "KKRTimelineManager.h"
 
-#import "KKRManagedObjectContextStack.h"
-
 @interface KKRTimelineManager ()
 
 #pragma mark - Internal Networking
@@ -45,25 +43,35 @@
     return self;
 }
 
+#pragma mark - Convenience
+
+- (NSString *)JSONContentPath
+{
+    return [[NSBundle mainBundle] pathForResource:@"content" ofType:@"json"];
+}
+
 #pragma mark - Fetching
 
 - (void)getTimelineItemsWithCompletionHandler:(KKRTimelineManagerItemsCompletionManager)completionHandler
 {
-    [[KKRManagedObjectContextStack defaultStack] performBlock:^BOOL(NSManagedObjectContext *mutationContext, NSManagedObjectContext *interfaceContext, NSManagedObjectContext *persistenceContext)
+    NSError *error = nil;
+    NSArray *content = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[self JSONContentPath]] options:NSJSONReadingAllowFragments error:&error];
+
+    if (error)
     {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[KKREvent entityName]];
-        [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES]]];
+        NSLog(@"%@", error);
+        completionHandler(error, nil);
+        return;
+    }
 
-        NSError *error = nil;
-        NSArray *fetchedObjects = [mutationContext executeFetchRequest:fetchRequest error:&error];
-        if (fetchedObjects == nil) {
-            return NO;
-        }
+    completionHandler(nil, ({
+        __block NSMutableArray *timelineItems = [[NSMutableArray alloc] initWithCapacity:content.count];
+        [content enumerateObjectsUsingBlock:^(NSDictionary *JSONItem, NSUInteger idx, BOOL *stop) {
+            [timelineItems addObject:[KKRTimelineItem timelineItemWithJSON:JSONItem]];
+        }];
 
-        NSLog(@"%@", fetchedObjects);
-
-        return NO;
-    }];
+        timelineItems;
+    }));
 }
 
 @end

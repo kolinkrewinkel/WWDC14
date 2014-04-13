@@ -24,4 +24,9 @@
 - (void)kkr_setLeftConstraint:(NSLayoutConstraint *)constraint;
 - (NSLayoutConstraint *)kkr_leftConstraint;
 
+- (void)kkr_setHierarchyIdentifier:(NSString *)string;
+- (NSString *)kkr_hierarchyIdentifier;
+
+- (UIView *)kkr_relatedViewWithIdentifier:(NSString *)identifier;
+
 @end

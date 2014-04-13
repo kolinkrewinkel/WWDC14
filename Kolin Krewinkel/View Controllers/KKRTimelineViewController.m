@@ -52,6 +52,10 @@
     });
 
     self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
+
+    [[KKRTimelineManager sharedManager] getTimelineItemsWithCompletionHandler:^(NSError *error, NSArray *timelineItems) {
+
+    }];
 }
 
 - (void)viewDidLayoutSubviews

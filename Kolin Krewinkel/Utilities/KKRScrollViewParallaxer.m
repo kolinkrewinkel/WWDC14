@@ -86,11 +86,6 @@
             }
 
             view.frame = modifiedRect;
-
-            if (idx == 0)
-            {
-                NSLog(@"\n--------\n%@\n%@\n---------\n", NSStringFromCGRect(view.frame), NSStringFromCGPoint(self.scrollView.contentOffset));
-            }
         }
         else if (view)
         {

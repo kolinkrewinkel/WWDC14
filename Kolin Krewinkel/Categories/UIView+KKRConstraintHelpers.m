@@ -76,4 +76,43 @@ static char *KKRConstraintLeftIdentifier = "KKRConstraintLeftIdentifier";
     return objc_getAssociatedObject(self, KKRConstraintLeftIdentifier);
 }
 
+- (void)kkr_setHierarchyIdentifier:(NSString *)string
+{
+    objc_setAssociatedObject(self, "kkr_hierarchyID", string, OBJC_ASSOCIATION_COPY);
+}
+
+- (NSString *)kkr_hierarchyIdentifier
+{
+    NSMutableString *identifier = [[NSMutableString alloc] initWithString:objc_getAssociatedObject(self, "kkr_hierarchyID")];
+
+    UIView *superview = self.superview;
+    while (superview.kkr_hierarchyIdentifier)
+    {
+        [identifier insertString:[NSString stringWithFormat:@"%@_", superview.kkr_hierarchyIdentifier] atIndex:0];
+
+        superview = superview.superview;
+    }
+
+    return identifier;
+}
+
+- (UIView *)kkr_relatedViewWithIdentifier:(NSString *)identifier
+{
+    UIView *uppermost = self;
+    NSArray *identifiers = [identifier componentsSeparatedByString:@"_"];
+
+    while (![uppermost.kkr_hierarchyIdentifier isEqualToString:identifiers[0]])
+    {
+        uppermost = uppermost.superview;
+    }
+
+    UIView *view = uppermost;
+    for (NSString *ident in [identifiers subarrayWithRange:NSMakeRange(1, identifier.length - 2)])
+    {
+        view = [[view.subviews filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kkr_hierarchyIdentifier == %@", ident]] lastObject];
+    }
+
+    return view;
+}
+
 @end
