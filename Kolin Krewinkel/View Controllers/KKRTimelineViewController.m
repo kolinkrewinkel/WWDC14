@@ -32,10 +32,10 @@
 
 - (void)setUpInterface
 {
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
 
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height * 2.f * (17)));
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 2.f * 17.f, 0.f);
     self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.backgroundColor = [UIColor blackColor];
@@ -43,6 +43,10 @@
     [self.view addSubview:self.scrollView];
 
     self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.scrollView.contentSize.width, 64.f)];
+    view.backgroundColor = [UIColor whiteColor];
+    [self.scrollView addSubview:view];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         for (int i = 0; i < 34; i++) {
@@ -59,7 +63,7 @@
 
 - (NSUInteger)numberOfItemsParallaxedInParallaxer:(KKRScrollViewParallaxer *)parallaxer
 {
-    return 34;
+    return 17;
 }
 
 - (UIView *)viewAtIndex:(NSUInteger)index inParallaxer:(KKRScrollViewParallaxer *)parallaxer
@@ -67,18 +71,16 @@
     if (index < 17)
     {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.text = [NSString stringWithFormat:@"%lu", 1998 + index];
+        label.text = [NSString stringWithFormat:@"%u", 1998 + index];
         label.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:36.f];
         label.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
-        label.transform = CGAffineTransformMakeRotation(-90.f * (M_PI / 180.f));
 
         return label;
     }
     else if (index < 34)
     {
         UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-        CGFloat alpha = (CGFloat)((index - 17) + 1)/17;
-        view.alpha = 0.4f;
+        view.backgroundColor = [UIColor whiteColor];
 
         return view;
     }
@@ -90,17 +92,17 @@
 {
     if (index < 17)
     {
-        return CGRectMake(16.f, (parallaxer.scrollView.frame.size.height * (index + 1)) - (150.f + 4.f), 40.f, 150.f);
+        return CGRectMake((parallaxer.scrollView.frame.size.width * (index + 1)) - (150.f + 80.f), 16.f, 150.f, 40.f);
     }
     else if (index < 34)
     {
-        CGFloat width = 64.f;
+        CGFloat height = 64.f;
         if (index == 33)
         {
-            return CGRectMake(0.f, (index - 17) * self.view.frame.size.height, width, self.view.frame.size.height * 1.5f);
+            return CGRectMake((index - 17) * self.view.frame.size.width, 0.f, self.view.frame.size.width * 1.5f, height);
         }
 
-        return CGRectMake(0.f, (index - 17) * self.view.frame.size.height, width, self.view.frame.size.height);
+        return CGRectMake((index - 17) * self.view.frame.size.width, 0.f, self.view.frame.size.width, height);
     }
 
     return CGRectZero;
