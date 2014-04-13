@@ -71,11 +71,11 @@ static CABasicAnimation *shimmer_end_fade_animation(id delegate, CALayer *layer,
   return animation;
 }
 
-static CABasicAnimation *shimmer_slide_animation(id delegate, CFTimeInterval duration)
+static CABasicAnimation *shimmer_slide_animation(id delegate, CFTimeInterval duration, CGFloat width)
 {
   CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
   animation.delegate = delegate;
-  animation.toValue = [NSValue valueWithCGPoint:CGPointZero];
+  animation.toValue = [NSValue valueWithCGPoint:CGPointMake(width, 0.f)];
   animation.duration = duration;
   animation.repeatCount = HUGE_VALF;
   FBShimmeringLayerAnimationApplyDragCoefficient(animation);
@@ -277,12 +277,12 @@ static CAAnimation *shimmer_slide_finish(CAAnimation *a)
   CGFloat travelDistance = width * 2.0f + extraDistance;
 
   // setup the gradient for shimmering
-  _maskLayer.startPoint = CGPointMake((width + extraDistance) / fullShimmerLength, 0.0);
-  _maskLayer.endPoint = CGPointMake(travelDistance / fullShimmerLength, 0.0);
+  _maskLayer.startPoint = CGPointMake(travelDistance / fullShimmerLength, 0.0);
+  _maskLayer.endPoint = CGPointMake((width + extraDistance) / fullShimmerLength, 0.0);
 
   // position for the start of the animation
-  _maskLayer.anchorPoint = CGPointZero;
-  _maskLayer.position = CGPointMake(-travelDistance, 0.0);
+  _maskLayer.anchorPoint = CGPointMake(1.f, 0.f);
+  _maskLayer.position = CGPointMake(travelDistance, 0.0);
   _maskLayer.bounds = CGRectMake(0.0, 0.0, fullShimmerLength, CGRectGetHeight(_contentLayer.bounds));
 }
 
@@ -363,7 +363,7 @@ static CAAnimation *shimmer_slide_finish(CAAnimation *a)
       [_maskLayer addAnimation:shimmer_slide_repeat(slideAnimation, animationDuration) forKey:kFBShimmerSlideAnimationKey];
     } else {
       // add slide animation
-      slideAnimation = shimmer_slide_animation(self, animationDuration);
+      slideAnimation = shimmer_slide_animation(self, animationDuration, CGRectGetWidth(_contentLayer.bounds));
       slideAnimation.fillMode = kCAFillModeForwards;
       slideAnimation.removedOnCompletion = NO;
       slideAnimation.beginTime = CACurrentMediaTime() + fadeOutAnimation.duration;
