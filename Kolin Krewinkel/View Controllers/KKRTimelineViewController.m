@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) KKRScrollViewParallaxer *scrollViewParallaxer;
 
+@property (nonatomic, strong) UIView *yearBackgroundView;
+
 @end
 
 @implementation KKRTimelineViewController
@@ -32,18 +34,20 @@
 
 - (void)setUpInterface
 {
-    self.view.backgroundColor = [UIColor blackColor];
-
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.backgroundColor = [UIColor blackColor];
+    self.scrollView.backgroundColor = [UIColor darkGrayColor];
 
     [self.view addSubview:self.scrollView];
 
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.scrollView.contentSize.width, 64.f)];
-    view.backgroundColor = [UIColor whiteColor];
-    [self.scrollView addSubview:view];
+    self.yearBackgroundView = ({
+        UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+        view.backgroundColor = [UIColor whiteColor];
+        [self.scrollView addSubview:view];
+
+        view;
+    });
 
     self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
 }
@@ -52,7 +56,18 @@
 {
     [super viewWillLayoutSubviews];
 
+    self.scrollView.frame = (CGRect){CGPointZero, self.view.bounds.size};
     self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f * 17.f, 0.f);
+    self.yearBackgroundView.frame = CGRectMake(0.f, 0.f, self.scrollView.contentSize.width, 64.f + (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? [UIApplication sharedApplication].statusBarFrame.size.height : [UIApplication sharedApplication].statusBarFrame.size.width));
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    NSUInteger index = (self.scrollView.contentOffset.x)/(self.view.bounds.size.width * 2.f * 17.f);
+
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
+    self.scrollView.contentOffset = CGPointMake(index * self.view.bounds.size.width, 0.f);
 }
 
 #pragma mark - KKRScrollViewParallaxer
@@ -88,7 +103,7 @@
 {
     if (index < 17)
     {
-        return CGRectMake((parallaxer.scrollView.frame.size.width * (index + 1)) - (150.f + 30.f), 16.f, 150.f, 40.f);
+        return CGRectMake((self.view.bounds.size.width * (index + 1)) - (150.f + 30.f), 20.f + 16.f, 150.f, 40.f);
     }
     else if (index < 34)
     {

@@ -49,9 +49,16 @@
 
 - (void)setScrollView:(UIScrollView *)scrollView
 {
+    if (self.scrollView)
+    {
+        [self.scrollView removeObserver:self forKeyPath:@"frame"];
+    }
+
     _scrollView = scrollView;
 
     self.scrollView.delegate = self;
+
+    [self.scrollView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
 
     [self layoutScrollView];
 }
@@ -116,6 +123,20 @@
 - (UIView *)displayedViewAtIndex:(NSUInteger)index
 {
     return self.visibleViews[@(index)];
+}
+
+#pragma mark - NSKVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self layoutScrollView];
+}
+
+#pragma mark - NSObject
+
+- (void)dealloc
+{
+    [self.scrollView removeObserver:self forKeyPath:@"frame"];
 }
 
 @end

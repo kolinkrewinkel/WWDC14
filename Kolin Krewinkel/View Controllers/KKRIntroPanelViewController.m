@@ -85,16 +85,20 @@
 //    }];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
 
-    CGFloat oldWidth = self.scrollView.contentSize.width;
-    CGFloat newWidth = self.view.bounds.size.width * 2.f;
-    self.scrollView.contentSize = CGSizeMake(newWidth, 0.f);
+    if ([self introViewIsCentered])
+    {
+        self.scrollView.contentOffset = CGPointZero;
+    }
+    else
+    {
+        self.scrollView.contentOffset = CGPointMake(self.view.bounds.size.width, 0.f);
+    }
 
-    CGFloat percentage = (self.scrollView.contentOffset.x/(oldWidth/2));
-    self.scrollView.contentOffset = CGPointMake(newWidth * percentage, 0.f);
+    self.scrollView.frame = CGRectMake(0.f, 0.f, self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
 #pragma mark - UIScrollViewDelegate
