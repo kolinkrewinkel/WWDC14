@@ -86,6 +86,11 @@
             }
 
             view.frame = modifiedRect;
+
+            if (idx == 0)
+            {
+                NSLog(@"\n--------\n%@\n%@\n---------\n", NSStringFromCGRect(view.frame), NSStringFromCGPoint(self.scrollView.contentOffset));
+            }
         }
         else if (view)
         {
@@ -129,7 +134,9 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    [self layoutScrollView];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self layoutScrollView];
+    });
 }
 
 #pragma mark - NSObject

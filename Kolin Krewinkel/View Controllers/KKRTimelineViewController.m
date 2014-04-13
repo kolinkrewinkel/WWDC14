@@ -37,6 +37,8 @@
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = YES;
+    self.scrollView.autoresizesSubviews = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.scrollView.backgroundColor = [UIColor darkGrayColor];
 
     [self.view addSubview:self.scrollView];
@@ -49,25 +51,35 @@
         view;
     });
 
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 300.f, 30.f)];
+    view.backgroundColor = [UIColor redColor];
+    [self.scrollView addSubview:view];
+
     self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
 }
 
-- (void)viewWillLayoutSubviews
+- (void)viewDidLayoutSubviews
 {
-    [super viewWillLayoutSubviews];
+    CGPoint previousOffset = self.scrollView.contentOffset;
+    CGFloat prevOffsetX = 0.f;
 
-    self.scrollView.frame = (CGRect){CGPointZero, self.view.bounds.size};
-    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f * 17.f, 0.f);
+    if (self.scrollView.contentSize.width > 0.f)
+    {
+        prevOffsetX = previousOffset.x/self.scrollView.contentSize.width;
+    }
+
+    [super viewDidLayoutSubviews];
+
     self.yearBackgroundView.frame = CGRectMake(-5.f, 0.f, self.scrollView.contentSize.width + 10.f, 64.f + (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? [UIApplication sharedApplication].statusBarFrame.size.height : [UIApplication sharedApplication].statusBarFrame.size.width));
+
+    self.scrollView.frame = self.view.bounds;
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f * 17.f, 0.f);
+    self.scrollView.contentOffset = CGPointMake(prevOffsetX * self.scrollView.contentSize.width, 0.f);
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    NSUInteger index = (self.scrollView.contentOffset.x)/(self.view.bounds.size.width * 2.f * 17.f);
-
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-
-    self.scrollView.contentOffset = CGPointMake(index * self.view.bounds.size.width, 0.f);
 }
 
 #pragma mark - KKRScrollViewParallaxer
@@ -103,17 +115,7 @@
 {
     if (index < 17)
     {
-        return CGRectMake((self.view.bounds.size.width * (index + 1)) - (150.f + 30.f), 20.f + 16.f, 150.f, 40.f);
-    }
-    else if (index < 34)
-    {
-        CGFloat height = 64.f;
-        if (index == 33)
-        {
-            return CGRectMake((index - 17) * self.view.frame.size.width, 0.f, self.view.frame.size.width * 1.5f, height);
-        }
-
-        return CGRectMake((index - 17) * self.view.frame.size.width, 0.f, self.view.frame.size.width, height);
+        return CGRectMake((index * parallaxer.scrollView.frame.size.width) + 2.f, 20.f + 16.f, 400.f, 40.f);
     }
 
     return CGRectZero;

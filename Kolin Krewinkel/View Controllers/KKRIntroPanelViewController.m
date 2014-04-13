@@ -154,9 +154,7 @@
     else if ((scrollView.contentOffset.x + scrollView.frame.size.width)/scrollView.contentSize.width >= 1.f)
     {
         CGRect contentRect = self.contentViewController.view.frame;
-        CGFloat excessScroll = (scrollView.contentOffset.x + scrollView.frame.size.width) - scrollView.contentSize.width;
-        CGFloat visibleComponentOfIntroPanel = CGRectGetMinX(contentRect);
-        CGFloat viewportRemainder = (scrollView.contentSize.width - visibleComponentOfIntroPanel) + excessScroll;
+        CGFloat viewportRemainder = (scrollView.contentOffset.x + scrollView.frame.size.width) - CGRectGetMinX(contentRect);
 
         self.contentViewController.view.frame = (CGRect){contentRect.origin, CGSizeMake(viewportRemainder, CGRectGetHeight(contentRect))};
     }
@@ -217,14 +215,7 @@
     }
     else if (index == 1)
     {
-        if ((parallaxer.scrollView.contentOffset.x + parallaxer.scrollView.frame.size.width)/parallaxer.scrollView.contentSize.width > 1.f)
-        {
-            return (self.view.bounds.size.width - self.dockedPanelWidth)/self.view.bounds.size.width;
-        }
-        else
-        {
-            return 0.5f;
-        }
+        return 0.5f;
     }
 
     return 1.f;
