@@ -9,11 +9,13 @@
 #import "KKRIntroViewController.h"
 
 #import <FXBlurView/FXBlurView.h>
+#import <Shimmer/FBShimmeringView.h>
 
 @interface KKRIntroViewController ()
 
 @property (nonatomic, strong) FXBlurView *blurView;
 @property (nonatomic, strong) UIView *dimView;
+@property (nonatomic, strong) FBShimmeringView *shimmeringContainerView;
 
 @end
 
@@ -61,6 +63,16 @@
     NSString *nameText = @"Kolin Krewinkel";
     UIFont *nameFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:48.f];
 
+    self.shimmeringContainerView = ({
+        FBShimmeringView *view = [[FBShimmeringView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.bounds.size.width, self.view.bounds.size.height)];
+        view.shimmering = YES;
+        [self.view addSubview:view];
+
+        view;
+    });
+
+    UIView *shimmerContents = [[UIView alloc] init];
+
     UILabel *name = ({
         UILabel *name = [[UILabel alloc] initWithFrame:({
             CGSize size = [nameText sizeWithAttributes:@{NSFontAttributeName: nameFont}];
@@ -72,7 +84,7 @@
         name.text = nameText;
         name.textColor = [UIColor whiteColor];
         name.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.view addSubview:name];
+        [shimmerContents addSubview:name];
 
         name;
     });
@@ -92,10 +104,20 @@
         title.text = titleText;
         title.textColor = [UIColor whiteColor];
         title.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.view addSubview:title];
+        [shimmerContents addSubview:title];
 
         title;
     });
+
+    shimmerView.contentView = shimmerContents;
+    shimmerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    shimmerView.shim
+    [self.view addSubview:shimmerView];
+    [shimmerView kkr_addContraintsToFillSuperviewToView:shimmerContents padding:0.f];
+
+//    [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:shimmerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.f constant:-250.f], [NSLayoutConstraint constraintWithItem:shimmerView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.f constant:0.f], [NSLayoutConstraint constraintWithItem:shimmerView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.f constant:10.f]]];
+
+    NSLog(@"%@", NSStringFromCGRect(shimmerView.frame));
 
     NSLayoutConstraint *titleLeft = [NSLayoutConstraint constraintWithItem:title attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.f constant:64.f];
     [title kkr_setLeftConstraint:titleLeft];

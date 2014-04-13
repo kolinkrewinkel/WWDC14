@@ -1,10 +1,13 @@
 PODS:
   - FXBlurView (1.6)
+  - Shimmer (1.0.1)
 
 DEPENDENCIES:
   - FXBlurView (~> 1.6)
+  - Shimmer (~> 1.0.1)
 
 SPEC CHECKSUMS:
   FXBlurView: 06f9f602d529c8e2d87648293d73a618621d3d81
+  Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
 
 COCOAPODS: 0.29.0

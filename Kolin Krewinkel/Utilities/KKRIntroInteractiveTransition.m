@@ -62,8 +62,8 @@
         self.nameLabel.alpha = 1.f - relCompletion;
         self.titleLabel.alpha = 1.f - (MIN((relCompletion - .25f)/.75f, 1.f));
 
-        self.nameLabel.kkr_leftConstraint.constant = 64.f - (relCompletion * 64.f);
-        self.titleLabel.kkr_leftConstraint.constant = 64.f - (relCompletion * 64.f);
+        self.nameLabel.kkr_leftConstraint.constant = 64.f - (relCompletion * 64.f * 2.f);
+        self.titleLabel.kkr_leftConstraint.constant = 64.f - (relCompletion * 64.f * 2.f);
 
         self.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:1.f alpha:0.f];
     }
