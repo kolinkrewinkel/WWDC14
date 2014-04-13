@@ -8,23 +8,27 @@
 
 #import "KKRIntroInteractiveTransition.h"
 
+#import <Shimmer/FBShimmeringView.h>
+
 @interface KKRIntroInteractiveTransition ()
 
 @property (nonatomic, weak) UILabel *nameLabel;
 @property (nonatomic, weak) UILabel *titleLabel;
 @property (nonatomic, weak) UIView *backgroundOverlay;
+@property (nonatomic, weak) FBShimmeringView *shimmerView;
 @property (nonatomic) BOOL canUpdate;
 
 @end
 
 @implementation KKRIntroInteractiveTransition
 
-+ (instancetype)interactiveTransitionWithNameLabel:(UILabel *)nameLabel titleLabel:(UILabel *)titleLabel backgroundOverlay:(UIView *)backgroundOverlay
++ (instancetype)interactiveTransitionWithNameLabel:(UILabel *)nameLabel titleLabel:(UILabel *)titleLabel backgroundOverlay:(UIView *)backgroundOverlay shimmerView:(FBShimmeringView *)shimmerView
 {
     KKRIntroInteractiveTransition *transition = [[[self class] alloc] init];
     transition.nameLabel = nameLabel;
     transition.titleLabel = titleLabel;
     transition.backgroundOverlay = backgroundOverlay;
+    transition.shimmerView = shimmerView;
     transition.canUpdate = YES;
 
     [transition updateInteractiveTransition:0.f];
@@ -66,6 +70,8 @@
         self.titleLabel.kkr_leftConstraint.constant = 64.f - (relCompletion * 64.f * 2.f);
 
         self.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:1.f alpha:0.f];
+
+        self.shimmerView.shimmering = YES;
     }
     else
     {
@@ -95,6 +101,8 @@
 //        NSLog(@"%f", self.nameLabel.kkr_bottomConstraint.constant);
 
         self.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:1.f alpha:relCompletion];
+
+        self.shimmerView.shimmering = NO;
     }
 
     [superview layoutIfNeeded];

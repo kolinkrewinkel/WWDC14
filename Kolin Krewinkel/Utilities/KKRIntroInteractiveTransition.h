@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@class FBShimmeringView;
 
 @interface KKRIntroInteractiveTransition : UIPercentDrivenInteractiveTransition
 
-+ (instancetype)interactiveTransitionWithNameLabel:(UILabel *)nameLabel titleLabel:(UILabel *)titleLabel backgroundOverlay:(UIView *)backgroundOverlay;
++ (instancetype)interactiveTransitionWithNameLabel:(UILabel *)nameLabel titleLabel:(UILabel *)titleLabel backgroundOverlay:(UIView *)backgroundOverlay shimmerView:(FBShimmeringView *)shimmerView;
 
 - (void)resetTransforms;
 

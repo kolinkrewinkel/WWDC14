@@ -66,6 +66,7 @@
     self.shimmeringContainerView = ({
         FBShimmeringView *view = [[FBShimmeringView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.bounds.size.width, self.view.bounds.size.height)];
         view.shimmering = YES;
+        view.shimmeringSpeed = 350.f;
         view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.view addSubview:view];
 
@@ -133,7 +134,7 @@
     [self addMotionEffectsToView:name withMaxValue:self.view.bounds.size.height/32.f];
     [self addMotionEffectsToView:backgroundView withMaxValue:self.view.bounds.size.height/16.f];
 
-    self.transition = [KKRIntroInteractiveTransition interactiveTransitionWithNameLabel:name titleLabel:title backgroundOverlay:viewOverlay];
+    self.transition = [KKRIntroInteractiveTransition interactiveTransitionWithNameLabel:name titleLabel:title backgroundOverlay:viewOverlay shimmerView:self.shimmeringContainerView];
 }
 
 - (void)addMotionEffectsToView:(UIView *)view withMaxValue:(CGFloat)maxValue
