@@ -25,10 +25,12 @@
 
     [super viewDidLoad];
 
+    self.view.clipsToBounds = YES;
+
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"self-1.png"]];
     backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:backgroundView];
-    [self.view kkr_addContraintsToFillSuperviewToView:backgroundView];
+    [self.view kkr_addContraintsToFillSuperviewToView:backgroundView padding:self.view.bounds.size.height/16.f];
 
     self.blurView = ({
         FXBlurView *blurView = [[FXBlurView alloc] init];
@@ -36,7 +38,7 @@
         blurView.tintColor = [UIColor blackColor];
         blurView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
         [self.view addSubview:blurView];
-        [self.view kkr_addContraintsToFillSuperviewToView:blurView];
+        [self.view kkr_addContraintsToFillSuperviewToView:blurView padding:0.f];
 
         blurView;
     });
@@ -46,7 +48,7 @@
         dimView.alpha = 0.4f;
         dimView.backgroundColor = [UIColor blackColor];
         [self.view insertSubview:dimView belowSubview:self.blurView];
-        [self.view kkr_addContraintsToFillSuperviewToView:dimView];
+        [self.view kkr_addContraintsToFillSuperviewToView:dimView padding:0.f];
 
         dimView;
     });
@@ -54,7 +56,7 @@
     UIView *viewOverlay = [[UIView alloc] init];
     viewOverlay.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.f];
     [self.view addSubview:viewOverlay];
-    [self.view kkr_addContraintsToFillSuperviewToView:viewOverlay];
+    [self.view kkr_addContraintsToFillSuperviewToView:viewOverlay padding:0.f];
 
     NSString *nameText = @"Kolin Krewinkel";
     UIFont *nameFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:48.f];
@@ -109,8 +111,29 @@
 
     [self.view addConstraints:@[titleLeft, titleBottom, nameLeft, nameBottom]];
 
+    [self addMotionEffectsToView:title withMaxValue:self.view.bounds.size.height/32.f];
+    [self addMotionEffectsToView:name withMaxValue:self.view.bounds.size.height/32.f];
+    [self addMotionEffectsToView:backgroundView withMaxValue:self.view.bounds.size.height/16.f];
+
     self.transition = [KKRIntroInteractiveTransition interactiveTransitionWithNameLabel:name titleLabel:title backgroundOverlay:viewOverlay];
 }
+
+- (void)addMotionEffectsToView:(UIView *)view withMaxValue:(CGFloat)maxValue
+{
+    [view addMotionEffect:({
+        UIInterpolatingMotionEffect *effect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+        effect.maximumRelativeValue = @(maxValue);
+        effect.minimumRelativeValue = @(-maxValue);
+
+        effect;
+    })];
+    [view addMotionEffect:({
+        UIInterpolatingMotionEffect *effect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+        effect.maximumRelativeValue = @(maxValue);
+        effect.minimumRelativeValue = @(-maxValue);
+
+        effect;
+    })];}
 
 - (void)viewDidAppear:(BOOL)animated
 {

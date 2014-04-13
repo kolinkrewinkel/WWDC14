@@ -30,15 +30,13 @@
 
     self.scrollView = ({
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-        scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 2.f, 0.f);
         scrollView.pagingEnabled = YES;
         scrollView.showsHorizontalScrollIndicator = NO;
         scrollView.showsVerticalScrollIndicator = NO;
         scrollView.directionalLockEnabled = YES;
-        scrollView.bounces = NO;
-        
+
         [self.view addSubview:scrollView];
-        [self.view kkr_addContraintsToFillSuperviewToView:scrollView];
+        [self.view kkr_addContraintsToFillSuperviewToView:scrollView padding:0.f];
 
         scrollView;
     });
@@ -50,6 +48,13 @@
     });
 
     self.dockedPanelWidth = 96.f;
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f, 0.f);
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -104,6 +109,11 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self updateTransition];
+
+    if (scrollView.contentOffset.x <= 0.f)
+    {
+        self.introViewController.view.frame = CGRectMake(scrollView.contentOffset.x, 0.f, fabsf(scrollView.contentOffset.x) + scrollView.bounds.size.width, scrollView.bounds.size.height);
+    }
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
@@ -119,7 +129,7 @@
     if ([self.introViewController isKindOfClass:[KKRIntroViewController class]])
     {
         KKRIntroViewController *introView = (KKRIntroViewController *)self.introViewController;
-        [introView.transition updateInteractiveTransition:MIN(MAX(progress, 0.f), 1.f)];
+        [introView.transition updateInteractiveTransition:MIN(progress, 1.f)];
     }
 }
 

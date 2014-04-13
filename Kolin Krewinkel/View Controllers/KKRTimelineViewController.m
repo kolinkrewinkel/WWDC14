@@ -35,7 +35,6 @@
     self.view.backgroundColor = [UIColor blackColor];
 
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 2.f * 17.f, 0.f);
     self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.backgroundColor = [UIColor blackColor];
@@ -47,6 +46,13 @@
     [self.scrollView addSubview:view];
 
     self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f * 17.f, 0.f);
 }
 
 #pragma mark - KKRScrollViewParallaxer

@@ -10,7 +10,7 @@
 
 @interface UIView (KKRConstraintHelpers)
 
-- (void)kkr_addContraintsToFillSuperviewToView:(UIView *)view;
+- (void)kkr_addContraintsToFillSuperviewToView:(UIView *)view padding:(CGFloat)padding;
 
 - (void)kkr_setTopConstraint:(NSLayoutConstraint *)constraint;
 - (NSLayoutConstraint *)kkr_topConstraint;
