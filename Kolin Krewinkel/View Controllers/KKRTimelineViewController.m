@@ -82,7 +82,7 @@
     if (index < 17)
     {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.text = [NSString stringWithFormat:@"%u", 1998 + index];
+        label.text = [NSString stringWithFormat:@"%lu", 1998 + index];
         label.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:36.f];
         label.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
 
