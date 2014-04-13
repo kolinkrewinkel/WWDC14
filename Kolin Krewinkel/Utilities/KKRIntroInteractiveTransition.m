@@ -32,9 +32,28 @@
 {
     [super updateInteractiveTransition:percentComplete];
 
-    self.nameLabel.transform = CGAffineTransformMakeRotation((-90.f * percentComplete) * (M_PI / 180.f));
-    self.nameLabel.kkr_leftConstraint.constant = 64.f + (percentComplete * (self.nameLabel.superview.bounds.size.width - (64.f + self.nameLabel.bounds.size.height)));
-    self.nameLabel.textColor = [UIColor colorWithWhite:(-percentComplete + 1.f) alpha:1.f];
+    CGFloat titleCompletion = MIN(percentComplete/.75f, 1.f);
+    CGFloat titleConst = -64.f + ((-64.f * titleCompletion)) - ((self.nameLabel.bounds.size.width) * titleCompletion);
+
+    self.nameLabel.kkr_leftConstraint.constant = 64.f + (MIN(percentComplete/.15f, 1.f) * (self.nameLabel.superview.bounds.size.width - (64.f + self.nameLabel.bounds.size.height)));
+    CGFloat relCompletion = (MIN(MAX((percentComplete - .05f), 0.f)/.1f, 1.f));
+    self.nameLabel.kkr_bottomConstraint.constant = -titleConst - (64.f + (relCompletion * 64.f));
+    self.nameLabel.transform = CGAffineTransformMakeRotation(-90.f * relCompletion * (M_PI / 180.f));
+
+    self.titleLabel.kkr_leftConstraint.constant = 64.f + (titleCompletion * (self.nameLabel.superview.bounds.size.width - (64.f + self.nameLabel.bounds.size.height)));
+    self.titleLabel.transform = CGAffineTransformMakeRotation(-90.f * titleCompletion * (M_PI / 180.f));
+    self.titleLabel.kkr_bottomConstraint.constant = titleConst + (64.f * .5f);
+
+
+
+//    if (percentComplete >= .05f)
+    {
+    }
+//    self.titleLabel.kkr_bottomConstraint.constant = -64.f + (-percentComplete * self.nameLabel.bounds.size.width);
+
+    UIColor *crossColor = [UIColor colorWithWhite:(-percentComplete + 1.f) alpha:1.f];
+    self.nameLabel.textColor = crossColor;
+    self.titleLabel.textColor = crossColor;
 
     self.backgroundOverlay.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:percentComplete];
 

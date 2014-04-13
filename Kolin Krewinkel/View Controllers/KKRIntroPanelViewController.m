@@ -59,7 +59,17 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    if ([self introViewIsCentered])
+    {
+        return [self.introViewController preferredStatusBarStyle];
+    }
+
+    return [self.contentViewController preferredStatusBarStyle];
+}
+
+- (BOOL)introViewIsCentered
+{
+    return self.scrollView.contentOffset.x == 0.f;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -84,7 +94,6 @@
     self.scrollView.contentSize = CGSizeMake(newWidth, 0.f);
 
     CGFloat percentage = (self.scrollView.contentOffset.x/(oldWidth/2));
-    NSLog(@"%f", percentage);
     self.scrollView.contentOffset = CGPointMake(newWidth * percentage, 0.f);
 }
 
@@ -92,22 +101,30 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.x > 0)
-    {
-
-    }
+    [UIView animateWithDuration:0.1 animations:^{
+        [self setNeedsStatusBarAppearanceUpdate];
+    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat progress = scrollView.contentOffset.x/(scrollView.contentSize.width * .5f);
-    if (progress >= 0.f && progress <= 1.f)
+    [self updateTransition];
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    [self updateTransition];
+}
+
+//- (void)scrollview
+
+- (void)updateTransition
+{
+    CGFloat progress = self.scrollView.contentOffset.x/(self.scrollView.contentSize.width * .5f);
+    if ([self.introViewController isKindOfClass:[KKRIntroViewController class]])
     {
-        if ([self.introViewController isKindOfClass:[KKRIntroViewController class]])
-        {
-            KKRIntroViewController *introView = (KKRIntroViewController *)self.introViewController;
-            [introView.transition updateInteractiveTransition:progress];
-        }
+        KKRIntroViewController *introView = (KKRIntroViewController *)self.introViewController;
+        [introView.transition updateInteractiveTransition:MIN(MAX(progress, 0.f), 1.f)];
     }
 }
 
@@ -159,7 +176,6 @@
     }
     else if (index == 1)
     {
-        NSLog(@"%f", 0.5f + (self.view.bounds.size.width - self.dockedPanelWidth)/self.view.bounds.size.width);
         return CGRectMake(self.view.bounds.size.width * (0.5f + (1.f - ((self.view.bounds.size.width - self.dockedPanelWidth)/self.view.bounds.size.width))), 0.f, (self.view.bounds.size.width - self.dockedPanelWidth), self.view.bounds.size.height);
     }
 
