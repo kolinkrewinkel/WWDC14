@@ -12,4 +12,6 @@
 
 + (instancetype)interactiveTransitionWithNameLabel:(UILabel *)nameLabel titleLabel:(UILabel *)titleLabel backgroundOverlay:(UIView *)backgroundOverlay;
 
+- (void)resetTransforms;
+
 @end

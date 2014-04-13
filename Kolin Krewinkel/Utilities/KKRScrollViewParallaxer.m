@@ -82,8 +82,12 @@
         }
         else if (view)
         {
-            [view removeFromSuperview];
+            if ([self.dataSource respondsToSelector:@selector(parallaxer:didRemoveViewAtIndex:)])
+            {
+                [self.dataSource parallaxer:self didRemoveViewAtIndex:idx];
+            }
 
+            [view removeFromSuperview];
             [self.visibleViews removeObjectForKey:@(idx)];
         }
     }

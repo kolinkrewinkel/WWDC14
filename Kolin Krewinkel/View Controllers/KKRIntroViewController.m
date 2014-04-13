@@ -104,7 +104,7 @@
     NSLayoutConstraint *nameLeft = [NSLayoutConstraint constraintWithItem:name attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.f constant:64.f];
     [name kkr_setLeftConstraint:nameLeft];
 
-    NSLayoutConstraint *nameBottom = [NSLayoutConstraint constraintWithItem:name attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:title attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f];
+    NSLayoutConstraint *nameBottom = [NSLayoutConstraint constraintWithItem:name attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:title attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f];
     [name kkr_setBottomConstraint:nameBottom];
 
     [self.view addConstraints:@[titleLeft, titleBottom, nameLeft, nameBottom]];
@@ -122,6 +122,15 @@
     } completion:^(BOOL finished) {
         [self.blurView removeFromSuperview];
     }];
+
+    [self.transition startInteractiveTransition:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+
+    [self.transition resetTransforms];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

@@ -49,12 +49,6 @@
     });
 
     self.dockedPanelWidth = 96.f;
-
-    if (self.introViewController && self.contentViewController)
-    {
-        [self addChildViewController:self.introViewController];
-        [self addChildViewController:self.contentViewController];
-    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -139,10 +133,14 @@
 {
     if (index == 0)
     {
+        [self addChildViewController:self.introViewController];
+
         return self.introViewController.view;
     }
     else if (index == 1)
     {
+        [self addChildViewController:self.contentViewController];
+
         return self.contentViewController.view;
     }
 
@@ -180,6 +178,18 @@
     }
 
     return CGRectZero;
+}
+
+- (void)parallaxer:(KKRScrollViewParallaxer *)parallaxer didRemoveViewAtIndex:(NSUInteger)index
+{
+    if (index == 0)
+    {
+        [self.introViewController removeFromParentViewController];
+    }
+    else if (index == 1)
+    {
+        [self.contentViewController removeFromParentViewController];
+    }
 }
 
 @end
