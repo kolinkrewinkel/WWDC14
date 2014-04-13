@@ -41,6 +41,9 @@
         scrollView;
     });
 
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTapped:)];
+    [self.scrollView addGestureRecognizer:tapGesture];
+
     self.parallaxer = ({
         KKRScrollViewParallaxer *parallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
         
@@ -99,6 +102,29 @@
     }
 
     self.scrollView.frame = CGRectMake(0.f, 0.f, self.view.bounds.size.width, self.view.bounds.size.height);
+}
+
+#pragma mark - UIGestureRecognizer
+
+- (void)scrollViewTapped:(UITapGestureRecognizer *)sender
+{
+    if (![self introViewIsCentered] || ![self.introViewController isKindOfClass:[KKRIntroViewController class]])
+    {
+        return;
+    }
+
+    KKRIntroViewController *introView = (KKRIntroViewController *)self.introViewController;
+    [UIView animateKeyframesWithDuration:0.4 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic | UIViewKeyframeAnimationOptionAllowUserInteraction | UIViewKeyframeAnimationOptionBeginFromCurrentState animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.4f animations:^{
+            [introView.transition updateInteractiveTransition:0.1f];
+        }];
+
+        [UIView addKeyframeWithRelativeStartTime:0.4 relativeDuration:0.6 animations:^{
+            [introView.transition updateInteractiveTransition:0.f];
+        }];
+    } completion:^(BOOL finished) {
+
+    }];
 }
 
 #pragma mark - UIScrollViewDelegate

@@ -47,15 +47,6 @@
 
     UIView *superview = self.nameLabel.superview;
 
-    self.nameLabel.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
-    self.titleLabel.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
-
-    [self.nameLabel.layer setAffineTransform:CGAffineTransformIdentity];
-    [self.titleLabel.layer setAffineTransform:CGAffineTransformIdentity];
-
-    self.nameLabel.kkr_bottomConstraint.constant = 0.f;
-    self.titleLabel.kkr_bottomConstraint.constant = -64.f;
-
     if (percentComplete <= .5f)
     {
         CGFloat relCompletion = percentComplete/.5f;
@@ -70,6 +61,22 @@
         self.titleLabel.kkr_leftConstraint.constant = 64.f - (relCompletion * 64.f * 2.f);
 
         self.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:1.f alpha:0.f];
+
+        self.nameLabel.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
+        self.titleLabel.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
+
+        [self.nameLabel.layer setAffineTransform:CGAffineTransformIdentity];
+        [self.titleLabel.layer setAffineTransform:CGAffineTransformIdentity];
+
+        if (self.nameLabel.kkr_bottomConstraint.constant == self.nameLabel.bounds.size.width)
+        {
+            self.nameLabel.kkr_bottomConstraint.constant = 0.f;
+        }
+
+        if (self.titleLabel.kkr_bottomConstraint.constant == -(self.nameLabel.bounds.size.width + self.titleLabel.bounds.size.width) + self.nameLabel.bounds.size.height)
+        {
+            self.titleLabel.kkr_bottomConstraint.constant = -64.f;
+        }
 
         self.shimmerView.shimmering = YES;
     }
@@ -94,11 +101,6 @@
 
         self.titleLabel.kkr_bottomConstraint.constant = -(self.nameLabel.bounds.size.width + self.titleLabel.bounds.size.width) + self.nameLabel.bounds.size.height;
         self.nameLabel.kkr_bottomConstraint.constant = self.nameLabel.bounds.size.width;
-
-//        NSLog(@"Title: %@", NSStringFromCGRect(self.titleLabel.frame));
-//        NSLog(@"Name:  %@", NSStringFromCGRect(self.nameLabel.frame));
-
-//        NSLog(@"%f", self.nameLabel.kkr_bottomConstraint.constant);
 
         self.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:1.f alpha:relCompletion];
 
