@@ -247,4 +247,9 @@
     }
 }
 
+- (BOOL)parallaxer:(KKRScrollViewParallaxer *)parallaxer canRemoveViewAtIndex:(NSUInteger)index
+{
+    return (index == 1);
+}
+
 @end

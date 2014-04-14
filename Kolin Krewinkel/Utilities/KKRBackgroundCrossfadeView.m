@@ -179,7 +179,6 @@
 
     self.primaryView.alpha = 1.f - percentComplete;
     self.secondaryView.alpha = percentComplete;
-    NSLog(@"Primary view alpha: %f, Secondary view alpha: %f, %@", self.primaryView.alpha, self.secondaryView.alpha, self.secondaryView);
     [self.secondaryView.superview bringSubviewToFront:self.secondaryView];
 
     if (percentComplete >= .99f && self.crossfadeView.nextImage)

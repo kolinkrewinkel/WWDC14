@@ -35,5 +35,6 @@
 
 @optional
 - (void)parallaxer:(KKRScrollViewParallaxer *)parallaxer didRemoveViewAtIndex:(NSUInteger)index;
+- (BOOL)parallaxer:(KKRScrollViewParallaxer *)parallaxer canRemoveViewAtIndex:(NSUInteger)index;
 
 @end

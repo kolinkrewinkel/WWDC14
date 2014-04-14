@@ -100,7 +100,7 @@
     self.yearBackgroundView.frame = CGRectMake(-200.f, 0.f, self.contentView.frame.size.width + 400.f, 64.f + (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? [UIApplication sharedApplication].statusBarFrame.size.height : [UIApplication sharedApplication].statusBarFrame.size.width));
 
     self.scrollView.frame = self.view.bounds;
-    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f * 17.f, 0.f);
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * [self.timelineItems count], 0.f);
     self.scrollView.contentOffset = CGPointMake(prevOffsetX * self.scrollView.contentSize.width, 0.f);
 
     [self.contentView bringSubviewToFront:self.scrollView];
@@ -128,7 +128,7 @@
 
         return label;
     }
-    else if (index < self.timelineItems.count * 2)
+    else if (index <= self.timelineItems.count * 2)
     {
         NSUInteger relIndex = index - self.timelineItems.count;
         KKRTimelineItem *item = self.timelineItems[relIndex];

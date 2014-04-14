@@ -89,6 +89,11 @@
         }
         else if (view)
         {
+            if ([self.dataSource respondsToSelector:@selector(parallaxer:canRemoveViewAtIndex:)] && ![self.dataSource parallaxer:self canRemoveViewAtIndex:idx])
+            {
+                return;
+            }
+
             if ([self.dataSource respondsToSelector:@selector(parallaxer:didRemoveViewAtIndex:)])
             {
                 [self.dataSource parallaxer:self didRemoveViewAtIndex:idx];
