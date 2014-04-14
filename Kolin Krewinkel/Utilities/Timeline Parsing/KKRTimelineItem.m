@@ -64,22 +64,25 @@
 
 - (void)assembleViewHierarchyInContainer:(UIView *)container
 {
-    UIView *newContainer = [[UIView alloc] initWithFrame:container.bounds];
-    newContainer.clipsToBounds = YES;
-    newContainer.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    [container addSubview:newContainer];
-    [newContainer kkr_setHierarchyIdentifier:[self.name lowercaseString]];
+//    UIView *newContainer = [[UIView alloc] initWithFrame:container.bounds];
+//    newContainer.clipsToBounds = YES;
+//    newContainer.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//    [container addSubview:newContainer];
+//    [newContainer kkr_setHierarchyIdentifier:[self.name lowercaseString]];
 
+    [container kkr_setHierarchyIdentifier:[self.name lowercaseString]];
     UIImageView *background = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:self.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:self.backgroundResizingMode]];
     if (self.backgroundColor)
     {
         background.backgroundColor = self.backgroundColor;
     }
 
-    [newContainer addSubview:background];
+    container.clipsToBounds = YES;
+
+    [container addSubview:background];
 
     CGFloat maxValue = 64.f;
-    [newContainer kkr_addContraintsToFillSuperviewToView:background padding:maxValue];
+    [container kkr_addContraintsToFillSuperviewToView:background padding:maxValue];
 
     [background addMotionEffect:({
         UIInterpolatingMotionEffect *effect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
@@ -97,7 +100,7 @@
         effect;
     })];
 
-    [self handleContents:@[self.content] container:newContainer];
+    [self handleContents:@[self.content] container:container];
 }
 
 - (void)handleContents:(NSArray *)contents container:(UIView *)container
@@ -152,6 +155,7 @@
             continue;
         }
 
+        newContainer.translatesAutoresizingMaskIntoConstraints = NO;
         [newContainer kkr_setHierarchyIdentifier:content.identifier];
         [container addSubview:newContainer];
 
@@ -159,9 +163,7 @@
         {
             [container addConstraint:[constraint constraintWithView:newContainer]];
         }
-
-        newContainer.translatesAutoresizingMaskIntoConstraints = NO;
-
+        
         [container updateConstraints];
 
         if (content.childContents && newContainer)

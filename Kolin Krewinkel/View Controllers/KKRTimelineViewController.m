@@ -125,6 +125,7 @@
         label.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:36.f];
         label.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
         label.tag = index;
+        label.textAlignment = NSTextAlignmentRight;
 
         return label;
     }
@@ -146,7 +147,7 @@
 {
     if (index < self.timelineItems.count)
     {
-        return CGRectMake((index * parallaxer.scrollView.frame.size.width) + 2.f, 20.f + 16.f, 400.f, 40.f);
+        return CGRectMake(((index + 1) * parallaxer.scrollView.frame.size.width) - 405.f, 20.f + 16.f, 400.f, 40.f);
     }
     else if (index < self.timelineItems.count * 2)
     {
