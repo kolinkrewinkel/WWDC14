@@ -82,7 +82,7 @@
                 view = [self.dataSource viewAtIndex:idx inParallaxer:self];
                 [self.visibleViews setObject:view forKey:@(idx)];
 
-                [self.scrollView addSubview:view];
+                [self.scrollView insertSubview:view atIndex:1];
             }
 
             view.frame = modifiedRect;

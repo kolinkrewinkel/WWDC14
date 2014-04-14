@@ -77,8 +77,6 @@
         {
             self.titleLabel.kkr_bottomConstraint.constant = -64.f;
         }
-
-        self.shimmerView.shimmering = YES;
     }
     else
     {
@@ -103,9 +101,9 @@
         self.nameLabel.kkr_bottomConstraint.constant = self.nameLabel.bounds.size.width;
 
         self.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:1.f alpha:relCompletion];
-
-        self.shimmerView.shimmering = NO;
     }
+
+    self.shimmerView.shimmering = (percentComplete <= .1f);
 
     [superview layoutIfNeeded];
 }

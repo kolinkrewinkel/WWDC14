@@ -100,7 +100,7 @@
     self.yearBackgroundView.frame = CGRectMake(-200.f, 0.f, self.contentView.frame.size.width + 400.f, 64.f + (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? [UIApplication sharedApplication].statusBarFrame.size.height : [UIApplication sharedApplication].statusBarFrame.size.width));
 
     self.scrollView.frame = self.view.bounds;
-    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * [self.timelineItems count], 0.f);
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * ([self.timelineItems count] + 1), 0.f);
     self.scrollView.contentOffset = CGPointMake(prevOffsetX * self.scrollView.contentSize.width, 0.f);
 
     [self.contentView bringSubviewToFront:self.scrollView];
@@ -110,7 +110,7 @@
 
 - (NSUInteger)numberOfItemsParallaxedInParallaxer:(KKRScrollViewParallaxer *)parallaxer
 {
-    return self.timelineItems.count * 2;
+    return (self.timelineItems.count * 2) + 1;
 }
 
 - (UIView *)viewAtIndex:(NSUInteger)index inParallaxer:(KKRScrollViewParallaxer *)parallaxer
@@ -129,13 +129,46 @@
 
         return label;
     }
-    else if (index <= self.timelineItems.count * 2)
+    else if (index < self.timelineItems.count * 2)
     {
+        self.contentView.backgroundColor = [UIColor whiteColor];
+
         NSUInteger relIndex = index - self.timelineItems.count;
+
+        if (relIndex == 0)
+        {
+            self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
+        }
+        else
+        {
+            self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+        }
+
         KKRTimelineItem *item = self.timelineItems[relIndex];
 
         UIView *view = [[UIView alloc] initWithFrame:[self initialRectForViewAtIndex:relIndex inParallaxer:parallaxer]];
         [item assembleViewHierarchyInContainer:view];
+
+        return view;
+    }
+    else
+    {
+        UIView *view = [[UIView alloc] initWithFrame:[self initialRectForViewAtIndex:index inParallaxer:parallaxer]];
+        view.backgroundColor = [UIColor blackColor];
+        NSString *text = @"Though I've applied to WWDC twice before, I've never attended.\nDoing so would be an unparalled experience I'd be incredibly excited to have.\n\nNot all of my products and projects are listed within the app.\nOthers include Polychromatic, an open-source Xcode plugin for semantic highlighting; Stratus, a file-sharing client with streaming support and custom interface (back in iOS 4.0); and Current, a far-developed but cancelled Core Data-backed task management app. Over time, the scope of the projects I tackle has become ever-more diverse.\n\nI'd love to bring the best of my expertise, experience, and knowledge to WWDC 2014.";
+        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24.f];
+        CGSize size = [text boundingRectWithSize:CGSizeMake(self.view.frame.size.width * .75f, self.view.bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: font} context:nil].size;
+
+        UILabel *closing = [[UILabel alloc] initWithFrame:CGRectIntegral(CGRectMake(self.view.frame.size.width * .125f, ((self.view.frame.size.height * .5f) - (size.height * .5f) - 84.f), self.view.frame.size.width * .75f, size.height))];
+        closing.textAlignment = NSTextAlignmentCenter;
+        closing.numberOfLines = 0;
+        closing.autoresizesSubviews = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        closing.text = text;
+        closing.textColor = [UIColor whiteColor];
+        closing.font = font;
+        [view addSubview:closing];
+
+        self.contentView.backgroundColor = view.backgroundColor;
 
         return view;
     }
@@ -149,7 +182,7 @@
     {
         return CGRectMake(((index + 1) * parallaxer.scrollView.frame.size.width) - 405.f, 20.f + 16.f, 400.f, 40.f);
     }
-    else if (index < self.timelineItems.count * 2)
+    else if (index < (self.timelineItems.count * 2) + 1)
     {
         return CGRectMake(((index - self.timelineItems.count) * parallaxer.scrollView.frame.size.width), 64.f + 20.f, parallaxer.scrollView.frame.size.width, parallaxer.scrollView.frame.size.height - (64.f + 20.f));
     }
@@ -165,6 +198,13 @@
     }
 
     return 1.f;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    [self.scrollView flashScrollIndicators];
+
+    return UIStatusBarStyleDefault;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

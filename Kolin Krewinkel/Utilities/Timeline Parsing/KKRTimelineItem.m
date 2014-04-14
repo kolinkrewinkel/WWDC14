@@ -43,6 +43,10 @@
         {
             item.backgroundColor = [UIColor blackColor];
         }
+        else if ([bgColor isEqualToString:@"dark"])
+        {
+            item.backgroundColor = [UIColor colorWithWhite:0.086f alpha:1.f];
+        }
     }
 
     return item;
@@ -71,10 +75,23 @@
 //    [newContainer kkr_setHierarchyIdentifier:[self.name lowercaseString]];
 
     [container kkr_setHierarchyIdentifier:[self.name lowercaseString]];
-    UIImageView *background = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:self.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:self.backgroundResizingMode]];
+    UIImageView *background = [[UIImageView alloc] initWithImage:nil];
     if (self.backgroundColor)
     {
         background.backgroundColor = self.backgroundColor;
+    }
+    else
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *image = [[UIImage imageNamed:self.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:self.backgroundResizingMode];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (background)
+                {
+                    background.image = image;
+                }
+            });
+        });
     }
 
     container.clipsToBounds = YES;
