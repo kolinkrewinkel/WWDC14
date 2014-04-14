@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
+@class KKRTimelineContent;
 @interface KKRTimelineItem : NSObject
 
 #pragma mark - Designate Initializer 
@@ -20,6 +21,7 @@
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSDate *date;
-@property (nonatomic, strong) NSArray *content;
+@property (nonatomic, strong) KKRTimelineContent *content;
+@property (nonatomic, copy) NSString *background;
 
 @end

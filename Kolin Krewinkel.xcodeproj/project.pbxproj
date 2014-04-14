@@ -28,6 +28,7 @@
 		3393C3AC18FB416000ABAE3B /* KKRTimelineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3393C3AB18FB416000ABAE3B /* KKRTimelineManager.m */; };
 		3393C3AF18FB418F00ABAE3B /* KKRTimelineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3393C3AE18FB418F00ABAE3B /* KKRTimelineItem.m */; };
 		3393C3B218FB46BF00ABAE3B /* KKRTimelineContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3393C3B118FB46BF00ABAE3B /* KKRTimelineContent.m */; };
+		3393C3B818FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3393C3B718FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.m */; };
 		33F3C62418F5BA8B0086326A /* KKRScrollViewParallaxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C62318F5BA8B0086326A /* KKRScrollViewParallaxer.m */; };
 		E9F6C56368DB406ABCE13EEA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7700867476B64958A6C3720E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,8 @@
 		3393C3AE18FB418F00ABAE3B /* KKRTimelineItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRTimelineItem.m; sourceTree = "<group>"; };
 		3393C3B018FB46BF00ABAE3B /* KKRTimelineContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRTimelineContent.h; sourceTree = "<group>"; };
 		3393C3B118FB46BF00ABAE3B /* KKRTimelineContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRTimelineContent.m; sourceTree = "<group>"; };
+		3393C3B618FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRBackgroundCrossfadeView.h; sourceTree = "<group>"; };
+		3393C3B718FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRBackgroundCrossfadeView.m; sourceTree = "<group>"; };
 		33F3C62218F5BA8B0086326A /* KKRScrollViewParallaxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRScrollViewParallaxer.h; sourceTree = "<group>"; };
 		33F3C62318F5BA8B0086326A /* KKRScrollViewParallaxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRScrollViewParallaxer.m; sourceTree = "<group>"; };
 		7700867476B64958A6C3720E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +224,8 @@
 		33F3C5F618F482140086326A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3393C3B618FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.h */,
+				3393C3B718FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.m */,
 				3393C3A918FB416000ABAE3B /* Timeline Parsing */,
 				3367CBDD18F9DD2C00F6E6C5 /* KKRIntroInteractiveTransition.h */,
 				3367CBDE18F9DD2C00F6E6C5 /* KKRIntroInteractiveTransition.m */,
@@ -370,6 +375,7 @@
 				3393C3B218FB46BF00ABAE3B /* KKRTimelineContent.m in Sources */,
 				3367CBDB18F9BFF800F6E6C5 /* UIView+KKRConstraintHelpers.m in Sources */,
 				3393C3AF18FB418F00ABAE3B /* KKRTimelineItem.m in Sources */,
+				3393C3B818FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.m in Sources */,
 				33F3C62418F5BA8B0086326A /* KKRScrollViewParallaxer.m in Sources */,
 				338543D718F46C9B005EA22F /* KKRAppDelegate.m in Sources */,
 				3367CBDF18F9DD2C00F6E6C5 /* KKRIntroInteractiveTransition.m in Sources */,

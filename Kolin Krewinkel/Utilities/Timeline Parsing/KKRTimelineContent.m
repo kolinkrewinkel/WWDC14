@@ -14,7 +14,21 @@
 {
     KKRTimelineContent *content = [[[self class] alloc] init];
     content.type = JSON[@"type"];
-    content.position = [KKRTimelineContentPosition positionWithJSON:JSON[@"position"]];
+    content.position = [KKRTimelineContentPosition positionWithJSON:JSON[@"position"] content:content];
+    content.identifier = JSON[@"identifier"];
+    content.data = JSON[@"data"];
+
+    NSDictionary *fontDict = JSON[@"font"];
+    if (fontDict)
+    {
+        UIFont *font = [UIFont fontWithName:fontDict[@"name"] size:[fontDict[@"size"] floatValue]];
+        if (!font)
+        {
+            font = [UIFont systemFontOfSize:[fontDict[@"size"] floatValue]];
+        }
+
+        content.font = font;
+    }
 
     if ([JSON[@"content"] count])
     {
@@ -31,11 +45,17 @@
 
 @end
 
+@interface KKRTimelineContentPosition ()
+
+@property (nonatomic, weak) KKRTimelineContent *content;
+
+@end
+
 @implementation KKRTimelineContentPosition
 
 #pragma mark -
 
-+ (instancetype)positionWithJSON:(NSArray *)JSON
++ (instancetype)positionWithJSON:(NSArray *)JSON content:(KKRTimelineContent *)content
 {
     KKRTimelineContentPosition *position = [[[self class] alloc] init];
     position.constraints = ({
@@ -46,6 +66,7 @@
 
         constraints;
     });
+    position.content = content;
 
     return position;
 }
@@ -59,6 +80,7 @@
 @property (nonatomic) CGFloat constant;
 @property (nonatomic) NSLayoutAttribute relatedAttribute;
 @property (nonatomic, copy) NSString *viewRelationship;
+@property (nonatomic) NSLayoutRelation relation;
 
 @property (nonatomic, weak) KKRTimelineContentPosition *position;
 
@@ -83,15 +105,31 @@
     }
 
     constraint.position = position;
+    constraint.relation = [KKRTimelineContentPositionConstraint relationFromString:JSON[@"relation"]];
     constraint.viewRelationship = JSON[@"toView"];
 
     return constraint;
 }
 
++ (NSLayoutRelation)relationFromString:(NSString *)string
+{
+    if ([string isEqualToString:@">="])
+    {
+        return NSLayoutRelationGreaterThanOrEqual;
+    }
+    else if ([string isEqualToString:@"<="])
+    {
+        return NSLayoutRelationLessThanOrEqual;
+    }
+
+    return NSLayoutRelationEqual;
+}
+
 - (NSLayoutConstraint *)constraintWithView:(UIView *)view
 {
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view attribute:self.attribute relatedBy:NSLayoutRelationEqual toItem:[view kkr_relatedViewWithIdentifier:self.viewRelationship] attribute:self.relatedAttribute multiplier:self.multiplier constant:self.constant];
     [view kkr_setHierarchyIdentifier:self.position.content.identifier];
+
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view attribute:self.attribute relatedBy:self.relation toItem:[view kkr_relatedViewWithIdentifier:self.viewRelationship] attribute:self.relatedAttribute multiplier:self.multiplier constant:self.constant];
 
     return constraint;
 }

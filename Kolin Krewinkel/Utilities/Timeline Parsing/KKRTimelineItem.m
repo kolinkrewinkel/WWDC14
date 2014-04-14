@@ -17,6 +17,8 @@
     KKRTimelineItem *item = [[[self class] alloc] init];
     item.name = JSON[@"name"];
     item.date = [[self sharedDateFormatter] dateFromString:JSON[@"date"]];
+    item.background = JSON[@"background"];
+    item.content = [KKRTimelineContent contentWithJSON:JSON[@"content"]];
 
     return item;
 }
@@ -37,25 +39,55 @@
 
 - (void)assembleViewHierarchyInContainer:(UIView *)container
 {
-    [container kkr_setHierarchyIdentifier:[self.name lowercaseString]];
-    [self handleContents:self.content container:container];
+    UIView *newContainer = [[UIView alloc] initWithFrame:container.bounds];
+    [container addSubview:newContainer];
+
+    [container kkr_addContraintsToFillSuperviewToView:newContainer padding:0.f];
+    [newContainer kkr_setHierarchyIdentifier:[self.name lowercaseString]];
+
+    [self handleContents:@[self.content] container:newContainer];
 }
 
 - (void)handleContents:(NSArray *)contents container:(UIView *)container
 {
-    for (KKRTimelineContent *content in self.content)
+    for (KKRTimelineContent *content in contents)
     {
         UIView *newContainer = nil;
         if ([content.type isEqualToString:@"container"])
         {
-            newContainer = [[UIView alloc] init];
+            newContainer = [[UIView alloc] initWithFrame:container.bounds];
             newContainer.backgroundColor = [UIColor redColor];
         }
+        else if ([content.type isEqualToString:@"text"])
+        {
+            NSString *text = content.data;
+            UIFont *font = content.font;
+            CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
+
+            UILabel *label = [[UILabel alloc] initWithFrame:(CGRect){CGPointZero, size}];
+            label.text = text;
+            label.font = font;
+            newContainer = label;
+        }
+
+        if (!newContainer)
+        {
+            continue;
+        }
+
+        [newContainer kkr_setHierarchyIdentifier:content.identifier];
+        [container addSubview:newContainer];
 
         for (KKRTimelineContentPositionConstraint *constraint in content.position.constraints)
         {
             [container addConstraint:[constraint constraintWithView:newContainer]];
         }
+
+        NSLog(@"%@", container.constraints);
+
+        newContainer.translatesAutoresizingMaskIntoConstraints = NO;
+
+        [container updateConstraints];
 
         if (content.childContents && newContainer)
         {

@@ -20,6 +20,8 @@
 @property (nonatomic, strong) KKRTimelineContentPosition *position;
 @property (nonatomic, strong) NSArray *childContents;
 @property (nonatomic, strong) NSString *identifier;
+@property (nonatomic, strong) id data;
+@property (nonatomic, strong) UIFont *font;
 
 @end
 
@@ -27,7 +29,7 @@
 
 #pragma mark -
 
-+ (instancetype)positionWithJSON:(NSArray *)JSON;
++ (instancetype)positionWithJSON:(NSArray *)JSON content:(KKRTimelineContent *)content;
 
 #pragma mark - Properties
 

@@ -83,17 +83,7 @@ static char *KKRConstraintLeftIdentifier = "KKRConstraintLeftIdentifier";
 
 - (NSString *)kkr_hierarchyIdentifier
 {
-    NSMutableString *identifier = [[NSMutableString alloc] initWithString:objc_getAssociatedObject(self, "kkr_hierarchyID")];
-
-    UIView *superview = self.superview;
-    while (superview.kkr_hierarchyIdentifier)
-    {
-        [identifier insertString:[NSString stringWithFormat:@"%@_", superview.kkr_hierarchyIdentifier] atIndex:0];
-
-        superview = superview.superview;
-    }
-
-    return identifier;
+    return objc_getAssociatedObject(self, "kkr_hierarchyID");
 }
 
 - (UIView *)kkr_relatedViewWithIdentifier:(NSString *)identifier
@@ -106,10 +96,15 @@ static char *KKRConstraintLeftIdentifier = "KKRConstraintLeftIdentifier";
         uppermost = uppermost.superview;
     }
 
+    NSLog(@"Uppermost found with ID: %@", uppermost.kkr_hierarchyIdentifier);
+
     UIView *view = uppermost;
-    for (NSString *ident in [identifiers subarrayWithRange:NSMakeRange(1, identifier.length - 2)])
+    if (identifiers.count > 1)
     {
-        view = [[view.subviews filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kkr_hierarchyIdentifier == %@", ident]] lastObject];
+        for (NSString *ident in [identifiers subarrayWithRange:NSMakeRange(1, identifiers.count - 1)])
+        {
+            view = [[view.subviews filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kkr_hierarchyIdentifier == %@", ident]] lastObject];        
+        }
     }
 
     return view;
