@@ -17,8 +17,33 @@
     KKRTimelineItem *item = [[[self class] alloc] init];
     item.name = JSON[@"name"];
     item.date = [[self sharedDateFormatter] dateFromString:JSON[@"date"]];
-    item.background = JSON[@"background"];
     item.content = [KKRTimelineContent contentWithJSON:JSON[@"content"]];
+
+
+    if (JSON[@"background"])
+    {
+        item.background = JSON[@"background"];
+        if ([JSON[@"background-mode"] isEqualToString:@"tile"])
+        {
+            item.backgroundResizingMode = UIImageResizingModeTile;
+        }
+        else
+        {
+            item.backgroundResizingMode = UIImageResizingModeStretch;
+        }
+    }
+    else
+    {
+        NSString *bgColor = JSON[@"background-color"];
+        if ([bgColor isEqualToString:@"white"])
+        {
+            item.backgroundColor = [UIColor whiteColor];
+        }
+        else if ([bgColor isEqualToString:@"black"])
+        {
+            item.backgroundColor = [UIColor blackColor];
+        }
+    }
 
     return item;
 }
@@ -40,9 +65,37 @@
 - (void)assembleViewHierarchyInContainer:(UIView *)container
 {
     UIView *newContainer = [[UIView alloc] initWithFrame:container.bounds];
+    newContainer.clipsToBounds = YES;
     newContainer.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [container addSubview:newContainer];
     [newContainer kkr_setHierarchyIdentifier:[self.name lowercaseString]];
+
+    UIImageView *background = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:self.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:self.backgroundResizingMode]];
+    if (self.backgroundColor)
+    {
+        background.backgroundColor = self.backgroundColor;
+    }
+
+    [newContainer addSubview:background];
+
+    CGFloat maxValue = 64.f;
+    [newContainer kkr_addContraintsToFillSuperviewToView:background padding:maxValue];
+
+    [background addMotionEffect:({
+        UIInterpolatingMotionEffect *effect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+        effect.maximumRelativeValue = @(maxValue);
+        effect.minimumRelativeValue = @(-maxValue);
+
+        effect;
+    })];
+
+    [background addMotionEffect:({
+        UIInterpolatingMotionEffect *effect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+        effect.maximumRelativeValue = @(maxValue);
+        effect.minimumRelativeValue = @(-maxValue);
+
+        effect;
+    })];
 
     [self handleContents:@[self.content] container:newContainer];
 }
@@ -64,8 +117,34 @@
 
             UILabel *label = [[UILabel alloc] initWithFrame:(CGRect){CGPointZero, size}];
             label.text = text;
+            if ([content.identifier isEqualToString:@"title"])
+            {
+                label.adjustsFontSizeToFitWidth = YES;
+            }
+            else
+            {
+                label.numberOfLines = 0;
+                label.alpha = 0.7f;
+            }
+
             label.font = font;
+
+            if (content.textColor)
+            {
+                label.textColor = content.textColor;
+            }
+
+            label.textAlignment = content.alignment;
+
             newContainer = label;
+        }
+        else if ([content.type isEqualToString:@"image"])
+        {
+            UIImage *image = [UIImage imageNamed:content.data];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.clipsToBounds = YES;
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            newContainer = imageView;
         }
 
         if (!newContainer)
@@ -80,8 +159,6 @@
         {
             [container addConstraint:[constraint constraintWithView:newContainer]];
         }
-
-        NSLog(@"%@", container.constraints);
 
         newContainer.translatesAutoresizingMaskIntoConstraints = NO;
 

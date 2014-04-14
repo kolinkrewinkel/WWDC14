@@ -22,6 +22,10 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, strong) KKRTimelineContent *content;
+
 @property (nonatomic, copy) NSString *background;
+@property (nonatomic) UIImageResizingMode backgroundResizingMode;
+
+@property (nonatomic, copy) UIColor *backgroundColor;
 
 @end

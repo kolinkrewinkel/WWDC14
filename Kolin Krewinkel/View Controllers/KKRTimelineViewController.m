@@ -14,12 +14,13 @@
 
 @interface KKRTimelineViewController ()
 
-@property (nonatomic, strong) KKRBackgroundCrossfadeView *backgroundView;
+@property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, strong) KKRScrollViewParallaxer *scrollViewParallaxer;
 @property (nonatomic, strong) UIView *yearBackgroundView;
 
 @property (nonatomic, strong) NSArray *timelineItems;
 @property (nonatomic, strong) UIView *contentView;
+@property (nonatomic) NSUInteger currentIndex;
 
 @end
 
@@ -47,7 +48,7 @@
     });
 
     self.backgroundView = ({
-        KKRBackgroundCrossfadeView *backgroundView = [[KKRBackgroundCrossfadeView alloc] init];
+        UIImageView *backgroundView = [[UIImageView alloc] init];
         [self.contentView addSubview:backgroundView];
 
         [self.contentView kkr_addContraintsToFillSuperviewToView:backgroundView padding:64.f];
@@ -80,6 +81,7 @@
         });
 
         self.scrollViewParallaxer = [KKRScrollViewParallaxer parallaxerForScrollView:self.scrollView originalDelegate:self dataSource:self];
+        [self updateBackgroundView];
     }];
 }
 
@@ -108,26 +110,30 @@
 
 - (NSUInteger)numberOfItemsParallaxedInParallaxer:(KKRScrollViewParallaxer *)parallaxer
 {
-    return 18;
+    return self.timelineItems.count * 2;
 }
 
 - (UIView *)viewAtIndex:(NSUInteger)index inParallaxer:(KKRScrollViewParallaxer *)parallaxer
 {
-    if (index < 17)
+    if (index < self.timelineItems.count)
     {
+        KKRTimelineItem *item = self.timelineItems[index];
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:item.date];
+
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.text = [NSString stringWithFormat:@"%u", 1998 + index];
+        label.text = [NSString stringWithFormat:@"%li", (long)[components year]];
         label.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:36.f];
         label.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+        label.tag = index;
 
         return label;
     }
-    else if (index < 18)
+    else if (index < self.timelineItems.count * 2)
     {
-        UIView *view = [[UIView alloc] initWithFrame:[self initialRectForViewAtIndex:index inParallaxer:parallaxer]];
+        NSUInteger relIndex = index - self.timelineItems.count;
+        KKRTimelineItem *item = self.timelineItems[relIndex];
 
-        KKRTimelineItem *item = self.timelineItems[index - 17];
-
+        UIView *view = [[UIView alloc] initWithFrame:[self initialRectForViewAtIndex:relIndex inParallaxer:parallaxer]];
         [item assembleViewHierarchyInContainer:view];
 
         return view;
@@ -138,13 +144,13 @@
 
 - (CGRect)initialRectForViewAtIndex:(NSUInteger)index inParallaxer:(KKRScrollViewParallaxer *)parallaxer
 {
-    if (index < 17)
+    if (index < self.timelineItems.count)
     {
         return CGRectMake((index * parallaxer.scrollView.frame.size.width) + 2.f, 20.f + 16.f, 400.f, 40.f);
     }
-    else if (index < 18)
+    else if (index < self.timelineItems.count * 2)
     {
-        return CGRectMake(((index - 17) * parallaxer.scrollView.frame.size.width), 64.f + 20.f, parallaxer.scrollView.frame.size.width, parallaxer.scrollView.frame.size.height - (64.f + 20.f));
+        return CGRectMake(((index - self.timelineItems.count) * parallaxer.scrollView.frame.size.width), 64.f + 20.f, parallaxer.scrollView.frame.size.width, parallaxer.scrollView.frame.size.height - (64.f + 20.f));
     }
 
     return CGRectZero;
@@ -152,13 +158,9 @@
 
 - (CGFloat)movementFractionalForViewAtIndex:(NSUInteger)index inParallaxer:(KKRScrollViewParallaxer *)parallaxer
 {
-    if (index < 17)
+    if (index < self.timelineItems.count)
     {
-        return 0.5f;
-    }
-    else if (index < 18)
-    {
-        return 1.5f;
+        return 1.f;
     }
 
     return 1.f;
@@ -166,48 +168,110 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat currImageOffset = [self currentIndex] * scrollView.frame.size.width;
-    if ([self currentIndex] <= self.timelineItems.count - 1)
-    {
-        KKRTimelineItem *currItem = self.timelineItems[[self currentIndex]];
-        self.backgroundView.currentImage = [[UIImage imageNamed:[currItem background]] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
-    }
-
-    NSInteger offset = 0;
-
-    if (scrollView.contentOffset.x > currImageOffset && (scrollView.contentOffset.x + scrollView.frame.size.width) < scrollView.contentSize.width)
-    {
-        offset = 1;
-    }
-    else if (scrollView.contentOffset.x < currImageOffset && scrollView.contentOffset.x > 0.f)
-    {
-        offset = -1;
-    }
-    else
-    {
-        return;
-    }
-
-    NSUInteger index = [self currentIndex] + offset;
-    if (index < self.timelineItems.count - 1)
-    {
-        if (offset == 1)
-        {
-            [self.backgroundView.transition updateInteractiveTransition:(scrollView.contentOffset.x - currImageOffset)/scrollView.frame.size.width];
-        }
-        else
-        {
-            [self.backgroundView.transition updateInteractiveTransition:(currImageOffset - scrollView.contentOffset.x)/scrollView.frame.size.width];
-        }
-
-        KKRTimelineItem *item = self.timelineItems[index];
-        self.backgroundView.nextImage = [[UIImage imageNamed:item.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
-    }
+//    [self.contentView bringSubviewToFront:self.yearBackgroundView];
+//
+//    for (int i = 0; i < [self numberOfItemsParallaxedInParallaxer:self.scrollViewParallaxer]; i++) {
+//        UIView *view = [self.scrollView viewWithTag:i];
+//        if (!view)
+//        {
+//            continue;
+//        }
+//
+//        [self.scrollView bringSubviewToFront:view];
+//    }
 }
 
-- (NSUInteger)currentIndex
+- (void)updateBackgroundView
 {
-    return (NSUInteger)roundf(self.scrollView.contentOffset.x/(self.scrollView.contentSize.width - self.scrollView.frame.size.width));
+//    UIScrollView *scrollView = self.scrollView;
+//    CGFloat currImageOffset = [self currentIndex] * scrollView.frame.size.width;
+//    if ([self currentIndex] <= self.timelineItems.count - 1)
+//    {
+//        KKRTimelineItem *currItem = self.timelineItems[[self currentIndex]];
+//        if (currItem.backgroundColor)
+//        {
+//            [self.backgroundView setCurrentColor:currItem.backgroundColor];
+//        }
+//        else
+//        {
+//            self.backgroundView.currentImage = [[UIImage imageNamed:[currItem background]] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:currItem.backgroundResizingMode];
+//        }
+//    }
+//
+//    NSInteger offset = 0;
+//
+//    if (scrollView.contentOffset.x > currImageOffset && (scrollView.contentOffset.x + scrollView.frame.size.width) < scrollView.contentSize.width)
+//    {
+//        offset = 1;
+//    }
+//    else if (scrollView.contentOffset.x < currImageOffset && scrollView.contentOffset.x > 0.f)
+//    {
+//        offset = -1;
+//    }
+//    else
+//    {
+//        return;
+//    }
+//
+//    NSUInteger index = [self currentIndex] + offset;
+//    if (index < self.timelineItems.count)
+//    {
+//        if (offset == 1)
+//        {
+//            [self.backgroundView.transition updateInteractiveTransition:(scrollView.contentOffset.x - currImageOffset)/scrollView.frame.size.width];
+//        }
+//        else
+//        {
+//            [self.backgroundView.transition updateInteractiveTransition:(currImageOffset - scrollView.contentOffset.x)/scrollView.frame.size.width];
+//        }
+//
+//        if (self.scrollView.isDecelerating)
+//        {
+//            return;
+//        }
+//
+//        KKRTimelineItem *item = self.timelineItems[index];
+//
+//        if (item.backgroundColor)
+//        {
+//            [self.backgroundView setNextColor:item.backgroundColor];
+//        }
+//        else
+//        {
+//            if (item.backgroundResizingMode == UIImageResizingModeTile)
+//            {
+//                NSLog(@"setting next image for item: %@", item.name);
+//                self.backgroundView.nextImage = [[UIImage imageNamed:item.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:item.backgroundResizingMode];
+//            }
+//            else
+//            {
+//                UIImage *image = [[UIImage imageNamed:item.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:item.backgroundResizingMode];
+//                self.backgroundView.nextImage = image;
+//            }
+//        }
+//    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    self.currentIndex = self.scrollView.contentOffset.x/self.scrollView.frame.size.width;
+//
+//    CATransition *transition = [CATransition animation];
+//    transition.duration = 0.2;
+//
+//    KKRTimelineItem *item = self.timelineItems[self.currentIndex];
+//    if (item.backgroundColor)
+//    {
+//        self.backgroundView.backgroundColor = item.backgroundColor;
+//        self.backgroundView.image = nil;
+//    }
+//    else
+//    {
+//        self.backgroundView.backgroundColor = [UIColor clearColor];
+//        self.backgroundView.image = [[UIImage imageNamed:item.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:item.backgroundResizingMode];
+//    }
+//
+//    [self.backgroundView.layer addAnimation:transition forKey:nil];
 }
 
 @end

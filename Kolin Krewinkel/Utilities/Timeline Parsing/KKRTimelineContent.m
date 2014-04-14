@@ -27,6 +27,18 @@
             font = [UIFont systemFontOfSize:[fontDict[@"size"] floatValue]];
         }
 
+        NSString *colorString = fontDict[@"color"];
+        if (colorString)
+        {
+            UIColor *color = [UIColor blackColor];
+            if ([colorString isEqualToString:@"white"])
+            {
+                color = [UIColor whiteColor];
+            }
+
+            content.textColor = color;
+        }
+
         content.font = font;
     }
 
@@ -38,6 +50,20 @@
         }];
 
         content.childContents = childContents;
+    }
+
+    NSString *alignment = JSON[@"alignment"];
+    if ([alignment isEqualToString:@"left"] || !alignment)
+    {
+        content.alignment = NSTextAlignmentLeft;
+    }
+    else if ([alignment isEqualToString:@"right"])
+    {
+        content.alignment = NSTextAlignmentRight;
+    }
+    else if ([alignment isEqualToString:@"center"])
+    {
+        content.alignment = NSTextAlignmentCenter;
     }
 
     return content;
@@ -129,7 +155,12 @@
 {
     [view kkr_setHierarchyIdentifier:self.position.content.identifier];
 
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view attribute:self.attribute relatedBy:self.relation toItem:[view kkr_relatedViewWithIdentifier:self.viewRelationship] attribute:self.relatedAttribute multiplier:self.multiplier constant:self.constant];
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view attribute:self.attribute relatedBy:self.relation toItem:self.viewRelationship ? [view kkr_relatedViewWithIdentifier:self.viewRelationship] : nil attribute:self.relatedAttribute multiplier:self.multiplier constant:self.constant];
+
+    if (view.frame.size.width > 0.f && self.constant == -1.f)
+    {
+        constraint.constant = view.frame.size.width;
+    }
 
     return constraint;
 }
@@ -177,6 +208,18 @@
     else if ([string isEqualToString:@"height"])
     {
         return NSLayoutAttributeHeight;
+    }
+    else if ([string isEqualToString:@"leading"])
+    {
+        return NSLayoutAttributeLeading;
+    }
+    else if ([string isEqualToString:@"baseline"])
+    {
+        return NSLayoutAttributeBaseline;
+    }
+    else if ([string isEqualToString:@"trailing"])
+    {
+        return NSLayoutAttributeTrailing;
     }
 
     return NSLayoutAttributeNotAnAttribute;

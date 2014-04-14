@@ -21,7 +21,10 @@
 @property (nonatomic, strong) NSArray *childContents;
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) id data;
+
 @property (nonatomic, strong) UIFont *font;
+@property (nonatomic) NSTextAlignment alignment;
+@property (nonatomic, copy) UIColor *textColor;
 
 @end
 

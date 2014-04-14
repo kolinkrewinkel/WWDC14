@@ -23,5 +23,7 @@
 @property (nonatomic, strong) KKRBackgroundCrossfadeTransition *transition;
 
 - (void)transferImages;
+- (void)setNextColor:(UIColor *)nextColor;
+- (void)setCurrentColor:(UIColor *)color;
 
 @end

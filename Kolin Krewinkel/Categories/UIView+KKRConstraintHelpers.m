@@ -96,8 +96,6 @@ static char *KKRConstraintLeftIdentifier = "KKRConstraintLeftIdentifier";
         uppermost = uppermost.superview;
     }
 
-    NSLog(@"Uppermost found with ID: %@", uppermost.kkr_hierarchyIdentifier);
-
     UIView *view = uppermost;
     if (identifiers.count > 1)
     {
