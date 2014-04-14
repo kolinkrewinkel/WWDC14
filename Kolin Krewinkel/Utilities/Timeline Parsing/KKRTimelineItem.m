@@ -40,10 +40,8 @@
 - (void)assembleViewHierarchyInContainer:(UIView *)container
 {
     UIView *newContainer = [[UIView alloc] initWithFrame:container.bounds];
+    newContainer.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [container addSubview:newContainer];
-
-    [container kkr_addContraintsToFillSuperviewToView:newContainer padding:0.f];
-    container.translatesAutoresizingMaskIntoConstraints = NO;
     [newContainer kkr_setHierarchyIdentifier:[self.name lowercaseString]];
 
     [self handleContents:@[self.content] container:newContainer];
