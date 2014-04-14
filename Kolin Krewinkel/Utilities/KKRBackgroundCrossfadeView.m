@@ -34,7 +34,7 @@
 
         self.imageViewSecondary = ({
             UIImageView *imageView = [[UIImageView alloc] init];
-            [self addSubview:imageView];
+            [self insertSubview:imageView aboveSubview:self.imageViewPrimary];
 
             [self kkr_addContraintsToFillSuperviewToView:imageView padding:maxValue];
 
@@ -57,7 +57,7 @@
             effect;
         })];
 
-        self.transition = [KKRBackgroundCrossfadeTransition transitionWithPrimaryView:self.imageViewPrimary secondaryView:self.imageViewSecondary];
+        self.transition = [KKRBackgroundCrossfadeTransition transitionWithPrimaryView:self.imageViewPrimary secondaryView:self.imageViewSecondary crossfadeView:self];
     }
 
     return self;
@@ -97,17 +97,33 @@
 @property (nonatomic, weak) UIView *primaryView;
 @property (nonatomic, weak) UIView *secondaryView;
 
+@property (nonatomic, weak) KKRBackgroundCrossfadeView *crossfadeView;
+
 @end
 
 @implementation KKRBackgroundCrossfadeTransition
 
-+ (instancetype)transitionWithPrimaryView:(UIView *)primaryView secondaryView:(UIView *)secondaryView
++ (instancetype)transitionWithPrimaryView:(UIView *)primaryView secondaryView:(UIView *)secondaryView crossfadeView:(KKRBackgroundCrossfadeView *)crossfadeView
 {
     KKRBackgroundCrossfadeTransition *transition = [[[self class] alloc] init];
     transition.primaryView = primaryView;
     transition.secondaryView = secondaryView;
+    transition.crossfadeView = crossfadeView;
 
     return transition;
+}
+
+- (void)updateInteractiveTransition:(CGFloat)percentComplete
+{
+    [super updateInteractiveTransition:percentComplete];
+
+    self.primaryView.alpha = 1.f - percentComplete;
+    self.secondaryView.alpha = percentComplete;
+
+    if (percentComplete >= 1.f && self.crossfadeView.nextImage)
+    {
+        [self.crossfadeView transferImages];
+    }
 }
 
 @end

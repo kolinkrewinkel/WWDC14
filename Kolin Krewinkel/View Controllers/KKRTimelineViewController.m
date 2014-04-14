@@ -35,11 +35,16 @@
 
 - (void)setUpInterface
 {
+    UIView *contentView = [[UIView alloc] initWithFrame:self.view.bounds];
+    contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:contentView];
+    [self.view kkr_addContraintsToFillSuperviewToView:contentView padding:0.f];
+
     self.backgroundView = ({
         KKRBackgroundCrossfadeView *backgroundView = [[KKRBackgroundCrossfadeView alloc] init];
-        [self.view addSubview:backgroundView];
+        [contentView addSubview:backgroundView];
 
-        [self.view kkr_addContraintsToFillSuperviewToView:backgroundView padding:64.f];
+        [contentView kkr_addContraintsToFillSuperviewToView:backgroundView padding:64.f];
 
         backgroundView;
     });
@@ -51,10 +56,10 @@
         self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
         self.scrollView.pagingEnabled = YES;
         self.scrollView.showsHorizontalScrollIndicator = YES;
-        self.scrollView.autoresizesSubviews = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.scrollView.backgroundColor = [UIColor clearColor];
 
-        [self.view addSubview:self.scrollView];
+        [contentView addSubview:self.scrollView];
+        [contentView kkr_addContraintsToFillSuperviewToView:self.scrollView padding:0.f];
 
         self.yearBackgroundView = ({
             UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
@@ -155,6 +160,13 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat currImageOffset = [self currentIndex] * scrollView.frame.size.width;
+    if ([self currentIndex] <= self.timelineItems.count - 1)
+    {
+        KKRTimelineItem *currItem = self.timelineItems[[self currentIndex]];
+        self.backgroundView.currentImage = [[UIImage imageNamed:[currItem background]] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
+    }
+
+
 
     NSInteger offset = 0;
 
@@ -171,8 +183,21 @@
         return;
     }
 
-    KKRTimelineItem *item = self.timelineItems[[self currentIndex] + offset];
-    self.backgroundView.nextImage = [UIImage imageNamed:item.background];
+    NSUInteger index = [self currentIndex] + offset;
+    if (index < self.timelineItems.count - 1)
+    {
+        if (offset == 1)
+        {
+            [self.backgroundView.transition updateInteractiveTransition:(scrollView.contentOffset.x - currImageOffset)/scrollView.frame.size.width];
+        }
+        else
+        {
+            [self.backgroundView.transition updateInteractiveTransition:(currImageOffset - scrollView.contentOffset.x)/scrollView.frame.size.width];
+        }
+
+        KKRTimelineItem *item = self.timelineItems[index];
+        self.backgroundView.nextImage = [[UIImage imageNamed:item.background] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
+    }
 }
 
 - (NSUInteger)currentIndex

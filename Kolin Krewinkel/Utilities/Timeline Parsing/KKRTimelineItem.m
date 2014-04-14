@@ -43,6 +43,7 @@
     [container addSubview:newContainer];
 
     [container kkr_addContraintsToFillSuperviewToView:newContainer padding:0.f];
+    container.translatesAutoresizingMaskIntoConstraints = NO;
     [newContainer kkr_setHierarchyIdentifier:[self.name lowercaseString]];
 
     [self handleContents:@[self.content] container:newContainer];
@@ -56,7 +57,6 @@
         if ([content.type isEqualToString:@"container"])
         {
             newContainer = [[UIView alloc] initWithFrame:container.bounds];
-            newContainer.backgroundColor = [UIColor redColor];
         }
         else if ([content.type isEqualToString:@"text"])
         {

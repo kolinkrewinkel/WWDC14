@@ -6,9 +6,12 @@
 //  Copyright (c) 2014 Kolin Krewinkel. All rights reserved.
 //
 
+@class KKRBackgroundCrossfadeView;
 @interface KKRBackgroundCrossfadeTransition : UIPercentDrivenInteractiveTransition
 
-+ (instancetype)transitionWithPrimaryView:(UIView *)primaryView secondaryView:(UIView *)secondaryView;
++ (instancetype)transitionWithPrimaryView:(UIView *)primaryView secondaryView:(UIView *)secondaryView crossfadeView:(KKRBackgroundCrossfadeView *)crossfadeView;
+
+@property (nonatomic, weak, readonly) KKRBackgroundCrossfadeView *crossfadeView;
 
 @end
 
