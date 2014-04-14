@@ -97,8 +97,6 @@
 
     self.yearBackgroundView.frame = CGRectMake(-200.f, 0.f, self.contentView.frame.size.width + 400.f, 64.f + (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? [UIApplication sharedApplication].statusBarFrame.size.height : [UIApplication sharedApplication].statusBarFrame.size.width));
 
-    NSLog(@"\n%@\n%@\n%@", NSStringFromCGRect(self.yearBackgroundView.frame), NSStringFromCGRect(self.backgroundView.frame), NSStringFromCGRect(self.contentView.frame));
-
     self.scrollView.frame = self.view.bounds;
     self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2.f * 17.f, 0.f);
     self.scrollView.contentOffset = CGPointMake(prevOffsetX * self.scrollView.contentSize.width, 0.f);
