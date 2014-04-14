@@ -155,18 +155,19 @@
     {
         UIView *view = [[UIView alloc] initWithFrame:[self initialRectForViewAtIndex:index inParallaxer:parallaxer]];
         view.backgroundColor = [UIColor blackColor];
-        NSString *text = @"Though I've applied to WWDC twice before, I've never attended.\nDoing so would be an unparalled experience I'd be incredibly excited to have.\n\nNot all of my products and projects are listed within the app.\nOthers include Polychromatic, an open-source Xcode plugin for semantic highlighting; Stratus, a file-sharing client with streaming support and custom interface (back in iOS 4.0); and Current, a far-developed but cancelled Core Data-backed task management app. Over time, the scope of the projects I tackle has become ever-more diverse.\n\nI'd love to bring the best of my expertise, experience, and knowledge to WWDC 2014.";
-        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24.f];
+        NSString *text = @"Though I've applied to WWDC twice before, I've never attended.\nDoing so would be an unparalled experience I'd be incredibly excited to have.\n\nNot all of my products and projects are listed within the app.\nOthers include Polychromatic, an open-source Xcode plugin for semantic highlighting; Stratus, a file-sharing client with streaming support and custom interface (back in iOS 4.0); and Current, a far-developed but cancelled Core Data-backed task management app. Over time, the scope of the projects I tackle has become ever-more diverse.";
+        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:24.f];
         CGSize size = [text boundingRectWithSize:CGSizeMake(self.view.frame.size.width * .75f, self.view.bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: font} context:nil].size;
 
         UILabel *closing = [[UILabel alloc] initWithFrame:CGRectIntegral(CGRectMake(self.view.frame.size.width * .125f, ((self.view.frame.size.height * .5f) - (size.height * .5f) - 84.f), self.view.frame.size.width * .75f, size.height))];
         closing.textAlignment = NSTextAlignmentCenter;
         closing.numberOfLines = 0;
-        closing.autoresizesSubviews = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         closing.text = text;
         closing.textColor = [UIColor whiteColor];
         closing.font = font;
         [view addSubview:closing];
+
+        [view kkr_addContraintsToFillSuperviewToView:closing padding:-80.f];
 
         self.contentView.backgroundColor = view.backgroundColor;
 
