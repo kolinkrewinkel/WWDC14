@@ -29,6 +29,7 @@
 		3393C3AF18FB418F00ABAE3B /* KKRTimelineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3393C3AE18FB418F00ABAE3B /* KKRTimelineItem.m */; };
 		3393C3B218FB46BF00ABAE3B /* KKRTimelineContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3393C3B118FB46BF00ABAE3B /* KKRTimelineContent.m */; };
 		3393C3B818FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3393C3B718FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.m */; };
+		3393C3BD18FBB71900ABAE3B /* Homestead-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3393C3BC18FBB71900ABAE3B /* Homestead-Regular.ttf */; };
 		33F3C62418F5BA8B0086326A /* KKRScrollViewParallaxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C62318F5BA8B0086326A /* KKRScrollViewParallaxer.m */; };
 		E9F6C56368DB406ABCE13EEA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7700867476B64958A6C3720E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		3393C3B118FB46BF00ABAE3B /* KKRTimelineContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRTimelineContent.m; sourceTree = "<group>"; };
 		3393C3B618FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRBackgroundCrossfadeView.h; sourceTree = "<group>"; };
 		3393C3B718FBAA2000ABAE3B /* KKRBackgroundCrossfadeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRBackgroundCrossfadeView.m; sourceTree = "<group>"; };
+		3393C3BC18FBB71900ABAE3B /* Homestead-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Homestead-Regular.ttf"; sourceTree = "<group>"; };
 		33F3C62218F5BA8B0086326A /* KKRScrollViewParallaxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRScrollViewParallaxer.h; sourceTree = "<group>"; };
 		33F3C62318F5BA8B0086326A /* KKRScrollViewParallaxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRScrollViewParallaxer.m; sourceTree = "<group>"; };
 		7700867476B64958A6C3720E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,11 +124,11 @@
 		338543B818F46C9B005EA22F = {
 			isa = PBXGroup;
 			children = (
+				B1783F5F297B4B2B83A0AC75 /* Pods.xcconfig */,
+				338543C318F46C9B005EA22F /* Frameworks */,
 				338543CC18F46C9B005EA22F /* Kolin Krewinkel */,
 				338543E918F46C9B005EA22F /* Kolin KrewinkelTests */,
-				338543C318F46C9B005EA22F /* Frameworks */,
 				338543C218F46C9B005EA22F /* Products */,
-				B1783F5F297B4B2B83A0AC75 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,13 +156,14 @@
 		338543CC18F46C9B005EA22F /* Kolin Krewinkel */ = {
 			isa = PBXGroup;
 			children = (
-				3367CBDC18F9BFFB00F6E6C5 /* Categories */,
-				33F3C5F618F482140086326A /* Utilities */,
-				338543FC18F46D0F005EA22F /* View Controllers */,
 				338543D518F46C9B005EA22F /* KKRAppDelegate.h */,
 				338543D618F46C9B005EA22F /* KKRAppDelegate.m */,
 				338543DB18F46C9B005EA22F /* Images.xcassets */,
+				3367CBDC18F9BFFB00F6E6C5 /* Categories */,
+				3393C3BB18FBB71900ABAE3B /* Resources */,
 				338543CD18F46C9B005EA22F /* Supporting Files */,
+				33F3C5F618F482140086326A /* Utilities */,
+				338543FC18F46D0F005EA22F /* View Controllers */,
 			);
 			path = "Kolin Krewinkel";
 			sourceTree = "<group>";
@@ -219,6 +222,14 @@
 				3393C3AB18FB416000ABAE3B /* KKRTimelineManager.m */,
 			);
 			path = "Timeline Parsing";
+			sourceTree = "<group>";
+		};
+		3393C3BB18FBB71900ABAE3B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3393C3BC18FBB71900ABAE3B /* Homestead-Regular.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		33F3C5F618F482140086326A /* Utilities */ = {
@@ -315,6 +326,7 @@
 			files = (
 				338543D118F46C9B005EA22F /* InfoPlist.strings in Resources */,
 				338543DC18F46C9B005EA22F /* Images.xcassets in Resources */,
+				3393C3BD18FBB71900ABAE3B /* Homestead-Regular.ttf in Resources */,
 				3393C3A818FB3DFC00ABAE3B /* content.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
