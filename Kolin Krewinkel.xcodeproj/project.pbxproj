@@ -71,7 +71,7 @@
 		338543EF18F46C9B005EA22F /* Kolin_KrewinkelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kolin_KrewinkelTests.m; sourceTree = "<group>"; };
 		338543F918F46D0B005EA22F /* KKRTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKRTimelineViewController.h; path = "View Controllers/KKRTimelineViewController.h"; sourceTree = "<group>"; };
 		338543FA18F46D0B005EA22F /* KKRTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKRTimelineViewController.m; path = "View Controllers/KKRTimelineViewController.m"; sourceTree = "<group>"; };
-		3393C3A718FB3DFC00ABAE3B /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = content.json; path = ../../../Desktop/content.json; sourceTree = "<group>"; };
+		3393C3A718FB3DFC00ABAE3B /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		3393C3AA18FB416000ABAE3B /* KKRTimelineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRTimelineManager.h; sourceTree = "<group>"; };
 		3393C3AB18FB416000ABAE3B /* KKRTimelineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRTimelineManager.m; sourceTree = "<group>"; };
 		3393C3AD18FB418F00ABAE3B /* KKRTimelineItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRTimelineItem.h; sourceTree = "<group>"; };
@@ -171,7 +171,6 @@
 		338543CD18F46C9B005EA22F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3393C3A718FB3DFC00ABAE3B /* content.json */,
 				338543CE18F46C9B005EA22F /* Kolin Krewinkel-Info.plist */,
 				338543CF18F46C9B005EA22F /* InfoPlist.strings */,
 				338543D218F46C9B005EA22F /* main.m */,
@@ -227,6 +226,7 @@
 		3393C3BB18FBB71900ABAE3B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3393C3A718FB3DFC00ABAE3B /* content.json */,
 				3393C3BC18FBB71900ABAE3B /* Homestead-Regular.ttf */,
 			);
 			path = Resources;
@@ -296,6 +296,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Kolin Krewinkel";
 				TargetAttributes = {
+					338543C018F46C9B005EA22F = {
+						DevelopmentTeam = VK92B7QQRD;
+					};
 					338543E018F46C9B005EA22F = {
 						TestTargetID = 338543C018F46C9B005EA22F;
 					};
@@ -512,10 +515,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kolin Krewinkel/Kolin Krewinkel-Prefix.pch";
 				INFOPLIST_FILE = "Kolin Krewinkel/Kolin Krewinkel-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -527,10 +533,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kolin Krewinkel/Kolin Krewinkel-Prefix.pch";
 				INFOPLIST_FILE = "Kolin Krewinkel/Kolin Krewinkel-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

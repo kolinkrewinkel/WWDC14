@@ -1,0 +1,580 @@
+[
+	{ 
+		"name": "App Store",
+		"date": "2008-06",
+		"background-color": "white",
+		"content": {
+			"type": "container",
+			"identifier": "container",
+			"position": [			
+				{
+					"attribute": "bottom", 
+					"multiplier": 0.9,
+					"constant": 20,
+					"toView": "app store",
+					"rel_attribute": "bottom",
+					"relation": "="
+				},
+				{
+					"attribute": "right", 
+					"multiplier": 0.9,
+					"toView": "app store",
+					"rel_attribute": "right",
+					"relation": "="
+				},
+				{
+					"attribute": "midX",
+					"multiplier": 1.0,
+					"toView": "app store",
+					"rel_attribute": "midX",
+					"relation": "="
+				},
+				{
+					"attribute": "midY",
+					"multiplier": 1.0,
+					"toView": "app store",
+					"rel_attribute": "midY",
+					"relation": "="
+				}
+			],			
+			"content": [			
+				{
+					"type": "image",
+					"data": "iphone-3g",
+					"identifier": "phone-image",					
+					"position": [
+						{
+							"attribute": "left",					
+							"multiplier": 1,
+							"constant": 0,
+							"toView": "app store_container",
+							"rel_attribute": "left",
+							"relation": "="
+						},
+						{
+							"attribute": "width",					
+							"multiplier": 0,
+							"constant": 300,
+							"toView": "app store_container",
+							"rel_attribute": "width",
+							"relation": "="
+						},
+						{
+							"attribute": "height",					
+							"multiplier": 0,
+							"constant": 400,
+							"toView": "app store_container",
+							"rel_attribute": "height",
+							"relation": "="
+						},
+						{
+							"attribute": "midY",					
+							"multiplier": 1,
+							"constant": 0,
+							"toView": "app store_container",
+							"rel_attribute": "midY",
+							"relation": "="
+						}
+					]
+				},
+				{
+					"type": "text",
+					"data": "The App Store",
+					"identifier": "title",
+					"alignment": "left",
+					"font": {
+						"name": "HelveticaNeue",
+						"size": "32"
+					},
+					"position": [
+						{
+							"attribute": "left",					
+							"multiplier": 1,
+							"constant": 0,
+							"toView": "app store_container_phone-image",
+							"rel_attribute": "right",
+							"relation": "="		
+						},
+						{
+							"attribute": "trailing",					
+							"multiplier": 1,
+							"constant": 0,
+							"toView": "app store_container",
+							"rel_attribute": "right",
+							"relation": "="
+						},
+						{
+							"attribute": "top",					
+							"multiplier": 1.0,
+							"constant": 42,
+							"toView": "app store_container_phone-image",
+							"rel_attribute": "top",
+							"relation": "="
+						}
+					]
+				},
+				{
+					"type": "text",
+					"data": "When I purchased my first iPhone—the iPhone 3G—the App Store was still relatively young.\n\nHowever, beautiful, immersive apps dominated the Store and ignited my interest in software development. Seeing the potential to build something used by thousands—millions, even—I began learning iPhone OS development. It wasn't without much frustration in the beginning, but eventually, I came to enjoy it.\n\nWith it came the power to build massive power into the palm of anyone's hand. It changed the game not only for the world, but for me.",
+					"identifier": "description",
+					"alignment": "left",
+					"font": {
+						"name": "HelveticaNeue-Light",
+						"size": "16"
+					},
+					"position": [
+						{
+							"attribute": "left",					
+							"multiplier": 1,
+							"constant": 0,
+							"toView": "app store_container_phone-image",
+							"rel_attribute": "right",
+							"relation": "="		
+						},
+						{
+							"attribute": "trailing",					
+							"multiplier": 1,
+							"constant": 0,
+							"toView": "app store_container",
+							"rel_attribute": "right",
+							"relation": "="
+						},
+						{
+							"attribute": "top",					
+							"multiplier": 1.0,
+							"constant": 42,
+							"toView": "app store_container_title",
+							"rel_attribute": "top",
+							"relation": "="
+						}
+					]
+				}			
+			]
+		}
+	},
+	{ 
+		"name": "KKGridView",
+		"date": "2011-07",
+		"background": "kkgridview-blueprint",
+		"background-mode": "tile",
+		"content": {
+			"type": "container",
+			"identifier": "container",
+			"position": [
+				
+				{
+					"attribute": "bottom", 
+					"multiplier": 0.8,
+					"constant": 20,
+					"toView": "kkgridview",
+					"rel_attribute": "bottom",
+					"relation": "="
+				},
+				{
+					"attribute": "right", 
+					"multiplier": 0.9,
+					"toView": "kkgridview",
+					"rel_attribute": "right",
+					"relation": "="
+				},
+				{
+					"attribute": "midX",
+					"multiplier": 1.0,
+					"toView": "kkgridview",
+					"rel_attribute": "midX",
+					"relation": "="
+				},
+				{
+					"attribute": "midY",
+					"multiplier": 1.0,
+					"toView": "kkgridview",
+					"rel_attribute": "midY",
+					"relation": "="
+				}
+			],			
+			"content": [
+			{
+					"type": "image",
+					"data": "kkgridview",
+					"identifier": "image",
+					"position": [
+						{
+							"attribute": "midX",					
+							"multiplier": 1.0,
+							"toView": "kkgridview_container",
+							"rel_attribute": "midX",
+							"relation": "="
+						},
+												{
+							"attribute": "width",					
+							"multiplier": 0,
+							"constant": 218,							
+							"rel_attribute": "width",
+							"relation": "="
+						},
+						{
+							"attribute": "height",					
+							"multiplier": 0,
+							"constant": 400,							
+							"rel_attribute": "height",
+							"relation": "="
+						},
+						{
+							"attribute": "midY",					
+							"multiplier": 1.0,
+							"constant": 0,
+							"toView": "kkgridview_container",
+							"rel_attribute": "midY",
+							"relation": "="
+						}
+					]
+				},
+				{
+					"type": "text",
+					"data": "KKGridView",
+					"identifier": "title",
+					"font": {
+						"name": "Homestead",
+						"size": "48",
+						"color": "white"
+					},
+					"position": [
+						{
+							"attribute": "midX",					
+							"multiplier": 1.0,
+							"toView": "kkgridview_container",
+							"rel_attribute": "midX",
+							"relation": "="
+						},
+						{
+							"attribute": "bottom",
+							"multiplier": 1.0,
+							"constant": 0,
+							"toView": "kkgridview_container_image",
+							"rel_attribute": "top",
+							"relation": "="
+						}
+					]
+				},
+				
+				{
+					"type": "text",
+					"data": "60 FPS collection views before the era of UICollectionView.\n\nAs a first venture into open-source, KKGridView proved to be an extraordinary success and enlightened me to the benefits of collaboration with others.",
+					"identifier": "description",
+					"alignment": "center",
+					"font": {
+						"name": "HelveticaNeue-Light",
+						"size": "18",
+						"color": "white"
+					},
+					"position": [
+						{
+							"attribute": "midX",					
+							"multiplier": 1.0,
+							"toView": "kkgridview_container",
+							"rel_attribute": "midX",
+							"relation": "="
+						},
+						{
+							"attribute": "top",					
+							"multiplier": 1.0,
+							"constant": 8,
+							"toView": "kkgridview_container_image",
+							"rel_attribute": "bottom",
+							"relation": "="
+						},
+						{
+							"attribute": "width",					
+							"multiplier": 1.0,
+							"toView": "kkgridview_container",
+							"rel_attribute": "width",
+							"relation": "="
+						}
+					]
+				}		
+			]
+		}
+	},
+	{ 
+		"name": "Stream",
+		"date": "2012-08",
+		"background-color": "dark",
+		"content": {
+			"type": "container",
+			"identifier": "container",
+			"position": [				
+				{
+					"attribute": "bottom", 
+					"multiplier": 0.8,
+					"constant": 20,
+					"toView": "stream",
+					"rel_attribute": "bottom",
+					"relation": "="
+				},
+				{
+					"attribute": "right", 
+					"multiplier": 0.9,
+					"toView": "stream",
+					"rel_attribute": "right",
+					"relation": "="
+				},
+				{
+					"attribute": "midX",
+					"multiplier": 1.0,
+					"toView": "stream",
+					"rel_attribute": "midX",
+					"relation": "="
+				},
+				{
+					"attribute": "midY",
+					"multiplier": 1.0,
+					"toView": "stream",
+					"rel_attribute": "midY",
+					"relation": "="
+				}
+			],			
+			"content": [
+			{
+					"type": "image",
+					"data": "stream-hero",
+					"identifier": "image",
+					"position": [
+						{
+							"attribute": "right",					
+							"multiplier": 1.4,
+							"toView": "stream_container",
+							"rel_attribute": "right",
+							"relation": "="
+						},
+						{
+							"attribute": "width",					
+							"multiplier": 0,
+							"constant": 475,							
+							"rel_attribute": "width",
+							"relation": "="
+						},
+						{
+							"attribute": "height",					
+							"multiplier": 0,
+							"constant": 1072,							
+							"rel_attribute": "height",
+							"relation": "="
+						},
+						{
+							"attribute": "midY",					
+							"multiplier": 1.0,
+							"constant": 0,
+							"toView": "stream_container",
+							"rel_attribute": "midY",
+							"relation": "="
+						}
+					]
+				},
+				{
+					"type": "text",
+					"data": "Stream for iOS",
+					"identifier": "title",
+					"font": {
+						"name": "HelveticaNeue",
+						"size": "36",
+						"color": "white"
+					},
+					"position": [
+						{
+							"attribute": "right",					
+							"multiplier": 0.8,
+							"toView": "stream_container_image",
+							"rel_attribute": "left",
+							"relation": "="
+						},
+						{
+							"attribute": "top",
+							"multiplier": 1.1,
+							"constant": 0,
+							"toView": "stream_container",
+							"rel_attribute": "top",
+							"relation": "="
+						}
+					]
+				},
+				{
+					"type": "text",
+					"data": "A beautifully-designed, persistent, high-performance, and fully-featured client for the social network App.net.\n\nTouting fantastic design work by fellow-Facebook intern Christian Dalonzo, Stream brings all the features and interactions socialites have come to expect.\n\nWith a Core Data backbone and VoiceOver support, Stream is a true showcase of Apple's developer tools.",
+					"identifier": "description",
+					"alignment": "right",
+					"font": {
+						"name": "HelveticaNeue-Light",
+						"size": "18",
+						"color": "white"
+					},
+					"position": [
+						{
+							"attribute": "width",					
+							"multiplier": 0.35,
+							"constant": 0,
+							"toView": "stream_container",
+							"rel_attribute": "width",
+							"relation": "="
+						},
+						{
+							"attribute": "top",					
+							"multiplier": 1.0,
+							"constant": 8,
+							"toView": "stream_container_title",
+							"rel_attribute": "bottom",
+							"relation": "="
+						},
+						{
+							"attribute": "right",					
+							"multiplier": 1,
+							"toView": "stream_container_title",
+							"rel_attribute": "right",
+							"relation": "="
+						}
+					]
+				}	
+			]
+		}
+	},
+	{ 
+		"name": "Facebook",
+		"date": "2014-06",
+		"background": "facebook-background",
+		"background-mode": "scale",
+		"content": {
+			"type": "container",
+			"identifier": "container",
+			"position": [
+				
+				{
+					"attribute": "bottom", 
+					"multiplier": 0.8,
+					"constant": 20,
+					"toView": "facebook",
+					"rel_attribute": "bottom",
+					"relation": "="
+				},
+				{
+					"attribute": "right", 
+					"multiplier": 0.9,
+					"toView": "facebook",
+					"rel_attribute": "right",
+					"relation": "="
+				},
+				{
+					"attribute": "midX",
+					"multiplier": 1.0,
+					"toView": "facebook",
+					"rel_attribute": "midX",
+					"relation": "="
+				},
+				{
+					"attribute": "midY",
+					"multiplier": 1.0,
+					"toView": "facebook",
+					"rel_attribute": "midY",
+					"relation": "="
+				}
+			],			
+			"content": [
+				{
+					"type": "image",
+					"data": "facebook-logo",
+					"identifier": "image",					
+					"position": [
+						{
+							"attribute": "left",					
+							"multiplier": 1.4,
+							"toView": "facebook_container",
+							"rel_attribute": "left",
+							"relation": "="
+						},
+												{
+							"attribute": "width",					
+							"multiplier": 0,
+							"constant": 114,							
+							"rel_attribute": "width",
+							"relation": "="
+						},
+						{
+							"attribute": "height",					
+							"multiplier": 0,
+							"constant": 114,							
+							"rel_attribute": "height",
+							"relation": "="
+						},
+						{
+							"attribute": "midY",					
+							"multiplier": 0.5,
+							"constant": 0,
+							"toView": "facebook_container",
+							"rel_attribute": "midY",
+							"relation": "="
+						}
+					]
+				},
+				{
+					"type": "text",
+					"data": "Facebook",
+					"identifier": "title",
+					"font": {
+						"size": "36",
+						"color": "white"
+					},
+					"position": [
+						{
+							"attribute": "left",					
+							"multiplier": 1.1,							
+							"toView": "facebook_container_image",
+							"rel_attribute": "left",
+							"relation": "="
+						},
+						{
+							"attribute": "top",
+							"multiplier": 1.0,
+							"constant": 16,
+							"toView": "facebook_container_image",
+							"rel_attribute": "bottom",
+							"relation": "="
+						}
+					]
+				},
+				{
+					"type": "text",
+					"data": "Joining some of the best developers in the world, I'll be interning at Facebook in the summer of 2014.\n\nAfter discovering my work on GitHub, a \"social coding\" site, Facebook reached out to me. After a series of interviews, I was invited me to their team.\n\nJuggling the end of sophomore year and a class-related summer program (potentially even WWDC), I'll join the fast-moving community at Facebook Headquarters, Menlo Park.\n\nHopefully I won't break too many things in the process.",
+					"identifier": "description",
+					"alignment": "left",
+					"font": {
+						"name": "HelveticaNeue-Light",
+						"size": "18",
+						"color": "white"
+					},
+					"position": [
+						{
+							"attribute": "left",					
+							"multiplier": 1.0,
+							"toView": "facebook_container_title",
+							"rel_attribute": "left",
+							"relation": "="
+						},
+						{
+							"attribute": "top",					
+							"multiplier": 1.0,
+							"constant": 8,
+							"toView": "facebook_container_title",
+							"rel_attribute": "bottom",
+							"relation": "="
+						},
+						{
+							"attribute": "right",					
+							"multiplier": 1.0,
+							"toView": "facebook_container",
+							"rel_attribute": "right",
+							"relation": "="
+						}
+					]
+				}		
+			]
+		}
+	}
+]
