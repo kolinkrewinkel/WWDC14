@@ -1,4 +1,5 @@
 #WWDC'14  
+
 First of all, I'd like to apologize: this is *way* below my standard of **both** code/app development/design and open-source quality.  
   
 I'm writing this all retrospectively, so we get the advantage of hindsight.
@@ -28,6 +29,12 @@ The parallaxed class proxies as the delegate and essentially asks for views, aut
 * Pending feedback, I intend to make the dynamic JSONView class(es) their own project.
 * The parallax view deserves to be its own class/repo.
 * UIView could use some nice helper categories with UIMotionEffect. Perhaps a Gist.
+
+###Screenshots
+![Intro Card](https://raw.githubusercontent.com/kolinkrewinkel/WWDC14/master/Meta/Screenshots/1.PNG?token=143944__eyJzY29wZSI6IlJhd0Jsb2I6a29saW5rcmV3aW5rZWwvV1dEQzE0L21hc3Rlci9NZXRhL1NjcmVlbnNob3RzLzEuUE5HIiwiZXhwaXJlcyI6MTM5ODE0ODQ2NH0%3D--f8243ad73f2e9dc4723dc7df34264b91ce455170)
+![Stream Card](https://raw.githubusercontent.com/kolinkrewinkel/WWDC14/master/Meta/Screenshots/2.PNG?token=143944__eyJzY29wZSI6IlJhd0Jsb2I6a29saW5rcmV3aW5rZWwvV1dEQzE0L21hc3Rlci9NZXRhL1NjcmVlbnNob3RzLzIuUE5HIiwiZXhwaXJlcyI6MTM5ODE0ODQ4MX0%3D--a861ba4fd8463b65a0c181ded0c22adab79dd257)
+![Facebook Card](https://raw.githubusercontent.com/kolinkrewinkel/WWDC14/master/Meta/Screenshots/3.PNG?token=143944__eyJzY29wZSI6IlJhd0Jsb2I6a29saW5rcmV3aW5rZWwvV1dEQzE0L21hc3Rlci9NZXRhL1NjcmVlbnNob3RzLzMuUE5HIiwiZXhwaXJlcyI6MTM5ODE0ODQ4MH0%3D--2669e0083bfbfe8488de18236503269da6d57df0)
+
 
 ###License
 No warranty is provided for any code within this repository or related to the `Kolin Krewinkel.app` Xcode project for WWDC 2014. Code may be used for non-commerical/commericial purposes with attribution, unless it is with the intent to redistribute the original designs of this app (only concepts, such as the JSON view concept, or parallax management.) Basically, you can only scavenge from this, not use it as a basis.
