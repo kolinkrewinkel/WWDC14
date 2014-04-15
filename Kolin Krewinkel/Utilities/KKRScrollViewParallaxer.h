@@ -27,9 +27,14 @@
 
 @protocol KKRScrollViewParallaxerDataSource <NSObject>
 
+@required
 - (NSUInteger)numberOfItemsParallaxedInParallaxer:(KKRScrollViewParallaxer *)parallaxer;
 - (UIView *)viewAtIndex:(NSUInteger)index inParallaxer:(KKRScrollViewParallaxer *)parallaxer;
 - (CGFloat)movementFractionalForViewAtIndex:(NSUInteger)index inParallaxer:(KKRScrollViewParallaxer *)parallaxer;
 - (CGRect)initialRectForViewAtIndex:(NSUInteger)index inParallaxer:(KKRScrollViewParallaxer *)parallaxer;
+
+@optional
+- (void)parallaxer:(KKRScrollViewParallaxer *)parallaxer didRemoveViewAtIndex:(NSUInteger)index;
+- (BOOL)parallaxer:(KKRScrollViewParallaxer *)parallaxer canRemoveViewAtIndex:(NSUInteger)index;
 
 @end

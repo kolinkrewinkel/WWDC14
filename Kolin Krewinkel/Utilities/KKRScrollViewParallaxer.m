@@ -49,9 +49,16 @@
 
 - (void)setScrollView:(UIScrollView *)scrollView
 {
+    if (self.scrollView)
+    {
+        [self.scrollView removeObserver:self forKeyPath:@"frame"];
+    }
+
     _scrollView = scrollView;
 
     self.scrollView.delegate = self;
+
+    [self.scrollView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
 
     [self layoutScrollView];
 }
@@ -60,13 +67,13 @@
 
 - (void)layoutScrollView
 {
-    for (NSUInteger idx = 0; idx < [self.dataSource numberOfItemsParallaxedInParallaxer:self]; idx++)
+    for (NSInteger idx = [self.dataSource numberOfItemsParallaxedInParallaxer:self] - 1; idx >= 0; idx--)
     {
         UIView *view = [self displayedViewAtIndex:idx];
 
         CGFloat movementFactor = [self.dataSource movementFractionalForViewAtIndex:idx inParallaxer:self];
         CGRect originalRect = [self.dataSource initialRectForViewAtIndex:idx inParallaxer:self];
-        CGRect modifiedRect = CGRectMake(0.f, originalRect.origin.y + ((1.f - movementFactor) * self.scrollView.contentOffset.y), originalRect.size.width, originalRect.size.height);
+        CGRect modifiedRect = CGRectMake(originalRect.origin.x + ((1.f - movementFactor) * self.scrollView.contentOffset.x), originalRect.origin.y + ((1.f - movementFactor) * self.scrollView.contentOffset.y), originalRect.size.width, originalRect.size.height);
 
         if (CGRectIntersectsRect(CGRectMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y, self.scrollView.frame.size.width, self.scrollView.frame.size.height), modifiedRect))
         {
@@ -75,15 +82,24 @@
                 view = [self.dataSource viewAtIndex:idx inParallaxer:self];
                 [self.visibleViews setObject:view forKey:@(idx)];
 
-                [self.scrollView addSubview:view];
+                [self.scrollView insertSubview:view atIndex:1];
             }
 
             view.frame = modifiedRect;
         }
         else if (view)
         {
-            [view removeFromSuperview];
+            if ([self.dataSource respondsToSelector:@selector(parallaxer:canRemoveViewAtIndex:)] && ![self.dataSource parallaxer:self canRemoveViewAtIndex:idx])
+            {
+                return;
+            }
 
+            if ([self.dataSource respondsToSelector:@selector(parallaxer:didRemoveViewAtIndex:)])
+            {
+                [self.dataSource parallaxer:self didRemoveViewAtIndex:idx];
+            }
+
+            [view removeFromSuperview];
             [self.visibleViews removeObjectForKey:@(idx)];
         }
     }
@@ -94,11 +110,40 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self layoutScrollView];
+
+    if ([self.originalDelegate respondsToSelector:@selector(scrollViewDidScroll:)])
+    {
+        [self.originalDelegate scrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if ([self.originalDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)])
+    {
+        [self.originalDelegate scrollViewDidEndDecelerating:scrollView];
+    }
 }
 
 - (UIView *)displayedViewAtIndex:(NSUInteger)index
 {
     return self.visibleViews[@(index)];
+}
+
+#pragma mark - NSKVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self layoutScrollView];
+    });
+}
+
+#pragma mark - NSObject
+
+- (void)dealloc
+{
+    [self.scrollView removeObserver:self forKeyPath:@"frame"];
 }
 
 @end
